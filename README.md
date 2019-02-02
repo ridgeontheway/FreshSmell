@@ -7,5 +7,5 @@ Getting started (dev):
 	- mvn clean
 	- mvn compile
 	- mvn package
-- Add run configuration using TomcatServer-Local, after 'Build' in 'Before Launch' add 'Run Maven Goal -> 'mvn package'
+- Add run configuration using TomcatServer-Local, after 'Build' in 'Before Launch' add 'Run Maven Goal -> 'package'
 
