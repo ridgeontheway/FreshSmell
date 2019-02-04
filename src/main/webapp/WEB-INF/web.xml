@@ -13,6 +13,7 @@
     </init-param>
   </servlet>
 
+  <!-- This says 'send everything that ends with .html to the dispatcher servlet -->
   <servlet-mapping>
   <servlet-name>CodeSmellerServlet</servlet-name>
   <url-pattern>*.html</url-pattern>

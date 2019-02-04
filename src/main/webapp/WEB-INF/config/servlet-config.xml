@@ -10,10 +10,19 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    <!--
+    Configuration for the servlet
+        DispatcherServlet is told by web.xml to handle all address that
+            end with .html
+        It does this using files in org.WASPs.controller, and the annotation
+            @RequestMapping on those controllers assigns them particular .html addresses
+    -->
 
+    <!-- This is how the program knows we will be using @ annotations -->
     <mvc:annotation-driven/>
+    <!-- This tells the program to look for @Controller objects here and map them -->
     <context:component-scan base-package="org.WASPs.controller"/>
-
+    <!-- This is where to look for views, aka .jsp files -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />

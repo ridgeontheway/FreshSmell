@@ -12,6 +12,8 @@ public class HelloController {
         // model is basically just a hash map - "greeting" is the key
         model.addAttribute("greeting", "SMELL DAT CODE");
         // Name of JSP page is 'hello'
+        // Return this .jsp view mapping
+        //  which is under /WEB-INF/jsp/hello.jsp
         return "hello";
     }
 }
