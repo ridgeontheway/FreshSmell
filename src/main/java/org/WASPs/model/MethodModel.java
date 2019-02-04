@@ -1,10 +1,10 @@
 package org.WASPs.model;
 
 /**
- * Implement methods from Method object, but add to mapping file (if necessary)
+ * Implement methods from MethodModel object, but add to mapping file (if necessary)
  */
 
-public class Method {
+public class MethodModel {
     private String name;
     private int parameterCount;
 
