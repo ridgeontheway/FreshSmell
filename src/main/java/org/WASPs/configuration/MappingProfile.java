@@ -1,7 +1,7 @@
-package org.WASPs.configuration;
+package org.wasps.configuration;
 
-import org.WASPs.model.MethodModel;
-import org.WASPs.model.SourceFile;
+import org.wasps.model.MethodModel;
+import org.wasps.model.SourceFile;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

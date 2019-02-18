@@ -1,4 +1,4 @@
-package org.WASPs.service.abstracts;
+package org.wasps.service.abstracts;
 
 public interface ISmellerService {
     String testFunctionality();

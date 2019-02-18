@@ -1,4 +1,4 @@
-package org.WASPs.model;
+package org.wasps.model;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

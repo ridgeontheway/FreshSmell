@@ -1,7 +1,9 @@
-package org.WASPs.service.concretes;
+package org.wasps.service.concretes;
 
-import org.WASPs.service.abstracts.ISmellerService;
+import org.wasps.service.abstracts.ISmellerService;
+import org.springframework.stereotype.Service;
 
+@Service("smellerService")
 public class SmellerService implements ISmellerService {
 
     @Override

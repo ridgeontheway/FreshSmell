@@ -1,4 +1,4 @@
-package org.WASPs.model;
+package org.wasps.model;
 
 /**
  * Implement methods from MethodModel object, but add to mapping file (if necessary)
