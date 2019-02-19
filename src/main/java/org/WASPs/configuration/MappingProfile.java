@@ -26,7 +26,8 @@ public class MappingProfile {
     public SourceFile map(Class classIn) {
         SourceFile classOut = new SourceFile();
         classOut.setName(classIn.getName());
+        classOut.setMethods(mapMethods(classIn.getMethods()));
         // TODO: Add the rest of the mappings
-T        return classOut;
+        return classOut;
     }
 }

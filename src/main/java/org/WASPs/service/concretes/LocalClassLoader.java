@@ -24,7 +24,6 @@ public class LocalClassLoader extends ClassLoaderBase implements IClassLoader {
     @Override
     public void writeToJson(SourceFile sourceFile) {
         String path = String.format("%s/src/main/java/org/wasps/data/%s%s", directory, sourceFile.getName(), ".json");
-        System.out.println(path);
         try {
             _json.writeValue(new File(path), sourceFile);
         } catch (Exception e) {

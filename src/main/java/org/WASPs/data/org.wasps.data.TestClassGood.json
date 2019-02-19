@@ -1,1 +1,67 @@
-{"name":"org.wasps.data.TestClassGood","constructors":null,"fields":null,"methods":null}
+{
+  "name": "org.wasps.data.TestClassGood",
+  "constructors": null,
+  "fields": null,
+  "methods": [
+    {
+      "name": "getTestInt",
+      "parameterCount": 0
+    },
+    {
+      "name": "setTestInt",
+      "parameterCount": 1
+    },
+    {
+      "name": "getTestString",
+      "parameterCount": 0
+    },
+    {
+      "name": "setTestString",
+      "parameterCount": 1
+    },
+    {
+      "name": "getTestConstString",
+      "parameterCount": 0
+    },
+    {
+      "name": "setSomethingFromString",
+      "parameterCount": 0
+    },
+    {
+      "name": "wait",
+      "parameterCount": 1
+    },
+    {
+      "name": "wait",
+      "parameterCount": 2
+    },
+    {
+      "name": "wait",
+      "parameterCount": 0
+    },
+    {
+      "name": "equals",
+      "parameterCount": 1
+    },
+    {
+      "name": "toString",
+      "parameterCount": 0
+    },
+    {
+      "name": "hashCode",
+      "parameterCount": 0
+    },
+    {
+      "name": "getClass",
+      "parameterCount": 0
+    },
+    {
+      "name": "notify",
+      "parameterCount": 0
+    },
+    {
+      "name": "notifyAll",
+      "parameterCount": 0
+    }
+  ]
+}
