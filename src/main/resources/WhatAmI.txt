@@ -1,0 +1,1 @@
+Anything in this folder is added to the class path (packaged in the .war file)

@@ -1,4 +1,4 @@
-package org.WASPs.model;
+package org.wasps.model;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -13,8 +13,8 @@ public class SourceFile {
     private Iterable<Constructor> constructors;
     // Mapping: Field[] --> Iterable<Field>
     private Iterable<Field> fields;
-    // Mapping: Method[] --> Iterable<Method>
-    private Iterable<Method> methods;
+    // Mapping: MethodModel[] --> Iterable<MethodModel>
+    private Iterable<MethodModel> methods;
 
     public String getName() {
         return name;
@@ -28,7 +28,7 @@ public class SourceFile {
         return fields;
     }
 
-    public Iterable<Method> getMethods() {
+    public Iterable<MethodModel> getMethods() {
         return methods;
     }
 
@@ -44,7 +44,7 @@ public class SourceFile {
         this.fields = fields;
     }
 
-    public void setMethods(Iterable<Method> methods) {
+    public void setMethods(Iterable<MethodModel> methods) {
         this.methods = methods;
     }
 }
