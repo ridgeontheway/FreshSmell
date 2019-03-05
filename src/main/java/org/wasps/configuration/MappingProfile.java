@@ -10,7 +10,6 @@ public class MappingProfile {
         MethodModel methodOut = new MethodModel();
         methodOut.setName(methodIn.getName());
         methodOut.setParameterCount(methodIn.getParameterCount());
-
         return methodOut;
     }
 
@@ -22,11 +21,12 @@ public class MappingProfile {
         return classOut;
     }
 
-    public Iterable<MethodModel> mapMethods(Method[] methodsIn) {
+    public Iterable<MethodModel> mapMethods(Method[] methodsIn) { //todo get the line num
         ArrayList<MethodModel> methodsOut = new ArrayList<>();
         for (Method m : methodsIn) {
             methodsOut.add(mapMethod(m));
         }
         return methodsOut;
     }
+
 }
