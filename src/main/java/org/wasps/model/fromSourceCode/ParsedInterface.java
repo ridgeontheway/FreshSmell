@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ParsedInterface extends SourceCodeBase {
 
-    public ParsedInterface(File fileRef){
+    public ParsedInterface(File fileRef){ //test
         super(fileRef);
     }
 
