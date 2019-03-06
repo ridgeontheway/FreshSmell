@@ -1,5 +1,7 @@
 package org.wasps.model;
 
+import org.wasps.model.fromSourceCode.abstracts.ISourceCode;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
@@ -47,4 +49,7 @@ public class SourceFile {
     public void setMethods(Iterable<MethodModel> methods) {
         this.methods = methods;
     }
+
+    // George's source code parsing functionality
+    private ISourceCode sourceCode;
 }

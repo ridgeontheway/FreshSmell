@@ -13,5 +13,9 @@ public class LocalApplicationTest {
 
         SourceFile source = loader.loadClass();
         loader.writeToJson(source);
+
+        // This code loads the directory and feeds it into George's source code services
+        String directory = "Blah";
+
     }
 }

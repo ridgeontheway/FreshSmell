@@ -19,6 +19,8 @@ public class MappingProfile {
         classOut.setName(classIn.getName());
         classOut.setMethods(mapMethods(classIn.getMethods()));
         // TODO: Add the rest of the mappings
+
+
         return classOut;
     }
 
