@@ -2,8 +2,10 @@ package org.wasps.configuration;
 
 import org.wasps.model.MethodModel;
 import org.wasps.model.SourceFile;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MappingProfile {
     public MethodModel mapMethod(Method methodIn) {
@@ -24,7 +26,7 @@ public class MappingProfile {
         return classOut;
     }
 
-    public Iterable<MethodModel> mapMethods(Method[] methodsIn) {
+    public List<MethodModel> mapMethods(Method[] methodsIn) {
         ArrayList<MethodModel> methodsOut = new ArrayList<>();
         for (Method m : methodsIn) {
             methodsOut.add(mapMethod(m));

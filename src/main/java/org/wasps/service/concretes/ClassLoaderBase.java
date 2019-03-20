@@ -1,29 +1,71 @@
 package org.wasps.service.concretes;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.model.SourceFile;
+import org.wasps.service.abstracts.IClassLoader;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class ClassLoaderBase {
+public abstract class ClassLoaderBase implements IClassLoader {
     protected MappingProfile _mapper;
-    protected ObjectMapper _json;
-    protected HashMap<String, SourceFile> _sourceFiles;
-    protected String directory = System.getProperty("user.dir");
+    protected JSONSerializer _json;
+    protected List<SourceFile> _sourceFiles;
+    protected String directory;
+    protected String path;
 
-    public ClassLoaderBase(MappingProfile mapper, ObjectMapper json) {
-        _mapper = mapper;
-        _json = json;
-        _sourceFiles = new HashMap<>();
+    public ClassLoaderBase() {
+        _mapper = new MappingProfile();
+        _json = new JSONSerializer();
+        _sourceFiles = new ArrayList<>();
+        directory = System.getProperty("user.dir");
+        path = String.format("%s/src/main/java/org/wasps/data/%s%s", directory, "data", ".json");
     }
 
-    public void addSourceFileToHashMap(SourceFile sourceFile) {
-        _sourceFiles.put(sourceFile.getName(), sourceFile);
+    public void addSourceFileToList(SourceFile sourceFile) {
+        _sourceFiles.add(sourceFile);
+        System.out.println("Adding " + sourceFile.getName() + " to List");
     }
 
-    public HashMap getSourceFiles() {
+    public List<SourceFile> getSourceFiles() {
+        if (_sourceFiles.isEmpty())
+            _sourceFiles = getSourceFilesFromJson();
         return _sourceFiles;
+    }
+
+    public void writeSourceFilesToJson() {
+        try {
+            FileWriter writer = new FileWriter(path);
+            _json.deepSerialize(_sourceFiles, writer);
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<SourceFile> getSourceFilesFromJson() {
+        ArrayList<SourceFile> sourceFiles = new ArrayList<>();
+        File input = new File(path);
+
+        if (!input.exists()) {
+            writeSourceFilesToJson();
+        }
+
+        try {
+            InputStream inputStream = new FileInputStream(input);
+            String fromFile = new String(inputStream.readAllBytes());
+            sourceFiles = new JSONDeserializer<ArrayList<SourceFile>>().deserialize(fromFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sourceFiles;
     }
 
 }

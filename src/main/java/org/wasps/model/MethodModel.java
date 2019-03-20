@@ -8,6 +8,8 @@ public class MethodModel {
     private String name;
     private int parameterCount;
 
+    public MethodModel() {}
+
     public String getName() {
         return name;
     }

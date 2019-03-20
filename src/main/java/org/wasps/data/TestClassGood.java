@@ -7,9 +7,9 @@ public class TestClassGood {
     private int testInt;
     private String testString;
     private final String testConstString;
-    private List dependency;
+    private List<Object> dependency;
 
-    public TestClassGood(List dependencyInjection) {
+    public TestClassGood(List<Object> dependencyInjection) {
         this.testConstString = "Magic strings are bad";
         this.dependency = dependencyInjection;
     }
@@ -37,6 +37,6 @@ public class TestClassGood {
     // Methods
     public void setSomethingFromString() {
         String tester = testConstString;
-
     }
+    public void addToDependencyList(Object object) { dependency.add(object); }
 }

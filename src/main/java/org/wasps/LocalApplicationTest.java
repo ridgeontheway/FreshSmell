@@ -1,21 +1,26 @@
 package org.wasps;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.wasps.configuration.MappingProfile;
+import org.wasps.data.TestClassBad;
+import org.wasps.data.TestClassGood;
+import org.wasps.model.MethodModel;
 import org.wasps.model.SourceFile;
 import org.wasps.service.concretes.LocalClassLoader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // This class is to test any functionality locally
 // This should be run as a separate, regular Application run configuration
 public class LocalApplicationTest {
     public static void main(String[] args) {
-        LocalClassLoader loader = new LocalClassLoader(new MappingProfile(), new ObjectMapper());
+        LocalClassLoader loader = new LocalClassLoader();
 
-        SourceFile source = loader.loadClass();
-        loader.writeToJson(source);
-
-        // This code loads the directory and feeds it into George's source code services
-        String directory = "Blah";
-
+        SourceFile source1 = loader.loadClass(TestClassGood.class);
+        SourceFile source2 = loader.loadClass(TestClassBad.class);
+        loader.writeSourceFilesToJson();
+        List<SourceFile> fromJson = loader.getSourceFilesFromJson();
+        List<List<MethodModel>> methods = new ArrayList<>();
+        fromJson.forEach(file -> methods.add(file.getMethods()));
+        methods.get(0).forEach(method -> System.out.println(method.getName()));
     }
 }
