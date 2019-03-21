@@ -21,7 +21,10 @@ public class MappingProfile {
         classOut.setName(classIn.getName());
         classOut.setMethods(mapMethods(classIn.getMethods()));
         // TODO: Add the rest of the mappings
-
+        /*
+            Anything available through reflection should be added as above
+            Anything we get from source code most go through ISourceCodeParserService
+         */
 
         return classOut;
     }

@@ -6,10 +6,7 @@ import org.wasps.configuration.MappingProfile;
 import org.wasps.model.SourceFile;
 import org.wasps.service.abstracts.IClassLoader;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +14,15 @@ public abstract class ClassLoaderBase implements IClassLoader {
     protected MappingProfile _mapper;
     protected JSONSerializer _json;
     protected List<SourceFile> _sourceFiles;
-    protected String directory;
-    protected String path;
+    protected String _directory;
+    protected String _path;
 
     public ClassLoaderBase() {
         _mapper = new MappingProfile();
         _json = new JSONSerializer();
         _sourceFiles = new ArrayList<>();
-        directory = System.getProperty("user.dir");
-        path = String.format("%s/src/main/java/org/wasps/data/%s%s", directory, "data", ".json");
+        _directory = System.getProperty("user.dir");
+        _path = String.format("%s/src/main/java/org/wasps/data/%s%s", _directory, "data", ".json");
     }
 
     public void addSourceFileToList(SourceFile sourceFile) {
@@ -41,18 +38,18 @@ public abstract class ClassLoaderBase implements IClassLoader {
 
     public void writeSourceFilesToJson() {
         try {
-            FileWriter writer = new FileWriter(path);
+            FileWriter writer = new FileWriter(_path);
             _json.deepSerialize(_sourceFiles, writer);
             writer.flush();
             writer.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public List<SourceFile> getSourceFilesFromJson() {
         ArrayList<SourceFile> sourceFiles = new ArrayList<>();
-        File input = new File(path);
+        File input = new File(_path);
 
         if (!input.exists()) {
             writeSourceFilesToJson();
@@ -62,7 +59,7 @@ public abstract class ClassLoaderBase implements IClassLoader {
             InputStream inputStream = new FileInputStream(input);
             String fromFile = new String(inputStream.readAllBytes());
             sourceFiles = new JSONDeserializer<ArrayList<SourceFile>>().deserialize(fromFile);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return sourceFiles;

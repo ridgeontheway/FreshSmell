@@ -13,11 +13,11 @@ import java.util.List;
 public class SourceFile {
     private String name;
 
-    // Mapping: Constructor<Constructor[] --> Iterable<Constructor>
+    // Mapping: Constructor<Constructor[] --> List<Constructor>
     private List<Constructor> constructors;
-    // Mapping: Field[] --> Iterable<Field>
+    // Mapping: Field[] --> List<Field>
     private List<Field> fields;
-    // Mapping: MethodModel[] --> Iterable<MethodModel>
+    // Mapping: MethodModel[] --> List<MethodModel>
     private List<MethodModel> methods;
 
     public SourceFile() {}
