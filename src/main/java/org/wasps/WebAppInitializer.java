@@ -27,6 +27,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
         dispatcher.addMapping("*.html");
         dispatcher.addMapping("*.pdf");
         dispatcher.addMapping("*.json");
+        dispatcher.addMapping("/");
 
     }
 

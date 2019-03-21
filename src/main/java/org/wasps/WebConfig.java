@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc   // Replaces servlet-config
@@ -18,6 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/view/");
         resolver.setSuffix(".jsp");
 
@@ -27,9 +29,9 @@ public class WebConfig implements WebMvcConfigurer {
     // For uploading multiple files
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver createMultipartResolver() {
-        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("utf-8");
-        resolver.setMaxUploadSize(100000);
+        resolver.setMaxUploadSize(1000000);
         return resolver;
     }
 
