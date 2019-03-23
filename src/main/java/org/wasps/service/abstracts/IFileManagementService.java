@@ -5,11 +5,12 @@ import java.io.File;
 import java.util.List;
 
 public interface IFileManagementService {
-    File createUploadsDirectory(HttpServletRequest request);
+    File createUploadDirectory(HttpServletRequest request);
     File createUploadFile(File directory, String name);
     File getUploadedFileByNameAndType(String name);
     List<File> getUploadFilesByType(String type);
     List<File> getUploadFiles();
     File getUploadDirectory();
+    File getUploadDirectory(HttpServletRequest request);
     String getUploadDirectoryPath();
 }

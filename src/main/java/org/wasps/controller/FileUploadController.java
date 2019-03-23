@@ -35,7 +35,7 @@ public class FileUploadController extends BaseController {
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = {"multipart/*"})
     @ResponseBody
     public String uploadFile(@RequestParam("file") MultipartFile file) {
-        File directory = _worker.fileManagementService().createUploadsDirectory(request);
+        File directory = _worker.fileManagementService().createUploadDirectory(request);
 
         try {
             File transferFile = _worker.fileManagementService()
@@ -54,10 +54,12 @@ public class FileUploadController extends BaseController {
     @RequestMapping(value = "/uploadMultipleFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
     public @ResponseBody
     String uploadMultipleFiles(@RequestParam("file") MultipartFile[] files) {
-        File dir = _worker.fileManagementService().createUploadsDirectory(request);
+        File dir = _worker.fileManagementService().createUploadDirectory(request);
 
-        String message = "";
+        StringBuilder message = new StringBuilder();
         for (MultipartFile file : files) {
+            if (file.getOriginalFilename().isEmpty())
+                continue;
             try {
                 File transferFile = _worker.fileManagementService()
                         .createUploadFile(dir, file.getOriginalFilename());
@@ -66,13 +68,14 @@ public class FileUploadController extends BaseController {
                 System.out.println("Transfer File Location = "
                         + transferFile.getAbsolutePath());
 
-                message = message + "You successfully uploaded file=" + file.getOriginalFilename()
-                        + "<br />";
+                message.append("You successfully uploaded file = ");
+                message.append(file.getOriginalFilename());
+                message.append("<br />");
             } catch (Exception e) {
                 return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();
             }
         }
-        return message;
+        return message.toString();
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)

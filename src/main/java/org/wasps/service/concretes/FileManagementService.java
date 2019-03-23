@@ -16,7 +16,7 @@ public class FileManagementService implements IFileManagementService {
         UPLOAD_DIRECTORY_NAME = directoryName;
     }
 
-    public File createUploadsDirectory(HttpServletRequest request) {
+    public File createUploadDirectory(HttpServletRequest request) {
         String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY_NAME);
         UPLOAD_DIRECTORY_PATH = uploadPath + "/";
         _uploadDirectory = new File(UPLOAD_DIRECTORY_PATH);
@@ -62,6 +62,14 @@ public class FileManagementService implements IFileManagementService {
 
     @Override
     public File getUploadDirectory() {
+        return _uploadDirectory;
+    }
+
+    @Override
+    public File getUploadDirectory(HttpServletRequest request) {
+        if (_uploadDirectory == null || !_uploadDirectory.exists())
+            createUploadDirectory(request);
+
         return _uploadDirectory;
     }
 
