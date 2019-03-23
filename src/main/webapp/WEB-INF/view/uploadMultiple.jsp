@@ -16,7 +16,7 @@
     <script type="text/javascript" src="${uploadMultipleScripts}"></script>
 </head>
 <body>
-        <form action="uploadMultipleFiles" enctype="multipart/form-data" method="post">
+        <form action="uploadFiles" enctype="multipart/form-data" method="post">
             <div class="file-upload">
                 <input type="file" name="file"><br />
                 <input type="file" name="file"><br />

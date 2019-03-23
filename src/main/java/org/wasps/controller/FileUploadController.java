@@ -51,9 +51,9 @@ public class FileUploadController extends BaseController {
     /**
       * Upload multiple files
     */
-    @RequestMapping(value = "/uploadMultipleFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
+    @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
     public @ResponseBody
-    String uploadMultipleFiles(@RequestParam("file") MultipartFile[] files) {
+    String uploadFiles(@RequestParam("file") MultipartFile[] files) {
         File dir = _worker.fileManagementService().createUploadDirectory(request);
 
         StringBuilder message = new StringBuilder();
@@ -65,10 +65,10 @@ public class FileUploadController extends BaseController {
                         .createUploadFile(dir, file.getOriginalFilename());
                 file.transferTo(transferFile);
 
-                System.out.println("Transfer File Location = "
+                System.out.println("Transfer File Location => "
                         + transferFile.getAbsolutePath());
 
-                message.append("You successfully uploaded file = ");
+                message.append("You successfully uploaded file ");
                 message.append(file.getOriginalFilename());
                 message.append("<br />");
             } catch (Exception e) {
