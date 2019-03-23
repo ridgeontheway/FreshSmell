@@ -20,8 +20,9 @@ public class FileManagementService implements IFileManagementService {
         String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY_NAME);
         UPLOAD_DIRECTORY_PATH = uploadPath + "/";
         _uploadDirectory = new File(UPLOAD_DIRECTORY_PATH);
-        //noinspection ResultOfMethodCallIgnored
-        _uploadDirectory.mkdirs();
+        if (!_uploadDirectory.exists())
+            //noinspection ResultOfMethodCallIgnored
+            _uploadDirectory.mkdirs();
         return _uploadDirectory;
     }
 
