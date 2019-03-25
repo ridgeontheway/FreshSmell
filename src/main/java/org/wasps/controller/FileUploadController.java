@@ -65,12 +65,15 @@ public class FileUploadController extends BaseController {
                         .createUploadFile(dir, file.getOriginalFilename());
                 file.transferTo(transferFile);
 
-                System.out.println("Transfer File Location => "
-                        + transferFile.getAbsolutePath());
+//                System.out.println("Transfer File Location => " + transferFile.getAbsolutePath());
 
                 message.append("You successfully uploaded file ");
                 message.append(file.getOriginalFilename());
                 message.append("<br />");
+
+                _worker.compiler().compileUploadedFiles();
+//                _worker.compiler().instantiateFiles();
+
             } catch (Exception e) {
                 return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();
             }

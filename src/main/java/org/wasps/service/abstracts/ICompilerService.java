@@ -3,6 +3,7 @@ package org.wasps.service.abstracts;
 import java.io.File;
 
 public interface ICompilerService {
-    boolean compileUploadedFiles();
+    void compileUploadedFiles();
     boolean compile(File file);
+//    void instantiateFiles();
 }

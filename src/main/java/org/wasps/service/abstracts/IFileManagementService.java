@@ -8,7 +8,7 @@ public interface IFileManagementService {
     File createUploadDirectory(HttpServletRequest request);
     File createUploadFile(File directory, String name);
     File getUploadedFileByNameAndType(String name);
-    List<File> getUploadFilesByType(String type);
+    List<File> getUploadedFilesByType(String type);
     List<File> getUploadedFiles();
     File getUploadDirectory();
     File getUploadDirectory(HttpServletRequest request);

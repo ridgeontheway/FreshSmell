@@ -18,8 +18,12 @@ public class FileManagementService implements IFileManagementService {
 
     public File createUploadDirectory(HttpServletRequest request) {
         String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY_NAME);
+
         UPLOAD_DIRECTORY_PATH = uploadPath + "/";
         _uploadDirectory = new File(UPLOAD_DIRECTORY_PATH);
+
+        System.out.println(_uploadDirectory.getPath());
+
         if (!_uploadDirectory.exists())
             //noinspection ResultOfMethodCallIgnored
             _uploadDirectory.mkdirs();
@@ -41,7 +45,7 @@ public class FileManagementService implements IFileManagementService {
     }
 
     @Override
-    public List<File> getUploadFilesByType(String queryType) {
+    public List<File> getUploadedFilesByType(String queryType) {
         File files[] = _uploadDirectory.listFiles((dir, name) -> name.endsWith(queryType));
 
         if (files == null)
