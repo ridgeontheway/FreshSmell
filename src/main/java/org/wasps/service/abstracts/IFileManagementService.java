@@ -9,7 +9,7 @@ public interface IFileManagementService {
     File createUploadFile(File directory, String name);
     File getUploadedFileByNameAndType(String name);
     List<File> getUploadFilesByType(String type);
-    List<File> getUploadFiles();
+    List<File> getUploadedFiles();
     File getUploadDirectory();
     File getUploadDirectory(HttpServletRequest request);
     String getUploadDirectoryPath();

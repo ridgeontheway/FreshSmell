@@ -7,4 +7,5 @@ package org.wasps.service.abstracts;
 public interface IWorker {
     IClassLoader localClassLoader();
     IFileManagementService fileManagementService();
+    ICompilerService compiler();
 }

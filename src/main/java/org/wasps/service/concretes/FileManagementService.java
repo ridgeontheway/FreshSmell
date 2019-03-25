@@ -51,7 +51,7 @@ public class FileManagementService implements IFileManagementService {
     }
 
     @Override
-    public List<File> getUploadFiles() {
+    public List<File> getUploadedFiles() {
         File files[] = _uploadDirectory.listFiles();
 
         if (files == null)
