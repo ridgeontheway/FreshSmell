@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FileManagementService implements IFileManagementService {
     private final String UPLOAD_DIRECTORY_NAME;
-    private String UPLOAD_DIRECTORY_PATH;
+    private String _uploadDirectoryPath;
     private File _uploadDirectory;
 
     public FileManagementService(String directoryName) {
@@ -17,16 +17,15 @@ public class FileManagementService implements IFileManagementService {
     }
 
     public File createUploadDirectory(HttpServletRequest request) {
-        String uploadPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY_NAME);
+        _uploadDirectoryPath = request.getServletContext().getRealPath(UPLOAD_DIRECTORY_NAME) + "/";
+        _uploadDirectory = new File(_uploadDirectoryPath);
 
-        UPLOAD_DIRECTORY_PATH = uploadPath + "/";
-        _uploadDirectory = new File(UPLOAD_DIRECTORY_PATH);
-
-        System.out.println(_uploadDirectory.getPath());
-
-        if (!_uploadDirectory.exists())
+        if (!_uploadDirectory.exists()) {
             //noinspection ResultOfMethodCallIgnored
             _uploadDirectory.mkdirs();
+        } else {
+            System.out.println("DIR\t" + _uploadDirectory.getAbsolutePath());
+        }
         return _uploadDirectory;
     }
 
@@ -78,5 +77,5 @@ public class FileManagementService implements IFileManagementService {
     }
 
     @Override
-    public String getUploadDirectoryPath() { return UPLOAD_DIRECTORY_PATH; }
+    public String getUploadDirectoryPath() { return _uploadDirectoryPath; }
 }

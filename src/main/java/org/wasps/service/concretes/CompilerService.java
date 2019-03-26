@@ -22,47 +22,10 @@ public class CompilerService implements ICompilerService {
     public void compileUploadedFiles() {
         List<File> files = _fileManagementService.getUploadedFilesByType(".java");
 
+        files.forEach(System.out::println);
+
         for (File file : files) {
             _compiler.run(null, null, null, file.getPath());
         }
     }
-
-    @Override
-    public boolean compile(File file) {
-        try {
-            _compiler.run(null, null, null, file.getPath());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    // instantiateFiles() is not working yet
-//    @Override
-//    public void instantiateFiles() {
-//        try {
-//            URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{
-//                    _fileManagementService.getUploadDirectory().toURI().toURL()});
-//            System.out.println("\n\nOUT: ");
-//            _fileManagementService.getUploadedFilesByType(".class").forEach(file -> {
-//                try {
-//                    Class<?> newClass = Class.forName(file.getName(), true, classLoader);
-//                    System.out.println(newClass.getName());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                System.out.println("\n");
-//
-//            });
-//
-////            Class<?> newClass = Class.forName("Celsius", true, classLoader);
-////            Object instance = newClass.getDeclaredConstructor().newInstance();
-////            System.out.println(instance);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-
 }
