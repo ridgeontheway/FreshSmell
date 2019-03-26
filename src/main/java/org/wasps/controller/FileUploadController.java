@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.configuration.MappingProfile;
+import org.wasps.service.concretes.ParsingService;
 import org.wasps.service.concretes.Worker;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class FileUploadController extends BaseController {
 
     @Autowired
     public FileUploadController(HttpServletRequest request) {
-        super(new MappingProfile(), new Worker());
+        super(new MappingProfile(new ParsingService()), new Worker());
         this.request = request;
     }
 

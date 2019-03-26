@@ -18,7 +18,7 @@ public abstract class ClassLoaderBase implements IClassLoader {
     protected String _path;
 
     public ClassLoaderBase() {
-        _mapper = new MappingProfile();
+        _mapper = new MappingProfile(new ParsingService());
         _json = new JSONSerializer();
         _sourceFiles = new ArrayList<>();
         _directory = System.getProperty("user.dir");

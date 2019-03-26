@@ -2,12 +2,22 @@ package org.wasps.configuration;
 
 import org.wasps.model.MethodModel;
 import org.wasps.model.SourceFile;
+import org.wasps.service.abstracts.IParsingService;
 
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MappingProfile {
+    private IParsingService _parser;
+
+
+    public MappingProfile(IParsingService parser) {
+        _parser = parser;
+
+    }
+
     public MethodModel mapMethod(Method methodIn) {
         MethodModel methodOut = new MethodModel();
         methodOut.setName(methodIn.getName());
@@ -16,15 +26,15 @@ public class MappingProfile {
         return methodOut;
     }
 
-    public SourceFile map(Class classIn) {
+    public SourceFile map(URL path) {
         SourceFile classOut = new SourceFile();
-        classOut.setName(classIn.getName());
-        classOut.setMethods(mapMethods(classIn.getMethods()));
-        // TODO: Add the rest of the mappings
+        _parser.setInputSource(path);
+
+        // TODO: Add the mappings
         /*
-            Anything available through reflection should be added as above
             Anything we get from source code most go through ISourceCodeParserService
          */
+        classOut.setName(_parser.getName());
 
         return classOut;
     }
