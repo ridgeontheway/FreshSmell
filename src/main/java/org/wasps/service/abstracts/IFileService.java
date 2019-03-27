@@ -10,4 +10,5 @@ public interface IFileService {
     String uploadAllFiles(HttpServletRequest request, MultipartFile[] files);
     String uploadFile(HttpServletRequest request, MultipartFile file);
     List<FileModel> getFiles();
+    List<FileModel> getFilesFromJson();
 }

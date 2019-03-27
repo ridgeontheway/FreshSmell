@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.model.FileModel;
-import org.wasps.service.concretes.ParsingService;
 import org.wasps.service.concretes.Worker;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @RestController
 public class SmellController extends BaseController {
     public SmellController() {
-        super(new MappingProfile(new ParsingService()), new Worker());
+        super(new MappingProfile(), new Worker());
     }
 
     @RequestMapping(value = "/sourcefiles", method = RequestMethod.GET)

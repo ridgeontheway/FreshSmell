@@ -3,9 +3,8 @@ package org.wasps.data.repository.concretes;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
-import org.wasps.model.FileModel;
-import org.wasps.service.concretes.ParsingService;
 import org.wasps.data.repository.abstracts.IJsonUtility;
+import org.wasps.model.FileModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class JsonUtility implements IJsonUtility {
     protected String _path;
 
     public JsonUtility() {
-        _mapper = new MappingProfile(new ParsingService());
+        _mapper = new MappingProfile();
         _json = new JSONSerializer();
         _FileModels = new ArrayList<>();
         _directory = System.getProperty("user.dir");

@@ -1,22 +1,16 @@
 package org.wasps.configuration;
 
-import org.wasps.model.MethodModel;
 import org.wasps.model.FileModel;
-import org.wasps.service.abstracts.IParsingService;
+import org.wasps.model.MethodModel;
+import org.wasps.model.ParsedFile;
 
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MappingProfile {
-    private IParsingService _parser;
 
-
-    public MappingProfile(IParsingService parser) {
-        _parser = parser;
-
-    }
+    public MappingProfile() {}
 
     public MethodModel mapMethod(Method methodIn) {
         MethodModel methodOut = new MethodModel();
@@ -26,16 +20,32 @@ public class MappingProfile {
         return methodOut;
     }
 
-    public FileModel map(URL path) {
-        FileModel classOut = new FileModel();
+    public List<FileModel> map(List<ParsedFile> parsedFiles) {
+        List<FileModel> fileModels = new ArrayList<>();
+        parsedFiles.forEach(parsedFile -> {
+            FileModel fileModel = new FileModel();
 
-        // TODO: Add the mappings
-        /*
-            Anything we get from source code most go through ISourceCodeParserService
-         */
-        classOut.setName("Test");
+            // Use the parsed files like this
+            fileModel.setName(parsedFile.getName());
+            // All functionality for mapping for parser should go here
 
-        return classOut;
+
+            // Be done by here -> we're adding the finished product
+            fileModels.add(fileModel);
+        });
+        return fileModels;
+    }
+
+    public FileModel map(ParsedFile parsedFile) {
+            FileModel fileModel = new FileModel();
+
+            // Use the parsed files like this
+            fileModel.setName(parsedFile.getName());
+            // All functionality for mapping for parser should go here
+
+
+            // Be done by here -> we're adding the finished product
+        return fileModel;
     }
 
     public List<MethodModel> mapMethods(Method[] methodsIn) {
