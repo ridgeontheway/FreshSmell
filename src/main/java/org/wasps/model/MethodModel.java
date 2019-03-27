@@ -8,16 +8,19 @@ public class MethodModel {
     private String name;
     private int parameterCount;
 
+    public MethodModel() {
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getParameterCount() {
-        return parameterCount;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getParameterCount() {
+        return parameterCount;
     }
 
     public void setParameterCount(int parameterCount) {

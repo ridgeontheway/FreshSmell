@@ -13,12 +13,8 @@ public class MappingProfile {
         return methodOut;
     }
 
-    public SourceFile map(Class classIn) {
-        SourceFile classOut = new SourceFile();
-        classOut.setName(classIn.getName());
-        classOut.setMethods(mapMethods(classIn.getMethods()));
-        // TODO: Add the rest of the mappings
-        return classOut;
+    public FileModel map(ParsedFile fileIn) {
+        
     }
 
     public Iterable<MethodModel> mapMethods(Method[] methodsIn) { //todo get the line num
