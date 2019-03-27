@@ -1,4 +1,4 @@
-package org.wasps.service.utilities.abstracts;
+package org.wasps.data.repository.abstracts;
 
 import org.wasps.model.FileModel;
 

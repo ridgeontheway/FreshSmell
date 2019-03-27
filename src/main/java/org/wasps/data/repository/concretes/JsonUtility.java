@@ -1,11 +1,11 @@
-package org.wasps.service.utilities.concretes;
+package org.wasps.data.repository.concretes;
 
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.model.FileModel;
 import org.wasps.service.concretes.ParsingService;
-import org.wasps.service.utilities.abstracts.IJsonUtility;
+import org.wasps.data.repository.abstracts.IJsonUtility;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -4,6 +4,5 @@ package org.wasps;
 // This should be run as a separate, regular Application run configuration
 public class LocalApplicationTest {
     public static void main(String[] args) {
-
     }
 }

@@ -1,31 +1,17 @@
 package org.wasps.service.concretes;
 
-import org.wasps.service.abstracts.IClassLoader;
-import org.wasps.service.abstracts.ICompilerService;
-import org.wasps.service.abstracts.IFileManagementService;
+import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IWorker;
+import org.wasps.data.repository.concretes.FileUtility;
+import org.wasps.data.repository.concretes.JsonUtility;
 
 public class Worker implements IWorker {
-    private IClassLoader _localClassLoader;
-    private IFileManagementService _fileManagementService;
-    private ICompilerService _compiler;
+    private IFileService _fileService;
 
     public Worker() {
-        _localClassLoader = new LocalClassLoader();
-        _fileManagementService = new FileManagementService("/uploads");
-        _compiler = new CompilerService(_fileManagementService);
+        _fileService = new FileService(new FileUtility("/uploads"), new JsonUtility());
     }
 
-    public IClassLoader localClassLoader() {
-        return _localClassLoader;
-    }
-
-    public IFileManagementService fileManagementService() { return _fileManagementService; }
-
-    @Override
-    public ICompilerService compiler() {
-        return _compiler;
-    }
-
+    public IFileService fileService() { return _fileService; }
 
 }

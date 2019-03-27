@@ -1,9 +1,11 @@
 package org.wasps.service.abstracts;
 
-import java.net.URL;
+import org.wasps.model.ParsedFile;
+
+import java.io.File;
+import java.util.List;
 
 public interface IParsingService {
-    void setInputSource(URL path);
-    String getName();
-    void parse();
+    ParsedFile parse(File file);
+    List<ParsedFile> parse(File[] file);
 }

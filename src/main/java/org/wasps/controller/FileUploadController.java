@@ -13,7 +13,6 @@ import org.wasps.service.concretes.ParsingService;
 import org.wasps.service.concretes.Worker;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 
 /**
  * Handles requests for the application file upload requests
@@ -36,44 +35,13 @@ public class FileUploadController extends BaseController {
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = {"multipart/*"})
     @ResponseBody
     public String uploadFile(@RequestParam("file") MultipartFile file) {
-        File directory = _worker.fileManagementService().createUploadDirectory(request);
-        
-        try {
-            File transferFile = _worker.fileManagementService()
-                                    .createUploadFile(directory, file.getOriginalFilename());
-            file.transferTo(transferFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failure";
-        }
-        return "Success";
+        return _worker.fileService().uploadFile(request, file);
     }
 
     @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
     public @ResponseBody
     String uploadFiles(@RequestParam("file") MultipartFile[] files) {
-        File directory = _worker.fileManagementService().createUploadDirectory(request);
-
-        StringBuilder message = new StringBuilder();
-        for (MultipartFile file : files) {
-            if (file.getOriginalFilename().isEmpty())
-                continue;
-            try {
-                File transferFile = _worker.fileManagementService()
-                        .createUploadFile(directory, file.getOriginalFilename());
-                file.transferTo(transferFile);
-
-//                System.out.println("Transfer File Location => " + transferFile.getAbsolutePath());
-
-                message.append("You successfully uploaded file ");
-                message.append(file.getOriginalFilename());
-                message.append("<br />");
-
-            } catch (Exception e) {
-                return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();
-            }
-        }
-        return message.toString();
+        return _worker.fileService().uploadAllFiles(request, files);
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)

@@ -1,25 +1,21 @@
 package org.wasps.service.concretes;
 
+import org.wasps.model.ParsedFile;
 import org.wasps.service.abstracts.IParsingService;
 
-import java.net.URL;
+import java.io.File;
+import java.util.List;
+
 
 public class ParsingService implements IParsingService {
-    private URL sourcePath;
 
     @Override
-    public void setInputSource(URL path) {
-        sourcePath = path;
-        parse();
+    public ParsedFile parse(File file) {
+        return null;
     }
 
     @Override
-    public String getName() {
-        return "Test";
-    }
-
-    @Override
-    public void parse() {
-
+    public List<ParsedFile> parse(File[] file) {
+        return null;
     }
 }

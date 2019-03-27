@@ -8,14 +8,14 @@ import java.util.List;
  * Implement methods from Class object, but add to mapping file
  */
 
-public class SourceFile {
+public class FileModel {
     private String name;
 
     private List<Constructor> constructors;
     private List<Field> fields;
     private List<MethodModel> methods;
 
-    public SourceFile() {
+    public FileModel() {
     }
 
     public String getName() {

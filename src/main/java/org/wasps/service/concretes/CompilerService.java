@@ -1,7 +1,7 @@
 package org.wasps.service.concretes;
 
 import org.wasps.service.abstracts.ICompilerService;
-import org.wasps.service.abstracts.IFileManagementService;
+import org.wasps.data.repository.abstracts.IFileUtility;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
@@ -10,10 +10,10 @@ import java.util.List;
 
 public class CompilerService implements ICompilerService {
 
-    private IFileManagementService _fileManagementService;
+    private IFileUtility _fileManagementService;
     private JavaCompiler _compiler;
 
-    public CompilerService(IFileManagementService fileManagementService) {
+    public CompilerService(IFileUtility fileManagementService) {
         _fileManagementService = fileManagementService;
         _compiler = ToolProvider.getSystemJavaCompiler();
     }

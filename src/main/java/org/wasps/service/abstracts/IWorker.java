@@ -5,7 +5,5 @@ package org.wasps.service.abstracts;
     It provides a one-for-all way to access any utility service (non-smelling services)
  */
 public interface IWorker {
-    IClassLoader localClassLoader();
-    IFileManagementService fileManagementService();
-    ICompilerService compiler();
+    IFileService fileService();
 }

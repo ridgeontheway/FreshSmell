@@ -1,7 +1,7 @@
 package org.wasps.configuration;
 
 import org.wasps.model.MethodModel;
-import org.wasps.model.SourceFile;
+import org.wasps.model.FileModel;
 import org.wasps.service.abstracts.IParsingService;
 
 import java.lang.reflect.Method;
@@ -26,15 +26,14 @@ public class MappingProfile {
         return methodOut;
     }
 
-    public SourceFile map(URL path) {
-        SourceFile classOut = new SourceFile();
-        _parser.setInputSource(path);
+    public FileModel map(URL path) {
+        FileModel classOut = new FileModel();
 
         // TODO: Add the mappings
         /*
             Anything we get from source code most go through ISourceCodeParserService
          */
-        classOut.setName(_parser.getName());
+        classOut.setName("Test");
 
         return classOut;
     }

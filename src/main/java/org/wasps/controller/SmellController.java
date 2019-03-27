@@ -4,9 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.wasps.configuration.MappingProfile;
-import org.wasps.data.TestClassBad;
-import org.wasps.data.TestClassGood;
-import org.wasps.model.SourceFile;
+import org.wasps.model.FileModel;
+import org.wasps.service.concretes.ParsingService;
 import org.wasps.service.concretes.Worker;
 
 import java.util.List;
@@ -14,16 +13,14 @@ import java.util.List;
 @RestController
 public class SmellController extends BaseController {
     public SmellController() {
-        super(new MappingProfile(), new Worker());
+        super(new MappingProfile(new ParsingService()), new Worker());
     }
 
     @RequestMapping(value = "/sourcefiles", method = RequestMethod.GET)
-    public List<SourceFile> getSourceFiles() {
-        List<SourceFile> sourceFiles;
-        _worker.localClassLoader().loadClass(TestClassGood.class);
-        _worker.localClassLoader().loadClass(TestClassBad.class);
-        sourceFiles = _worker.localClassLoader().getSourceFiles();
+    public List<FileModel> getSourceFiles() {
+        List<FileModel> fileModels;
+        fileModels = _worker.fileService().getFiles();
 
-        return sourceFiles;
+        return fileModels;
     }
 }

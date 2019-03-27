@@ -1,4 +1,4 @@
-package org.wasps.data;
+package org.wasps.data.testfiles;
 
 import java.util.List;
 
