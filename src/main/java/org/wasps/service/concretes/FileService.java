@@ -77,7 +77,7 @@ public class FileService implements IFileService {
         parsedFiles.add(_parser.parse(file));
     }
 
-    
+
     // Map
     private void mapFiles() throws Exception {
         fileModels = _mapper.map(parsedFiles);
