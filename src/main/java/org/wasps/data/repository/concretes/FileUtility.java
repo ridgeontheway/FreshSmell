@@ -1,18 +1,19 @@
-package org.wasps.service.concretes;
+package org.wasps.service.utilities.concretes;
 
-import org.wasps.service.abstracts.IFileManagementService;
+import org.springframework.web.multipart.MultipartFile;
+import org.wasps.service.utilities.abstracts.IFileUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class FileManagementService implements IFileManagementService {
+public class FileUtility implements IFileUtility {
     private final String UPLOAD_DIRECTORY_NAME;
     private String _uploadDirectoryPath;
     private File _uploadDirectory;
 
-    public FileManagementService(String directoryName) {
+    public FileUtility(String directoryName) {
         UPLOAD_DIRECTORY_NAME = directoryName;
     }
 
@@ -32,6 +33,42 @@ public class FileManagementService implements IFileManagementService {
     public File createUploadFile(File directory, String name) {
         return new File(directory.getPath() + "/" + name);
     }
+
+    @Override
+    public String uploadFile(File directory, MultipartFile file) {
+        try {
+            File transferFile = createUploadFile(directory, file.getOriginalFilename());
+            file.transferTo(transferFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failure";
+        }
+        return "Success";
+    }
+
+    @Override
+    public String uploadAllFiles(File directory, MultipartFile[] files) {
+        StringBuilder message = new StringBuilder();
+        for (MultipartFile file : files) {
+            if (file.getOriginalFilename().isEmpty())
+                continue;
+            try {
+                File transferFile = createUploadFile(directory, file.getOriginalFilename());
+                file.transferTo(transferFile);
+
+//                System.out.println("Transfer File Location => " + transferFile.getAbsolutePath());
+
+                message.append("You successfully uploaded file ");
+                message.append(file.getOriginalFilename());
+                message.append("<br />");
+
+            } catch (Exception e) {
+                return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();
+            }
+        }
+        return message.toString();
+    }
+
 
     @Override
     public File getUploadedFileByNameAndType(String queryName) {
