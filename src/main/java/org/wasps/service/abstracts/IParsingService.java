@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IParsingService {
     ParsedFile parse(File file);
-    List<ParsedFile> parse(File[] file);
+    List<ParsedFile> parse(List<File> file);
 }

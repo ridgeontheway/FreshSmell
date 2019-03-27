@@ -18,7 +18,7 @@ public class ParsingService implements IParsingService {
     }
 
     @Override
-    public List<ParsedFile> parse(File[] file) {
+    public List<ParsedFile> parse(List<File> file) {
         List<ParsedFile> parsedFiles = new ArrayList<>();
 
         return parsedFiles;
