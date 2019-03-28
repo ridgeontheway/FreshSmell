@@ -24,5 +24,4 @@ public class FilesModel {
     public List<FileModel> getFiles() {
         return files;
     }
-
 }

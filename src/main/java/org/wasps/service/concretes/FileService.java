@@ -36,4 +36,14 @@ public class FileService implements IFileService {
 
     @Override
     public List<File> getSourceFiles() { return _fileUtility.getUploadedFiles(); }
+
+    @Override
+    public List<FileModel> getFilesFromJson() {
+        return _jsonUtility.getFilesFromJson();
+    }
+
+    @Override
+    public void writeFilesToJson(List<FileModel> files) {
+        _jsonUtility.writeFilesToJson(files);
+    }
 }

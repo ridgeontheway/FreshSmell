@@ -1,5 +1,6 @@
 package org.wasps.data.repository;
 
+import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.data.repository.abstracts.IFileUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
@@ -22,7 +23,8 @@ public abstract class SingletonUtility {
     private static ISmeller smeller = null;
     private static IParsingService parser = null;
     private static IFileUtility fileUtility = null;
-    private static IJsonUtility json = null;
+    private static JSONSerializer jsonSerializer = null;
+    private static IJsonUtility jsonUtility = null;
     private static IFileService fileService = null;
     private static IWorker worker = null;
 
@@ -63,11 +65,18 @@ public abstract class SingletonUtility {
         return fileUtility;
     }
 
-    public static synchronized IJsonUtility getJson() {
-        if (json == null) {
-            json = new JsonUtility();
+    public static synchronized JSONSerializer getJsonSerializer() {
+        if (jsonSerializer == null) {
+            jsonSerializer = new JSONSerializer();
         }
-        return json;
+        return jsonSerializer;
+    }
+
+    public static synchronized IJsonUtility getJson() {
+        if (jsonUtility == null) {
+            jsonUtility = new JsonUtility();
+        }
+        return jsonUtility;
     }
 
     public static synchronized IFileService getFileService() {

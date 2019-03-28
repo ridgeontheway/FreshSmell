@@ -41,7 +41,12 @@ public class MappingService implements IMappingService {
             e.printStackTrace();
             message += "<br>Mapping operation failed";
         }
-
+        try {
+            _fileService.writeFilesToJson(files.getFiles());
+        } catch (Exception e) {
+            e.printStackTrace();
+            message += "<br>Json operation failed";
+        }
         return message;
     }
 
