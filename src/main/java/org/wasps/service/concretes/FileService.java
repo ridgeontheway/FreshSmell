@@ -8,18 +8,15 @@ import org.wasps.service.abstracts.IFileService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileService implements IFileService {
     private IFileUtility _fileUtility;
     private IJsonUtility _jsonUtility;
-    private List<FileModel> fileModels;
 
     public FileService(IFileUtility fileUtility, IJsonUtility jsonUtility) {
         _fileUtility = fileUtility;
         _jsonUtility = jsonUtility;
-        fileModels = new ArrayList<>();
     }
 
     @Override

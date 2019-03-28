@@ -27,20 +27,31 @@ public class MappingService implements IMappingService {
         files = new FilesModel();
     }
 
+    /*
+    This method is the primary controller of our pipeline for ".java -> FilesModel"
+    1. Upload files to working directory
+    2. Parse those files into ParedFile models
+    3. Map the files from ParsedFile -> FilesModel as defined in MappingProfile
+    4. Write the completed FileModel objects to a local json file
+     */
     public String mapFiles(HttpServletRequest request, MultipartFile[] inputFiles) {
+        // 1
         String message = _fileService.uploadAllFiles(request, inputFiles);
+        // 2
         try {
             parsedFiles = _parser.parse(_fileService.getSourceFiles());
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Parsing operation failed";
         }
+        // 3
         try {
             files.addFiles(_profile.map(parsedFiles));
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Mapping operation failed";
         }
+        // 4
         try {
             _fileService.writeFilesToJson(files.getFiles());
         } catch (Exception e) {
@@ -54,7 +65,6 @@ public class MappingService implements IMappingService {
     public List<FileModel> mapFiles(List<ParsedFile> files) {
         return _profile.map(files);
     }
-
 
     @Override
     public List<ParsedFile> getParsedFiles() {
