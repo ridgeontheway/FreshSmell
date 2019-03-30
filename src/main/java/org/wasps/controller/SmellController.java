@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.wasps.configuration.MappingProfile;
-import org.wasps.model.FileModel;
+import org.wasps.model.ParsedDirectory;
 import org.wasps.service.concretes.Worker;
 
 import java.util.List;
@@ -16,10 +16,7 @@ public class SmellController extends BaseController {
     }
 
     @RequestMapping(value = "/sourcefiles", method = RequestMethod.GET)
-    public List<FileModel> getSourceFiles() {
-        List<FileModel> fileModels;
-        fileModels = _worker.fileService().getFiles();
-
-        return fileModels;
+    public ParsedDirectory getSourceFiles() {
+        return _worker.fileService().getFiles();
     }
 }

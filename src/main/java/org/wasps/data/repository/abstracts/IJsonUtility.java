@@ -1,12 +1,12 @@
 package org.wasps.data.repository.abstracts;
 
-import org.wasps.model.FileModel;
+import org.wasps.model.ParsedDirectory;
 
 import java.util.List;
 
 public interface IJsonUtility {
-    void addFileToList(FileModel fileModel);
-    List<FileModel> getFiles();
+    void addFileToList(ParsedDirectory parsedDirectory);
+    List<ParsedDirectory> getFiles();
     void writeFilesToJson();
-    List<FileModel> getFilesFromJson();
+    List<ParsedDirectory> getFilesFromJson();
 }

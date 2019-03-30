@@ -1,7 +1,9 @@
 package org.wasps.configuration;
 
+import org.wasps.model.ParsedDirectory;
 import org.wasps.model.MethodModel;
-import org.wasps.model.SourceFile;
+import org.wasps.model.ParsedFile;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -13,8 +15,8 @@ public class MappingProfile {
         return methodOut;
     }
 
-    public FileModel map(ParsedFile fileIn) {
-        
+    public ParsedDirectory map(ParsedFile fileIn) {
+        return null;
     }
 
     public Iterable<MethodModel> mapMethods(Method[] methodsIn) { //todo get the line num

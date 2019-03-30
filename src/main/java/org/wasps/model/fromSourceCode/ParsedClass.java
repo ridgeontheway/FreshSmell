@@ -1,55 +1,34 @@
 package org.wasps.model.fromSourceCode;
 
-import org.wasps.model.fromSourceCode.abstracts.ISourceCode;
-import org.wasps.model.fromSourceCode.abstracts.SourceCodeBase;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaMethod;
+import org.wasps.model.fromSourceCode.abstracts.IParsedClass;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ParsedClass extends SourceCodeBase {
+public class ParsedClass implements IParsedClass {
 
-    public ParsedClass(File fileRef){
-        super(fileRef);
+    private List<ParsedMethod> parsedMethodList;
+    private JavaClass parsedJavaClass;
+
+    public ParsedClass(JavaClass javaClass){
+        parsedMethodList = new ArrayList<>();
+        this.parsedJavaClass = javaClass;
+        instantiateParsedMethods(parsedJavaClass.getMethods());
     }
 
-    public ParsedClass(File fileRef, int lineNumberDefined){
-        super(fileRef, lineNumberDefined);
-    }
-
-    @Override
-    public void setEnclosing(ISourceCode parsedISourceCode) {
-        parsedEnclosing = parsedISourceCode;
-        setInner();
-    }
-
-    @Override
-    public void addImplementingOrExtendingInterfaceName(String interfaceName) {
-        setImplementingOrExtenignInterfaceReferenceName(interfaceName);
-    }
-
-    @Override
-    public void addImplementingOrExtenignInterfaceReference(ISourceCode prasedInterface) {
-        setImplementingOrExtenignInterfaceReference(prasedInterface);
-    }
-
-    @Override
-    public ISourceCode getEnclosing() {
-        if (parsedEnclosing == null){
-            throw new NullPointerException("parsedEnclosing not set");
+    private void instantiateParsedMethods(List<JavaMethod> currentMethods){
+        for (JavaMethod currentMethod: currentMethods) {
+            parsedMethodList.add(new ParsedMethod(currentMethod));
         }
-        return parsedEnclosing;
     }
 
-    @Override
-    public ArrayList<String> getImplemtnedOrExtendingInterfaceNames() {
-        if (implementingOrExtendingInterfaceName == null){
-            throw new NullPointerException("implementingOrExtendingInterfaceName not set");
-        }
-        return implementingOrExtendingInterfaceName;
+    public List<ParsedMethod> getParsedMethodList() {
+        return parsedMethodList;
     }
 
-    @Override
-    public File getFileDefined() {
-        return fileReference;
+    public JavaClass getParsedJavaClass() {
+        return parsedJavaClass;
     }
 }

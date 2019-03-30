@@ -4,29 +4,27 @@ import org.springframework.web.multipart.MultipartFile;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.data.repository.abstracts.IFileUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
-import org.wasps.model.FileModel;
-import org.wasps.model.ParsedFile;
+import org.wasps.model.ParsedDirectory;
+import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
-import org.wasps.service.abstracts.IParsingService;
+import org.wasps.service.abstracts.ISourceCodeParserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileService implements IFileService {
     private IFileUtility _fileUtility;
     private IJsonUtility _jsonUtility;
     private MappingProfile _mapper;
-    private IParsingService _parser;
-    private List<ParsedFile> parsedFiles;
-    private List<FileModel> fileModels;
+    private ISourceCodeParserService _parser;
+    private ParsedDirectory parsedFiles;
 
-    public FileService(IFileUtility fileUtility, IJsonUtility jsonUtility, IParsingService parser) {
+    public FileService(IFileUtility fileUtility, IJsonUtility jsonUtility, ISourceCodeParserService parser) {
         _fileUtility = fileUtility;
         _jsonUtility = jsonUtility;
         _parser = parser;
-        parsedFiles = new ArrayList<>();
+        parsedFiles = new ParsedDirectory();
         _mapper = new MappingProfile();
     }
 
@@ -35,7 +33,7 @@ public class FileService implements IFileService {
         File directory = _fileUtility.getUploadDirectory(request);
         String message = _fileUtility.uploadAllFiles(directory, files);
         try {
-            parseFiles(directory);
+            parseFiles(directory.getPath());
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Could not parse files";
@@ -55,31 +53,25 @@ public class FileService implements IFileService {
         return _fileUtility.uploadFile(directory, file);
     }
 
-    @Override
-    public List<FileModel> getFiles() {
-        return fileModels;
+    //@Override
+   public ParsedDirectory getFiles() {
+        return parsedFiles;
     }
 
     @Override
-    public List<FileModel> getFilesFromJson() {
+    public List<ParsedDirectory> getFilesFromJson() {
         return _jsonUtility.getFiles();
     }
 
 
-
-
-    // Parse
-    private void parseFiles(File directory) throws Exception {
-        parsedFiles.addAll(_parser.parse(directory.listFiles()));
-    }
-
-    private void parseFile(File file) throws Exception {
-        parsedFiles.add(_parser.parse(file));
+        // Parse
+    private void parseFiles(String directoryPath) throws Exception {
+        _parser.loadInDirectory(directoryPath);
     }
 
 
     // Map
     private void mapFiles() throws Exception {
-        fileModels = _mapper.map(parsedFiles);
+        //fileDirectories = _mapper.map(parsedFiles);
     }
 }

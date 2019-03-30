@@ -1,6 +1,6 @@
 package org.wasps.service.smells.concretes;
 
-import org.wasps.model.FileModel;
+import org.wasps.model.ParsedDirectory;
 import org.wasps.model.SmellReportModel;
 import org.wasps.service.smells.abstracts.ISmeller;
 import org.wasps.service.smells.abstracts.ISmellerService;
@@ -23,7 +23,7 @@ public class Smeller implements ISmeller {
     }
 
     @Override
-    public List<SmellReportModel> performAllSmells(FileModel file) {
+    public List<SmellReportModel> performAllSmells(ParsedDirectory file) {
         List<SmellReportModel> smellReports = new ArrayList<>();
         smellers.forEach(smeller -> {
             smellReports.add(smeller.smell(file));

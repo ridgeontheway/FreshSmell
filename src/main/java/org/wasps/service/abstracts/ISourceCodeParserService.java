@@ -1,13 +1,12 @@
 package org.wasps.service.abstracts;
 
-import org.wasps.model.fromSourceCode.abstracts.ISourceCode;
+import org.wasps.model.ParsedDirectory;
+import org.wasps.model.ParsedFile;
 
-import java.io.File;
 import java.util.List;
 
 public interface ISourceCodeParserService {
-    //void readDirectory(String directoryPath, File fileCallback);
-    void loadInDirectory(String pathName);
-    List<ISourceCode> getSourceCodeFiles();
+    void loadInDirectory(String pathName) throws Exception ;
+    ParsedDirectory getParsedDirectory();
 
 }
