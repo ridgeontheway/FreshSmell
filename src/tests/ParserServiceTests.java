@@ -1,6 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.concretes.ParserService;
+
+import java.util.ArrayList;
 
 
 public class ParserServiceTests {
@@ -16,7 +19,7 @@ public class ParserServiceTests {
         }
 
         Assert.assertEquals(tempService.getParsedDirectory().getParsedClass("RandomClass")
-                .getParsedJavaClass().getName(), "RandomClass");
+                .get(0).getParsedJavaClass().getName(), "RandomClass");
     }
 
     @Test
@@ -45,8 +48,24 @@ public class ParserServiceTests {
         catch (Exception e){
             Assert.fail(e.getMessage());
         }
-        methodLineLength = tempParserService.getParsedDirectory().getParsedClass("RandomClass")
+        methodLineLength = tempParserService.getParsedDirectory().getParsedClass("RandomClass").get(0)
                 .getParsedMethodList().get(0).getLineLength();
         Assert.assertEquals(methodLineLength, 3);
     }
+
+    @Test
+    public void ParsedServiceMethodSubDirLookUp(){
+        ParserService tempParserService = new ParserService();
+        try{
+            tempParserService.loadInDirectory("src/tests/test_data_sub");
+        }
+        catch (Exception e){
+            Assert.fail(e.getMessage());
+        }
+
+        ArrayList<ParsedClass> returnList = tempParserService.getParsedDirectory().getParsedClass("hello");
+        Assert.assertEquals(returnList.size(), 2);
+    }
+
+
 }

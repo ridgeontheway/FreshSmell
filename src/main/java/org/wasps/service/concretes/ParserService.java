@@ -9,6 +9,10 @@ import org.wasps.service.abstracts.ISourceCodeParserService;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ParserService implements ISourceCodeParserService {
 
