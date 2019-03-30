@@ -12,7 +12,7 @@ public class ParsedDirectory {
         parsedClassHashMap = new HashMap<>();
     }
 
-    public synchronized void insertParsedClass(ParsedClass newClass){
+    public void insertParsedClass(ParsedClass newClass){
         ArrayList<ParsedClass> parsedClassArrayList;
         String newClassName = newClass.getParsedJavaClass().getSimpleName();
 
