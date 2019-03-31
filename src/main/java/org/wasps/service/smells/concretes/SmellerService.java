@@ -1,6 +1,6 @@
 package org.wasps.service.smells.concretes;
 
-import org.wasps.model.FileModel;
+import org.wasps.model.ParsedDirectory;
 import org.wasps.model.SmellReportModel;
 import org.wasps.service.smells.abstracts.ISmellerService;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class SmellerService implements ISmellerService {
     }
 
     @Override
-    public SmellReportModel smell(FileModel file) {
+    public SmellReportModel smell(ParsedDirectory file) {
         return null;
     }
 }

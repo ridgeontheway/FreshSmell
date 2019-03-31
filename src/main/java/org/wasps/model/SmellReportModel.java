@@ -1,17 +1,17 @@
 package org.wasps.model;
 
 public class SmellReportModel {
-    FileModel file;
+    ParsedDirectory file;
     String smellName;
     double score;
 
-    public SmellReportModel(FileModel file, String smellName, double score) {
+    public SmellReportModel(ParsedDirectory file, String smellName, double score) {
         this.file = file;
         this.smellName = smellName;
         this.score = score;
     }
 
-    public FileModel getFile() {
+    public ParsedDirectory getFile() {
         return file;
     }
 
