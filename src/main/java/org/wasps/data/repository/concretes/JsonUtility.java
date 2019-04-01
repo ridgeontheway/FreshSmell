@@ -15,12 +15,14 @@ public class JsonUtility implements IJsonUtility {
     protected List<FileModel> _files;
     protected String _directory;
     protected String _path;
+    protected String _jsonFile;
 
     public JsonUtility() {
         _json = SingletonUtility.getJsonSerializer();
         _files = new ArrayList<>();
         _directory = System.getProperty("user.dir");
-        _path = String.format("%s/src/main/java/org/wasps/data/%s%s", _directory, "data", ".json");
+        _path = String.format("%s/src/main/java/org/wasps/data", _directory);
+        _jsonFile = String.format("%s/%s", _path, "data.json");
     }
 
     @Override
@@ -32,8 +34,14 @@ public class JsonUtility implements IJsonUtility {
 
     @Override
     public void writeFiles(List<FileModel> files) {
+        _files.addAll(files);
         try {
-            FileWriter writer = new FileWriter(_path);
+            File dir = new File(_path);
+            if (!dir.exists())
+                //noinspection ResultOfMethodCallIgnored
+                dir.mkdirs();
+            System.out.println("\n\nWriting to: " + _jsonFile + "\n");
+            FileWriter writer = new FileWriter(_jsonFile, false);
             _json.deepSerialize(_files, writer);
             writer.flush();
             writer.close();

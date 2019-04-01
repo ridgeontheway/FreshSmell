@@ -1,6 +1,6 @@
 package org.wasps.service.abstracts;
 
-import org.wasps.model.fromSourceCode.ParsedClass;
+import org.wasps.model.ParsedClass;
 
 import java.util.List;
 

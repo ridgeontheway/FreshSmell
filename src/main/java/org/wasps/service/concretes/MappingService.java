@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.data.repository.SingletonUtility;
 import org.wasps.model.FileModel;
-import org.wasps.model.fromSourceCode.ParsedClass;
+import org.wasps.model.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
@@ -29,10 +29,10 @@ public class MappingService implements IMappingService {
     }
 
     /*
-    This method is the primary controller of our pipeline for ".java -> FilesModel"
+    This method is the primary controller of our pipeline for ".java -> FileModel"
     1. Upload files to working directory
     2. Parse those files into ParedFile models
-    3. Map the files from ParsedFile -> FilesModel as defined in MappingProfile
+    3. Map the files from ParsedFile -> FileModel as defined in MappingProfile
     4. Write the completed FileModel objects to a local json file
      */
     public String mapFiles(HttpServletRequest request, MultipartFile[] inputFiles) {

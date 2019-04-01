@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.wasps.data.repository.SingletonUtility;
-import org.wasps.model.fromSourceCode.ParsedClass;
+import org.wasps.model.ParsedClass;
 
 import java.util.List;
 

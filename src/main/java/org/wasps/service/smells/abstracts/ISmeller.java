@@ -1,6 +1,6 @@
 package org.wasps.service.smells.abstracts;
 
-import org.wasps.model.ParsedDirectory;
+import org.wasps.model.FileModel;
 import org.wasps.model.SmellReportModel;
 
 import java.util.List;
@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface ISmeller {
     void addSmeller(ISmellerService smell);
+
     List<ISmellerService> getAllSmellers();
-    List<SmellReportModel> performAllSmells(ParsedDirectory file);
+
+    List<SmellReportModel> performAllSmells(FileModel file);
 }

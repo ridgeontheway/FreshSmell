@@ -2,12 +2,13 @@ package org.wasps.data.repository;
 
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
+import org.wasps.configuration.ParsingProfile;
 import org.wasps.data.repository.abstracts.IFileUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
 import org.wasps.data.repository.concretes.FileUtility;
 import org.wasps.data.repository.concretes.JsonUtility;
+import org.wasps.data.repository.concretes.ModelRepository;
 import org.wasps.data.repository.concretes.ParsedRepository;
-import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
@@ -19,21 +20,26 @@ import org.wasps.service.concretes.Worker;
 import org.wasps.service.smells.abstracts.ISmeller;
 import org.wasps.service.smells.concretes.Smeller;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 public abstract class SingletonUtility {
-    private static ParsedRepository parsedRepository = null;
-
     private static MappingProfile mappingProfile = null;
+    private static ParsingProfile parsingProfile = null;
+    private static IWorker worker = null;
+
+    // Repositories
+    private static ParsedRepository parsedRepository = null;
+    private static ModelRepository modelRepository = null;
+
+    // Services
     private static IMappingService mappingService = null;
-    private static ISmeller smeller = null;
     private static IParsingService parser = null;
+    private static IFileService fileService = null;
+    private static ISmeller smeller = null;
+
+
+    // Utilities
     private static IFileUtility fileUtility = null;
     private static JSONSerializer jsonSerializer = null;
     private static IJsonUtility jsonUtility = null;
-    private static IFileService fileService = null;
-    private static IWorker worker = null;
 
     private static final String UPLOAD_DIRECTORY = "/uploads";
 
@@ -44,11 +50,25 @@ public abstract class SingletonUtility {
         return parsedRepository;
     }
 
+    public static synchronized  ModelRepository getModelRepository() {
+        if (modelRepository == null) {
+            modelRepository = new ModelRepository();
+        }
+        return modelRepository;
+    }
+
     public static synchronized MappingProfile getMappingProfile() {
         if (mappingProfile == null) {
             mappingProfile = new MappingProfile();
         }
         return mappingProfile;
+    }
+
+    public static synchronized ParsingProfile getParsingProfile() {
+        if (parsingProfile == null) {
+            parsingProfile = new ParsingProfile();
+        }
+        return parsingProfile;
     }
 
     public static synchronized IMappingService getMappingService() {
@@ -95,7 +115,7 @@ public abstract class SingletonUtility {
 
     public static synchronized IFileService getFileService() {
         if (fileService == null) {
-            fileService = new FileService(getFileUtility(), getJson());
+            fileService = new FileService();
         }
         return fileService;
     }

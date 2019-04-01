@@ -2,7 +2,7 @@ package org.wasps.service.abstracts;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.model.FileModel;
-import org.wasps.model.fromSourceCode.ParsedClass;
+import org.wasps.model.ParsedClass;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

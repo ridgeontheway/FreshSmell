@@ -1,15 +1,19 @@
 package org.wasps.model;
 
+import com.thoughtworks.qdox.model.JavaClass;
+
 import java.util.List;
 
-public class FileModel {
+public class ParsedClass {
     private String name;
     private String packageName;
     private List<String> constructors;
     private List<String> fields;
-    private List<MethodModel> methods;
+    private List<ParsedMethod> methods;
+    private JavaClass parsedJavaClass;
 
-    public FileModel() { }
+    public ParsedClass() {
+    }
 
     public String getName() {
         return name;
@@ -43,12 +47,20 @@ public class FileModel {
         this.fields = fields;
     }
 
-    public List<MethodModel> getMethods() {
+    public List<ParsedMethod> getMethods() {
         return methods;
     }
 
-    public void setMethods(List<MethodModel> methods) {
+    public void setMethods(List<ParsedMethod> methods) {
         this.methods = methods;
+    }
+
+    public void setParsedJavaClass(JavaClass parsedJavaClass) {
+        this.parsedJavaClass = parsedJavaClass;
+    }
+
+    public JavaClass getParsedJavaClass() {
+        return parsedJavaClass;
     }
 
     @Override

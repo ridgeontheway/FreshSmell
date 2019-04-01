@@ -1,20 +1,17 @@
 package org.wasps.model;
 
+import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaParameter;
 
 import java.util.List;
 
-/**
- * Implement methods from MethodModel object, but add to mapping file (if necessary)
- */
-
-public class MethodModel {
+public class ParsedMethod {
     private String name;
     private int lineLength;
     private List<JavaParameter> parameters;
+    private JavaMethod parsedMethod;
 
-    public MethodModel() {
-    }
+    public ParsedMethod() {}
 
     public String getName() {
         return name;
@@ -38,5 +35,16 @@ public class MethodModel {
 
     public void setParameters(List<JavaParameter> parameters) {
         this.parameters = parameters;
+    }
+
+    public JavaMethod getParsedMethod() {
+        return parsedMethod;
+    }
+
+    public void setParsedMethod(JavaMethod parsedMethod) { this.parsedMethod = parsedMethod; }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
