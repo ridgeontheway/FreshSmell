@@ -12,6 +12,8 @@ import java.util.List;
 public interface ISmeller {
     void addSmeller(ISmellerService smell);
 
+    void addSmellers(List<ISmellerService> smells);
+
     List<ISmellerService> getAllSmellers();
 
     List<SmellReportModel> performAllSmells(FileModel file);

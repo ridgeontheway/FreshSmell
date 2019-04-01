@@ -18,6 +18,11 @@ public class Smeller implements ISmeller {
     }
 
     @Override
+    public void addSmellers(List<ISmellerService> smells) {
+        smells.forEach(this::addSmeller);
+    }
+
+    @Override
     public List<ISmellerService> getAllSmellers() {
         return smellers;
     }
