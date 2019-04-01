@@ -11,17 +11,19 @@ public class FilesModel {
         files = new ArrayList<>();
     }
 
-    public void addFile(FileModel file) {
+    public void insert(FileModel file) {
         files.add(file);
     }
 
-    public void addFiles(Collection<FileModel> files) { this.files.addAll(files); }
+    public void insert(Collection<FileModel> files) { this.files.addAll(files); }
 
-    public void removeFile(FileModel file) {
+    public void delete(FileModel file) {
         files.remove(file);
     }
 
-    public List<FileModel> getFiles() {
+    public List<FileModel> get() {
         return files;
     }
+
+    public boolean isEmpty() { return files.isEmpty(); }
 }

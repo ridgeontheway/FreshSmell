@@ -4,27 +4,28 @@ import org.springframework.web.multipart.MultipartFile;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.data.repository.SingletonUtility;
 import org.wasps.model.FileModel;
-import org.wasps.model.FilesModel;
-import org.wasps.model.ParsedFile;
+import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MappingService implements IMappingService {
     private final MappingProfile _profile;
     private final IFileService _fileService;
     private final IParsingService _parser;
-    private List<ParsedFile> parsedFiles;
-    private FilesModel files;
+    private List<ParsedClass> parsedClasses;
+    private List<FileModel> files;
 
     public MappingService() {
         _profile = SingletonUtility.getMappingProfile();
         _fileService = SingletonUtility.getFileService();
         _parser = SingletonUtility.getParser();
-        files = new FilesModel();
+        files = new ArrayList<>();
+        parsedClasses = new ArrayList<>();
     }
 
     /*
@@ -39,21 +40,21 @@ public class MappingService implements IMappingService {
         String message = _fileService.uploadAllFiles(request, inputFiles);
         // 2
         try {
-            parsedFiles = _parser.parse(_fileService.getSourceFiles());
+            parsedClasses = _parser.parse(_fileService.getUploadDirectoryPath());
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Parsing operation failed";
         }
         // 3
         try {
-            files.addFiles(_profile.map(parsedFiles));
+            files.addAll(_profile.map(parsedClasses));
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Mapping operation failed";
         }
         // 4
         try {
-            _fileService.writeFilesToJson(files.getFiles());
+            _fileService.writeFilesToJson(files);
         } catch (Exception e) {
             e.printStackTrace();
             message += "<br>Json operation failed";
@@ -62,17 +63,17 @@ public class MappingService implements IMappingService {
     }
 
     @Override
-    public List<FileModel> mapFiles(List<ParsedFile> files) {
+    public List<FileModel> mapFiles(List<ParsedClass> files) {
         return _profile.map(files);
     }
 
     @Override
-    public List<ParsedFile> getParsedFiles() {
-        return parsedFiles;
+    public List<ParsedClass> getParsedClasses() {
+        return parsedClasses;
     }
 
     @Override
-    public FilesModel getFiles() {
+    public List<FileModel> getFiles() {
         return files;
     }
 }

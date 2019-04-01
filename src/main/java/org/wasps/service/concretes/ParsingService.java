@@ -1,26 +1,56 @@
 package org.wasps.service.concretes;
 
-import org.wasps.model.ParsedFile;
+import com.thoughtworks.qdox.JavaProjectBuilder;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaSource;
+import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.abstracts.IParsingService;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+public class ParsingService extends ServiceBase implements IParsingService {
 
-public class ParsingService implements IParsingService {
+    private boolean alreadyExecuted;
 
-    @Override
-    public ParsedFile parse(File file) {
-        ParsedFile parsedFile = new ParsedFile();
+    public ParsingService(){
+        alreadyExecuted = false;
+    }
 
-        return parsedFile;
+    private JavaProjectBuilder loadInDirectory(String pathName) throws Exception{
+        JavaProjectBuilder direcoryBuilder = new JavaProjectBuilder();
+        direcoryBuilder.addSourceTree(new File(pathName));
+        return direcoryBuilder;
+    }
+
+    private void parseDirectory(JavaProjectBuilder builder){
+        Collection<JavaSource> javaSources = builder.getSources();
+
+        for (JavaSource currentJavaSource: javaSources){
+            for (JavaClass currentJavaClass : currentJavaSource.getClasses()){
+                _dataStore.parsed().insert(new ParsedClass(currentJavaClass));
+            }
+        }
+    }
+
+    private synchronized void singleUseCheck() throws Exception {
+        if (alreadyExecuted){
+            throw new Exception("parseDirectory may only be called once!");
+        }
+        alreadyExecuted = true;
     }
 
     @Override
-    public List<ParsedFile> parse(List<File> file) {
-        List<ParsedFile> parsedFiles = new ArrayList<>();
+    public List<ParsedClass> get() {
+        return _dataStore.parsed().getAll();
+    }
 
-        return parsedFiles;
+    @Override
+    public List<ParsedClass> parse(String pathName) throws Exception {
+        singleUseCheck();
+        JavaProjectBuilder directory = loadInDirectory(pathName);
+        parseDirectory(directory);
+        return _dataStore.parsed().getAll();
     }
 }

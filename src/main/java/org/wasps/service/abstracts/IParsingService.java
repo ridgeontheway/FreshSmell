@@ -1,11 +1,10 @@
 package org.wasps.service.abstracts;
 
-import org.wasps.model.ParsedFile;
+import org.wasps.model.fromSourceCode.ParsedClass;
 
-import java.io.File;
 import java.util.List;
 
 public interface IParsingService {
-    ParsedFile parse(File file);
-    List<ParsedFile> parse(List<File> file);
+    List<ParsedClass> get();
+    List<ParsedClass> parse(String pathName) throws Exception;
 }

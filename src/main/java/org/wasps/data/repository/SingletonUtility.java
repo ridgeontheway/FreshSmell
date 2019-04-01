@@ -6,6 +6,8 @@ import org.wasps.data.repository.abstracts.IFileUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
 import org.wasps.data.repository.concretes.FileUtility;
 import org.wasps.data.repository.concretes.JsonUtility;
+import org.wasps.data.repository.concretes.ParsedRepository;
+import org.wasps.model.fromSourceCode.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
@@ -17,7 +19,12 @@ import org.wasps.service.concretes.Worker;
 import org.wasps.service.smells.abstracts.ISmeller;
 import org.wasps.service.smells.concretes.Smeller;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public abstract class SingletonUtility {
+    private static ParsedRepository parsedRepository = null;
+
     private static MappingProfile mappingProfile = null;
     private static IMappingService mappingService = null;
     private static ISmeller smeller = null;
@@ -29,6 +36,13 @@ public abstract class SingletonUtility {
     private static IWorker worker = null;
 
     private static final String UPLOAD_DIRECTORY = "/uploads";
+
+    public static synchronized  ParsedRepository getParsedRepository() {
+        if (parsedRepository == null) {
+            parsedRepository = new ParsedRepository();
+        }
+        return parsedRepository;
+    }
 
     public static synchronized MappingProfile getMappingProfile() {
         if (mappingProfile == null) {

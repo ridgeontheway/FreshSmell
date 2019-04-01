@@ -4,7 +4,7 @@ import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.wasps.data.repository.SingletonUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
-import org.wasps.model.ParsedDirectory;
+import org.wasps.model.FileModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,33 +12,29 @@ import java.util.List;
 
 public class JsonUtility implements IJsonUtility {
     protected JSONSerializer _json;
-    protected List<ParsedDirectory> _FileDirectories;
+    protected List<FileModel> _files;
     protected String _directory;
     protected String _path;
 
     public JsonUtility() {
         _json = SingletonUtility.getJsonSerializer();
-        _FileDirectories = new ArrayList<>();
+        _files = new ArrayList<>();
         _directory = System.getProperty("user.dir");
         _path = String.format("%s/src/main/java/org/wasps/data/%s%s", _directory, "data", ".json");
     }
 
-    public void addFileToList(ParsedDirectory parsedDirectory) {
-        _FileDirectories.add(parsedDirectory);
-        //System.out.println("Adding " + parsedDirectory.getName() + " to List");
-    }
-
-    public List<ParsedDirectory> getFiles() {
-        if (_FileDirectories.isEmpty())
-            _FileDirectories = getFilesFromJson();
-        return _FileDirectories;
+    @Override
+    public List<FileModel> getFiles() {
+        if (_files.isEmpty())
+            _files.addAll(getFilesFromJson());
+        return _files;
     }
 
     @Override
-    public void writeFilesToJson(List<FileModel> files) {
+    public void writeFiles(List<FileModel> files) {
         try {
             FileWriter writer = new FileWriter(_path);
-            _json.deepSerialize(_FileDirectories, writer);
+            _json.deepSerialize(_files, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {
@@ -46,22 +42,24 @@ public class JsonUtility implements IJsonUtility {
         }
     }
 
-    public List<ParsedDirectory> getFilesFromJson() {
-        ArrayList<ParsedDirectory> fileDirectories = new ArrayList<>();
+    @Override
+    public List<FileModel> getFilesFromJson() {
+        List<FileModel> files = new ArrayList<>();
         File input = new File(_path);
 
         if (!input.exists() && !_files.isEmpty()) {
-            writeFilesToJson(_files);
+            writeFiles(_files);
         }
 
         try {
             InputStream inputStream = new FileInputStream(input);
             String fromFile = new String(inputStream.readAllBytes());
-            fileDirectories = new JSONDeserializer<ArrayList<ParsedDirectory>>().deserialize(fromFile);
+            files = new JSONDeserializer<ArrayList<FileModel>>().deserialize(fromFile);
+            _files.addAll(files);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return fileDirectories;
+        return files;
     }
 
 }
