@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.repository.SingletonUtility;
 import org.wasps.data.repository.abstracts.IFileUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
-import org.wasps.model.FileModel;
+import org.wasps.model.ClassModel;
 import org.wasps.service.abstracts.IFileService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,12 +36,12 @@ public class FileService implements IFileService {
     public List<File> getSourceFiles() { return _fileUtility.getUploadedFiles(); }
 
     @Override
-    public List<FileModel> getFilesFromJson() {
+    public List<ClassModel> getFilesFromJson() {
         return _jsonUtility.getFiles();
     }
 
     @Override
-    public void writeFilesToJson(List<FileModel> files) {
+    public void writeFilesToJson(List<ClassModel> files) {
         _jsonUtility.writeFiles(files);
     }
 

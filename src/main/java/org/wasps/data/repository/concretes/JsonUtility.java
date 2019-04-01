@@ -4,7 +4,7 @@ import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.wasps.data.repository.SingletonUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
-import org.wasps.model.FileModel;
+import org.wasps.model.ClassModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JsonUtility implements IJsonUtility {
     protected JSONSerializer _json;
-    protected List<FileModel> _files;
+    protected List<ClassModel> _files;
     protected String _directory;
     protected String _path;
     protected String _jsonFile;
@@ -26,14 +26,14 @@ public class JsonUtility implements IJsonUtility {
     }
 
     @Override
-    public List<FileModel> getFiles() {
+    public List<ClassModel> getFiles() {
         if (_files.isEmpty())
             _files.addAll(getFilesFromJson());
         return _files;
     }
 
     @Override
-    public void writeFiles(List<FileModel> files) {
+    public void writeFiles(List<ClassModel> files) {
         _files.addAll(files);
         try {
             File dir = new File(_path);
@@ -51,8 +51,8 @@ public class JsonUtility implements IJsonUtility {
     }
 
     @Override
-    public List<FileModel> getFilesFromJson() {
-        List<FileModel> files = new ArrayList<>();
+    public List<ClassModel> getFilesFromJson() {
+        List<ClassModel> files = new ArrayList<>();
         File input = new File(_path);
 
         if (!input.exists() && !_files.isEmpty()) {
@@ -62,7 +62,7 @@ public class JsonUtility implements IJsonUtility {
         try {
             InputStream inputStream = new FileInputStream(input);
             String fromFile = new String(inputStream.readAllBytes());
-            files = new JSONDeserializer<ArrayList<FileModel>>().deserialize(fromFile);
+            files = new JSONDeserializer<ArrayList<ClassModel>>().deserialize(fromFile);
             _files.addAll(files);
         } catch (IOException e) {
             e.printStackTrace();

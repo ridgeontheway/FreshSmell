@@ -1,10 +1,10 @@
 package org.wasps.data.repository.concretes;
 
 import org.wasps.data.repository.abstracts.IRepository;
-import org.wasps.model.FileModel;
+import org.wasps.model.ClassModel;
 
-public class ModelRepository extends Repository<FileModel> implements IRepository<FileModel> {
-//    private Map<String, ArrayList<FileModel>> map;
+public class ModelRepository extends Repository<ClassModel> implements IRepository<ClassModel> {
+//    private Map<String, ArrayList<ClassModel>> map;
 
     public ModelRepository() {
         super();
@@ -15,27 +15,27 @@ public class ModelRepository extends Repository<FileModel> implements IRepositor
 //        map = new HashMap<>();
 //    }
 //
-//    public void insert(FileModel file) {
+//    public void insert(ClassModel file) {
 //        map.computeIfAbsent(file.getName(), k -> new ArrayList<>());
 //        map.get(file.getName()).add(file);
 //    }
 //
-//    public void insert(List<FileModel> files) {
+//    public void insert(List<ClassModel> files) {
 //        files.forEach(this::insert);
 //    }
 //
-//    public void delete(FileModel file) {
+//    public void delete(ClassModel file) {
 //        map.get(file.getName()).remove(file);
 //    }
 //
-//    public List<FileModel> get() {
-//        List<FileModel> files = new ArrayList<>();
+//    public List<ClassModel> get() {
+//        List<ClassModel> files = new ArrayList<>();
 //        map.values().forEach(files::addAll);
 //
 //        return files;
 //    }
 //
-//    public List<FileModel> get(String name) {
+//    public List<ClassModel> get(String name) {
 //        return map.get(name);
 //    }
 //

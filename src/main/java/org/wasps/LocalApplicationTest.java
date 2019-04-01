@@ -3,7 +3,7 @@ package org.wasps;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.data.repository.abstracts.IDataStore;
 import org.wasps.data.repository.concretes.DataStore;
-import org.wasps.model.FileModel;
+import org.wasps.model.ClassModel;
 import org.wasps.model.ParsedClass;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IParsingService;
@@ -22,7 +22,7 @@ public class LocalApplicationTest {
     private static IParsingService _parser = new ParsingService();
     private static IFileService _fileService = new FileService();
     private static IDataStore _data = new DataStore();
-    private static List<FileModel> _files = new ArrayList<>();
+    private static List<ClassModel> _files = new ArrayList<>();
 
     public static void main(String[] args) {
         setup();

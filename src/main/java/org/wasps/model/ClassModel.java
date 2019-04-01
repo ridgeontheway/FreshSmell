@@ -1,15 +1,20 @@
 package org.wasps.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class FileModel {
+public class ClassModel {
     private String name;
     private String packageName;
     private List<String> constructors;
     private List<String> fields;
     private List<MethodModel> methods;
+    private Map<String, SmellReportModel> smellReports;
 
-    public FileModel() { }
+    public ClassModel() {
+        smellReports = new HashMap<>();
+    }
 
     public String getName() {
         return name;
@@ -49,6 +54,14 @@ public class FileModel {
 
     public void setMethods(List<MethodModel> methods) {
         this.methods = methods;
+    }
+
+    public Map<String, SmellReportModel> getSmellReports() {
+        return smellReports;
+    }
+
+    public void addSmellReport(SmellReportModel smellReport) {
+        smellReports.put(smellReport.getSmellName(), smellReport);
     }
 
     @Override

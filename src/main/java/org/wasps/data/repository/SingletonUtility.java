@@ -33,8 +33,9 @@ public abstract class SingletonUtility {
     private static IMappingService mappingService = null;
     private static IParsingService parser = null;
     private static IFileService fileService = null;
-    private static ISmeller smeller = null;
 
+    // Smells
+    private static ISmeller smeller = null;
 
     // Utilities
     private static IFileUtility fileUtility = null;

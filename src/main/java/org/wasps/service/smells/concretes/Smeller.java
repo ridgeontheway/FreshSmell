@@ -1,20 +1,23 @@
 package org.wasps.service.smells.concretes;
 
-import org.wasps.model.FileModel;
+import org.wasps.model.ClassModel;
 import org.wasps.model.SmellReportModel;
 import org.wasps.service.smells.abstracts.ISmeller;
 import org.wasps.service.smells.abstracts.ISmellerService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Smeller implements ISmeller {
 
-    private List<ISmellerService> smellers;
+    private Map<String, ISmellerService> smellers;
+
+    public Smeller() {
+        smellers = new HashMap<>();
+    }
 
     @Override
     public void addSmeller(ISmellerService smell) {
-        smellers.add(smell);
+        smellers.put(smell.getClass().getName().toLowerCase(), smell);
     }
 
     @Override
@@ -23,15 +26,20 @@ public class Smeller implements ISmeller {
     }
 
     @Override
-    public List<ISmellerService> getAllSmellers() {
-        return smellers;
+    public Collection<ISmellerService> getAllSmellers() {
+        return smellers.values();
     }
 
     @Override
-    public List<SmellReportModel> performAllSmells(FileModel file) {
+    public List<SmellReportModel> performAllSmells(ClassModel file) {
         List<SmellReportModel> smellReports = new ArrayList<>();
-        smellers.forEach(smeller -> smellReports.add(smeller.smell(file)) );
+        SmellReportModel smellReport;
 
+        for(Map.Entry<String, ISmellerService> smell : smellers.entrySet()) {
+            smellReport = smell.getValue().smell(file);
+            smellReports.add(smellReport);
+            file.addSmellReport(smellReport);
+        }
         return smellReports;
     }
 }
