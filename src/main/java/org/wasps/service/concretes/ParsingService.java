@@ -3,33 +3,25 @@ package org.wasps.service.concretes;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaSource;
-import org.wasps.model.ParsedDirectory;
 import org.wasps.model.fromSourceCode.ParsedClass;
-import org.wasps.service.abstracts.ISourceCodeParserService;
+import org.wasps.service.abstracts.IParsingService;
 
 import java.io.File;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.List;
 
-public class ParserService implements ISourceCodeParserService {
+public class ParsingService extends ServiceBase implements IParsingService {
 
-    private ParsedDirectory parsedDirectory;
     private boolean alreadyExecuted;
 
-    public ParserService(){
+    public ParsingService(){
         alreadyExecuted = false;
-        parsedDirectory = new ParsedDirectory();
     }
 
-    @Override
-    public void loadInDirectory(String pathName) throws Exception{
-        singleUseCheck();
+    private JavaProjectBuilder loadInDirectory(String pathName) throws Exception{
         JavaProjectBuilder direcoryBuilder = new JavaProjectBuilder();
         direcoryBuilder.addSourceTree(new File(pathName));
-        parseDirectory(direcoryBuilder);
+        return direcoryBuilder;
     }
 
     private void parseDirectory(JavaProjectBuilder builder){
@@ -37,7 +29,7 @@ public class ParserService implements ISourceCodeParserService {
 
         for (JavaSource currentJavaSource: javaSources){
             for (JavaClass currentJavaClass : currentJavaSource.getClasses()){
-                parsedDirectory.insertParsedClass(new ParsedClass(currentJavaClass));
+                _dataStore.parsed().insert(new ParsedClass(currentJavaClass));
             }
         }
     }
@@ -50,7 +42,15 @@ public class ParserService implements ISourceCodeParserService {
     }
 
     @Override
-    public ParsedDirectory getParsedDirectory() {
-        return parsedDirectory;
+    public List<ParsedClass> get() {
+        return _dataStore.parsed().getAll();
+    }
+
+    @Override
+    public List<ParsedClass> parse(String pathName) throws Exception {
+        singleUseCheck();
+        JavaProjectBuilder directory = loadInDirectory(pathName);
+        parseDirectory(directory);
+        return _dataStore.parsed().getAll();
     }
 }

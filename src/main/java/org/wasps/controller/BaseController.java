@@ -1,14 +1,11 @@
 package org.wasps.controller;
 
-import org.wasps.configuration.MappingProfile;
-import org.wasps.service.concretes.Worker;
+import org.wasps.service.abstracts.IWorker;
 
 public class BaseController {
-    protected final MappingProfile _mapper;
-    protected final Worker _worker;
+    protected final IWorker _worker;
 
-    public BaseController(MappingProfile mapper, Worker worker) {
-        _mapper = mapper;
+    public BaseController(IWorker worker) {
         _worker = worker;
     }
 }
