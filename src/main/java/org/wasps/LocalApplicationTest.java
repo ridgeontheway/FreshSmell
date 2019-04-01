@@ -15,8 +15,8 @@ import java.util.List;
 
 // This class is to test any functionality locally
 // This should be run as a separate, regular Application run configuration
-// Before running, add data/testfiles to the compiler ignore
-//      File | Preferences/Settings | Build, Execution, Deployment | Compiler | Excludes
+// Before running, exclude testfiles directory from build
+//      Right click on data/testfiles/ | Mark Directory As | Excluded
 public class LocalApplicationTest {
     private static String _path = String.format("%s/src/main/java/org/wasps/data", System.getProperty("user.dir"));
     private static IParsingService _parser = new ParsingService();
