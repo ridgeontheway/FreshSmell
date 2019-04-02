@@ -16,7 +16,6 @@ public class ParsingProfile {
 
     public ParsedClass parse(JavaClass file) {
         ParsedClass parsedClass = new ParsedClass();
-
         parsedClass.setName(file.getSimpleName());
         parsedClass.setPackageName(file.getPackageName());
         parsedClass.setConstructors(getConstructorNames(file.getConstructors()));
