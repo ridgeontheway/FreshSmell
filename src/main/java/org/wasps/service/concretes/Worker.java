@@ -1,6 +1,6 @@
 package org.wasps.service.concretes;
 
-import org.wasps.data.repository.SingletonUtility;
+import org.wasps.data.SingletonUtility;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IWorker;

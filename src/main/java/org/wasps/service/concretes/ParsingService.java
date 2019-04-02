@@ -4,7 +4,7 @@ import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaSource;
 import org.wasps.configuration.ParsingProfile;
-import org.wasps.data.repository.SingletonUtility;
+import org.wasps.data.SingletonUtility;
 import org.wasps.model.ParsedClass;
 import org.wasps.service.abstracts.IParsingService;
 

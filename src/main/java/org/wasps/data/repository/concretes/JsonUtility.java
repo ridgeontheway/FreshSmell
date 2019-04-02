@@ -2,7 +2,7 @@ package org.wasps.data.repository.concretes;
 
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
-import org.wasps.data.repository.SingletonUtility;
+import org.wasps.data.SingletonUtility;
 import org.wasps.data.repository.abstracts.IJsonUtility;
 import org.wasps.model.ClassModel;
 

@@ -2,7 +2,7 @@ package org.wasps.service.concretes;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.configuration.MappingProfile;
-import org.wasps.data.repository.SingletonUtility;
+import org.wasps.data.SingletonUtility;
 import org.wasps.model.ClassModel;
 import org.wasps.model.ParsedClass;
 import org.wasps.service.abstracts.IFileService;

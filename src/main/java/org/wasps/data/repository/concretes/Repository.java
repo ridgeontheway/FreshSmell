@@ -28,7 +28,6 @@ public abstract class Repository<T> {
     public List<T> get() {
         List<T> files = new ArrayList<>();
         map.values().forEach(files::addAll);
-
         return files;
     }
 

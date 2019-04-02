@@ -1,4 +1,4 @@
-package org.wasps.data.repository;
+package org.wasps.data;
 
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
@@ -17,8 +17,8 @@ import org.wasps.service.concretes.FileService;
 import org.wasps.service.concretes.MappingService;
 import org.wasps.service.concretes.ParsingService;
 import org.wasps.service.concretes.Worker;
-import org.wasps.service.smells.abstracts.ISmeller;
-import org.wasps.service.smells.concretes.Smeller;
+import org.wasps.service.smells.abstracts.ISmellerService;
+import org.wasps.service.smells.concretes.SmellerService;
 
 public abstract class SingletonUtility {
     private static MappingProfile mappingProfile = null;
@@ -35,7 +35,7 @@ public abstract class SingletonUtility {
     private static IFileService fileService = null;
 
     // Smells
-    private static ISmeller smeller = null;
+    private static ISmellerService smeller = null;
 
     // Utilities
     private static IFileUtility fileUtility = null;
@@ -79,9 +79,9 @@ public abstract class SingletonUtility {
         return mappingService;
     }
 
-    public static synchronized ISmeller getSmeller() {
+    public static synchronized ISmellerService getSmeller() {
         if (smeller == null) {
-            smeller = new Smeller();
+            smeller = new SmellerService();
         }
         return smeller;
     }

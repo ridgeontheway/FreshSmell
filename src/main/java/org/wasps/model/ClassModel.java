@@ -64,6 +64,11 @@ public class ClassModel {
         smellReports.put(smellReport.getSmellName(), smellReport);
     }
 
+    public void addSmellReports(List<SmellReportModel> smellReports) {
+        smellReports.forEach(smellReport ->
+                this.smellReports.put(smellReport.getSmellName(), smellReport));
+    }
+
     @Override
     public String toString() {
         return name;

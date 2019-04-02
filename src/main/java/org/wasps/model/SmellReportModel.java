@@ -2,8 +2,16 @@ package org.wasps.model;
 
 public class SmellReportModel {
     private String smellName;
-    private float score;
+    private double score;
     private String details;
+
+    public SmellReportModel() {}
+
+    public SmellReportModel(String smellName, double score, String details) {
+        this.smellName = smellName;
+        this.score = score;
+        this.details = details;
+    }
 
     public String getSmellName() {
         return smellName;
@@ -13,11 +21,11 @@ public class SmellReportModel {
         this.smellName = smellName;
     }
 
-    public float getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(float score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
