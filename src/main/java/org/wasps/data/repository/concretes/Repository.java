@@ -1,11 +1,13 @@
 package org.wasps.data.repository.concretes;
 
+import org.wasps.data.repository.abstracts.IRepository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Repository<T> {
+public abstract class Repository<T> implements IRepository<T> {
     private Map<String, ArrayList<T>> map;
 
     public Repository() {
