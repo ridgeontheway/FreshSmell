@@ -1,4 +1,4 @@
-package test_data_sub;
+package test_data;
 
 public interface RandomInterface {
 }

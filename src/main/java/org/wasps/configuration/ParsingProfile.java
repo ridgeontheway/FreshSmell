@@ -23,6 +23,7 @@ public class ParsingProfile {
         parsedClass.setFields(getFieldNames(file.getFields()));
         parsedClass.setMethods(parseMethods(file.getMethods()));
         parsedClass.setParsedJavaClass(file);
+        parsedClass.setIsInterface(file.isInterface());
         return parsedClass;
     }
 
@@ -53,6 +54,7 @@ public class ParsingProfile {
             method.setParsedMethod(file);
             method.setParameters(file.getParameters());
             method.setSourceCode(removeWhiteSpace(file));
+            method.setReturnType(file.getReturnType());
             parsedMethods.add(method);
         });
         return parsedMethods;

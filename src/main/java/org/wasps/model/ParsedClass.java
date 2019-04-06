@@ -11,6 +11,7 @@ public class ParsedClass {
     private List<String> fields;
     private List<ParsedMethod> methods;
     private JavaClass parsedJavaClass;
+    private boolean isInterface;
 
     public ParsedClass() {
     }
@@ -63,6 +64,9 @@ public class ParsedClass {
         return parsedJavaClass;
     }
 
+    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
+
+    public boolean isInterface(){ return this.isInterface; }
     @Override
     public String toString() {
         return name;

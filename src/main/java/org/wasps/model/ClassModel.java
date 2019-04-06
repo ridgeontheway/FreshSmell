@@ -12,6 +12,7 @@ public class ClassModel {
     private List<MethodModel> methods;
     private Map<String, SmellReportModel> smellReports;
     private List<String> imports;
+    private boolean isInterface;
 
     public ClassModel() {
         smellReports = new HashMap<>();
@@ -73,6 +74,10 @@ public class ClassModel {
         smellReports.forEach(smellReport ->
                 this.smellReports.put(smellReport.getSmellName(), smellReport));
     }
+
+    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
+
+    public boolean isInterface(){ return this.isInterface; }
 
     @Override
     public String toString() {
