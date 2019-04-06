@@ -12,6 +12,7 @@ public class MethodModel {
     private String name;
     private int lineLength;
     private List<JavaParameter> parameters;
+    private List<String> sourceCode;
 
     public MethodModel() {
     }
@@ -39,4 +40,8 @@ public class MethodModel {
     public void setParameters(List<JavaParameter> parameters) {
         this.parameters = parameters;
     }
+
+    public void setSorceCode(List<String> sourceCode){ this.sourceCode = sourceCode;  }
+
+    public List<String> getSourceCode() { return this.sourceCode; }
 }

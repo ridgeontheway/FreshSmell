@@ -10,6 +10,7 @@ public class ParsedMethod {
     private int lineLength;
     private List<JavaParameter> parameters;
     private JavaMethod parsedMethod;
+    private List<String> sourceCode;
 
     public ParsedMethod() {}
 
@@ -42,6 +43,10 @@ public class ParsedMethod {
     }
 
     public void setParsedMethod(JavaMethod parsedMethod) { this.parsedMethod = parsedMethod; }
+
+    public void setSourceCode(List<String> sourceCode){this.sourceCode = sourceCode; }
+
+    public List<String> getSourceCode(){ return this.sourceCode; }
 
     @Override
     public String toString() {

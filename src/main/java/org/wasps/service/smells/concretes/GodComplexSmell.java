@@ -43,8 +43,9 @@ public class GodComplexSmell implements ISmeller {
     //todo filter out the standard imports, we need to see if it is using too many java imports
     private List<String> filterFileImports(List<String> fileImports){
         CharSequence javaLangImports = "java.";
+        CharSequence jUnitImports = "junit";
         return fileImports.parallelStream()
-                .filter(value -> !value.contains(javaLangImports))
+                .filter(value -> !value.contains(javaLangImports) && !value.contains(jUnitImports))
                 .collect(Collectors.toList());
     }
 }

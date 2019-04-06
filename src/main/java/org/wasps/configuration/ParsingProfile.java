@@ -11,6 +11,7 @@ import org.wasps.model.ParsedMethod;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParsingProfile {
 
@@ -51,7 +52,7 @@ public class ParsingProfile {
             method.setLineLength(findLineLength(file));
             method.setParsedMethod(file);
             method.setParameters(file.getParameters());
-
+            method.setSourceCode(removeWhiteSpace(file));
             parsedMethods.add(method);
         });
         return parsedMethods;
@@ -66,4 +67,12 @@ public class ParsingProfile {
                 .toArray(String[]::new).length;
     }
 
+    private List<String> removeWhiteSpace(JavaMethod method){
+        List<String> methodBody = Arrays.asList(method.getSourceCode().split("\n"));
+        //removing whitespace
+        return methodBody.parallelStream()
+                .filter(value ->
+                        !StringUtils.isBlank(value) && value.length() > 0)
+                .collect(Collectors.toList());
+    }
 }
