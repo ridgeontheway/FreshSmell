@@ -22,7 +22,6 @@ public class ParsingProfile {
         parsedClass.setFields(getFieldNames(file.getFields()));
         parsedClass.setMethods(parseMethods(file.getMethods()));
         parsedClass.setParsedJavaClass(file);
-
         return parsedClass;
     }
 

@@ -11,6 +11,7 @@ public class ClassModel {
     private List<String> fields;
     private List<MethodModel> methods;
     private Map<String, SmellReportModel> smellReports;
+    private List<String> imports;
 
     public ClassModel() {
         smellReports = new HashMap<>();
@@ -59,6 +60,10 @@ public class ClassModel {
     public Map<String, SmellReportModel> getSmellReports() {
         return smellReports;
     }
+
+    public void setImports(List<String> imports) { this.imports = imports; }
+
+    public List<String> getImports() { return this.imports; }
 
     public void addSmellReport(SmellReportModel smellReport) {
         smellReports.put(smellReport.getSmellName(), smellReport);

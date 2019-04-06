@@ -30,10 +30,10 @@ public class ParsingServiceTests {
             Assert.fail(e.toString());
         }
 
-        Assert.assertEquals(repo.get("RandomClass")
+        Assert.assertEquals("RandomClass", repo.get("RandomClass")
                 .get(0)
                 .getParsedJavaClass()
-                .getName(), "RandomClass");
+                .getName());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ParsingServiceTests {
         catch (Exception e){
             singleUseCheckTriggered = true;
         }
-        Assert.assertEquals(singleUseCheckTriggered, true);
+        Assert.assertEquals(true, singleUseCheckTriggered);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class ParsingServiceTests {
         }
         methodLineLength = repo.get("RandomClass").get(0)
                 .getMethods().get(0).getLineLength();
-        Assert.assertEquals(methodLineLength, 3);
+        Assert.assertEquals(3, methodLineLength);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class ParsingServiceTests {
         }
 
         List<ParsedClass> returnList = repo.get("hello");
-        Assert.assertEquals(returnList.size(), 2);
+        Assert.assertEquals(2, returnList.size());
     }
 
 
