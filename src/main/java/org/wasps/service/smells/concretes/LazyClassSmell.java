@@ -83,6 +83,16 @@ public class LazyClassSmell implements ISmeller {
         return allFieldsHaveGetterOrSetter;
     }
 
+    private boolean isSmallClass(ClassModel file){
+        boolean isSmallClass = false;
+        int roughLineNumber = file.getSourceCode().split("\n").length;
+
+        if (roughLineNumber < LINENUMBER_THRESHOLD){
+            isSmallClass = true;
+        }
+        return isSmallClass;
+    }
+
     private SmellReportModel setReportModel(boolean pass, ClassModel file){
         SmellReportModel tempReportModel = new SmellReportModel();
         tempReportModel.setSmellName("Lazy Class");
@@ -97,15 +107,4 @@ public class LazyClassSmell implements ISmeller {
         }
         return tempReportModel;
     }
-
-    private boolean isSmallClass(ClassModel file){
-        boolean isSmallClass = false;
-        int roughLineNumber = file.getSourceCode().split("\n").length;
-
-        if (roughLineNumber < LINENUMBER_THRESHOLD){
-            isSmallClass = true;
-        }
-        return isSmallClass;
-    }
-
 }
