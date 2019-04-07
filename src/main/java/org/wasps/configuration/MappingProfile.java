@@ -26,6 +26,8 @@ public class MappingProfile {
         file.setMethods(mapMethods(parsedClass.getMethods()));
         file.setImports(parsedClass.getParsedJavaClass().getSource().getImports());
         file.setIsInterface(parsedClass.isInterface());
+        file.setRawConstructors(parsedClass.getRawConstructors());
+        file.setSourceCode(parsedClass.getSourceCode());
         return file;
     }
 

@@ -24,6 +24,8 @@ public class ParsingProfile {
         parsedClass.setMethods(parseMethods(file.getMethods()));
         parsedClass.setParsedJavaClass(file);
         parsedClass.setIsInterface(file.isInterface());
+        parsedClass.setRawConstructors(file.getConstructors());
+        parsedClass.setSourceCode(file.getSource().toString());
         return parsedClass;
     }
 

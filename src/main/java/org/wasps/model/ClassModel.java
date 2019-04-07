@@ -1,5 +1,7 @@
 package org.wasps.model;
 
+import com.thoughtworks.qdox.model.JavaConstructor;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,8 @@ public class ClassModel {
     private Map<String, SmellReportModel> smellReports;
     private List<String> imports;
     private boolean isInterface;
+    private List<JavaConstructor> rawConstructors;
+    private String sourceCode;
 
     public ClassModel() {
         smellReports = new HashMap<>();
@@ -78,6 +82,14 @@ public class ClassModel {
     public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
 
     public boolean isInterface(){ return this.isInterface; }
+
+    public void setRawConstructors(List<JavaConstructor> constructors) { this.rawConstructors = constructors; }
+
+    public List<JavaConstructor> getRawConstructors() { return this.rawConstructors; }
+
+    public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
+
+    public String getSourceCode() { return this.sourceCode; }
 
     @Override
     public String toString() {
