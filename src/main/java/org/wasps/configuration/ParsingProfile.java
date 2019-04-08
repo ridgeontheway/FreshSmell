@@ -63,12 +63,7 @@ public class ParsingProfile {
     }
 
     private int findLineLength(JavaMethod method) {
-        List<String> methodBody = Arrays.asList(method.getSourceCode().split("\n"));
-        //removing whitespace
-        return methodBody.parallelStream()
-                .filter(value ->
-                        !StringUtils.isBlank(value) && value.length() > 0)
-                .toArray(String[]::new).length;
+        return removeWhiteSpace(method).size();
     }
 
     private List<String> removeWhiteSpace(JavaMethod method){
