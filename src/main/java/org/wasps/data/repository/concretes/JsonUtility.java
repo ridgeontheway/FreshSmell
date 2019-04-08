@@ -19,7 +19,7 @@ public class JsonUtility implements IJsonUtility {
 
     public JsonUtility() {
         _json = SingletonUtility.getJsonSerializer()
-                .exclude("rawConstructors", "isInterface");
+                .exclude("rawConstructors", "isInterface", "isFinal", "isAbstract");
         _files = new ArrayList<>();
         _directory = System.getProperty("user.dir");
         _path = String.format("%s/src/main/java/org/wasps/data", _directory);

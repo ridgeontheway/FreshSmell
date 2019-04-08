@@ -95,9 +95,9 @@ public class ClassModel {
 
     public String getSourceCode() { return this.sourceCode; }
 
-    public void setFinal(boolean isFinal) { this.isFinal = isFinal; }
-
     public boolean isFinal() { return this.isFinal;}
+
+    public void setFinal(boolean isFinal) { this.isFinal = isFinal; }
 
     public boolean isAbstract() { return this.isAbstract; }
 

@@ -56,9 +56,9 @@ public class MethodModel {
     public String getReturnType() { return this.returnType; }
 
     @Override
+    public String toString() {
         return name;
     }
-    public String toString() {
     public void setReturnType(String returnType) { this.returnType = returnType; }
 
 
