@@ -28,6 +28,8 @@ public class MappingProfile {
         file.setIsInterface(parsedClass.isInterface());
         file.setRawConstructors(parsedClass.getRawConstructors());
         file.setSourceCode(parsedClass.getSourceCode());
+        file.setFinal(parsedClass.isFinal());
+        file.setAbstract(parsedClass.isAbstract());
         return file;
     }
 
@@ -38,8 +40,10 @@ public class MappingProfile {
             method.setName(parsedMethod.getName());
             method.setLineLength(parsedMethod.getLineLength());
             method.setParameters(parsedMethod.getParameters());
-            method.setSorceCode(parsedMethod.getSourceCode());
+            method.setSourceCode(parsedMethod.getSourceCode());
             method.setReturnType(parsedMethod.getReturnType());
+            method.setProtected(parsedMethod.isProtected());
+            method.setAbstract(parsedMethod.isAbstract());
             methods.add(method);
         });
         return methods;

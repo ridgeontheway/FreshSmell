@@ -13,6 +13,8 @@ public class ParsedMethod {
     private JavaMethod parsedMethod;
     private List<String> sourceCode;
     private JavaType returnType;
+    private boolean isProtected;
+    private boolean isAbstract;
 
     public ParsedMethod() {}
 
@@ -53,6 +55,14 @@ public class ParsedMethod {
     public void setReturnType(JavaType returnType) { this.returnType = returnType; }
 
     public JavaType getReturnType() { return this.returnType; }
+
+    public boolean isProtected() { return this.isProtected; }
+
+    public void setProtected(boolean isProtected) { this.isProtected = isProtected; }
+
+    public boolean isAbstract() { return this.isAbstract; }
+
+    public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
 
     @Override
     public String toString() {
