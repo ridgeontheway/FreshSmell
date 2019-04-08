@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Class which relies too much on functionality of another class (in this case it is checking for classes in another package)
 public class FeatureEnvySmell implements ISmeller {
 
     private final double ENVYVALUE = 0.5;

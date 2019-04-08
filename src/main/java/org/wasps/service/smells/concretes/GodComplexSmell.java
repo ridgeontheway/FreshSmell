@@ -7,6 +7,7 @@ import org.wasps.service.smells.abstracts.ISmeller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Class which has too much functionality, ie a class which does too much
 public class GodComplexSmell implements ISmeller {
     private final int NUMIMPORTS = 15;
 

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Class whose functionality is too "open" to other classes
 public class InappropriateIntimacySmell implements ISmeller {
 
     private final double INTIMACY_THRESHOLD = 0.5;

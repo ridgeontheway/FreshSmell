@@ -2,14 +2,17 @@ package org.wasps.service.smells.concretes;
 
 import com.thoughtworks.qdox.model.JavaConstructor;
 import com.thoughtworks.qdox.model.JavaType;
+import org.apache.commons.lang3.StringUtils;
 import org.wasps.model.ClassModel;
 import org.wasps.model.MethodModel;
 import org.wasps.model.SmellReportModel;
 import org.wasps.service.smells.abstracts.ISmeller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Class which does not actually do anything (ie functionality is too small to be a class)_
 public class LazyClassSmell implements ISmeller {
 
     private final int LINENUMBER_THRESHOLD = 15;
@@ -85,7 +88,8 @@ public class LazyClassSmell implements ISmeller {
 
     private boolean isSmallClass(ClassModel file){
         boolean isSmallClass = false;
-        int roughLineNumber = file.getSourceCode().split("\n").length;
+        int roughLineNumber = Arrays.asList(file.getSourceCode().split("\n")).stream().filter(value ->
+                !StringUtils.isBlank(value) && value.length() > 0).toArray().length;
 
         if (roughLineNumber < LINENUMBER_THRESHOLD){
             isSmallClass = true;

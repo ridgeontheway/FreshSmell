@@ -16,4 +16,16 @@ public class RandomClass {
             //...
         }
     }
+
+    public void testMethod1(int temp){
+        for (int i = 0; i < 100; i++){
+            //...
+        }
+    }
+
+    public void testMethod2(int temp){
+        for (int i = 0; i < 100; i++){
+            //...
+        }
+    }
 }
