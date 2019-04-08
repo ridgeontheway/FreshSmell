@@ -26,6 +26,8 @@ public class ParsingProfile {
         parsedClass.setIsInterface(file.isInterface());
         parsedClass.setRawConstructors(file.getConstructors());
         parsedClass.setSourceCode(file.getSource().toString());
+        parsedClass.setFinal(file.isFinal());
+        parsedClass.setAbstract(file.isAbstract());
         return parsedClass;
     }
 
@@ -57,18 +59,15 @@ public class ParsingProfile {
             method.setParameters(file.getParameters());
             method.setSourceCode(removeWhiteSpace(file));
             method.setReturnType(file.getReturnType());
+            method.setProtected(file.isProtected());
+            method.setAbstract(file.isAbstract());
             parsedMethods.add(method);
         });
         return parsedMethods;
     }
 
     private int findLineLength(JavaMethod method) {
-        List<String> methodBody = Arrays.asList(method.getSourceCode().split("\n"));
-        //removing whitespace
-        return methodBody.parallelStream()
-                .filter(value ->
-                        !StringUtils.isBlank(value) && value.length() > 0)
-                .toArray(String[]::new).length;
+        return removeWhiteSpace(method).size();
     }
 
     private List<String> removeWhiteSpace(JavaMethod method){

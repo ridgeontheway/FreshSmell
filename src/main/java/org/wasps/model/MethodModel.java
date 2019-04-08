@@ -12,6 +12,8 @@ public class MethodModel {
     private List<String> parameters;
     private List<String> sourceCode;
     private String returnType;
+    private boolean isProtected;
+    private boolean isAbstract;
 
     public MethodModel() {
     }
@@ -44,13 +46,20 @@ public class MethodModel {
 
     public void setSourceCode(List<String> sourceCode){ this.sourceCode = sourceCode;  }
 
+    public boolean isProtected() { return this.isProtected; }
+
+    public void setProtected(boolean isProtected) { this.isProtected = isProtected; }
+
+    public boolean isAbstract() { return this.isAbstract; }
+
+    public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
     public String getReturnType() { return this.returnType; }
 
+    @Override
+        return name;
+    }
+    public String toString() {
     public void setReturnType(String returnType) { this.returnType = returnType; }
 
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

@@ -29,6 +29,8 @@ public class MappingProfile {
         file.setIsInterface(parsedClass.isInterface());
         file.setRawConstructors(parsedClass.getRawConstructors());
         file.setSourceCode(trimSourceCode(parsedClass.getSourceCode()));
+        file.setFinal(parsedClass.isFinal());
+        file.setAbstract(parsedClass.isAbstract());
         return file;
     }
 
@@ -54,6 +56,8 @@ public class MappingProfile {
             method.setParameters(getParametersAsStrings(parsedMethod.getParameters()));
             method.setSourceCode(trimSourceCode(parsedMethod.getSourceCode()));
             method.setReturnType(parsedMethod.getReturnType().getValue());
+            method.setProtected(parsedMethod.isProtected());
+            method.setAbstract(parsedMethod.isAbstract());
             methods.add(method);
         });
         return methods;

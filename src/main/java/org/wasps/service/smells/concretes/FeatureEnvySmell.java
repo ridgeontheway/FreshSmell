@@ -98,7 +98,7 @@ public class FeatureEnvySmell implements ISmeller {
         int numberExternalClassActionsValues = numberExternalClassActions.values().stream().mapToInt(i -> i).sum();
         int totalNumberOfExternalReferences = numberExternalClassActionsValues + numberExternalClassedDefinedValues;
 
-        if (totalNumberOfExternalReferences/lineLength > ENVYVALUE){
+        if (lineLength > 0 && totalNumberOfExternalReferences/lineLength > ENVYVALUE){
             testResult = false;
         }
         return testResult;
