@@ -64,9 +64,9 @@ public class ClassModel {
         this.methods = methods;
     }
 
-    public void setImports(List<String> imports) { this.imports = imports; }
-
     public List<String> getImports() { return this.imports; }
+
+    public void setImports(List<String> imports) { this.imports = imports; }
 
     public Map<String, SmellReportModel> getSmellReports() { return this.smellReports; }
 
@@ -83,17 +83,17 @@ public class ClassModel {
         this.smellReports = smellReports;
     }
 
-    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
-
     public boolean isInterface(){ return this.isInterface; }
+
+    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
 
     public List<JavaConstructor> getRawConstructors() { return this.rawConstructors; }
 
     public void setRawConstructors(List<JavaConstructor> constructors) { this.rawConstructors = constructors; }
 
-    public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
-
     public String getSourceCode() { return this.sourceCode; }
+
+    public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
 
     public boolean isFinal() { return this.isFinal;}
 

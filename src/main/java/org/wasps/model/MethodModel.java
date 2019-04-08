@@ -53,13 +53,13 @@ public class MethodModel {
     public boolean isAbstract() { return this.isAbstract; }
 
     public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
+
     public String getReturnType() { return this.returnType; }
+
+    public void setReturnType(String returnType) { this.returnType = returnType; }
 
     @Override
     public String toString() {
         return name;
     }
-    public void setReturnType(String returnType) { this.returnType = returnType; }
-
-
 }
