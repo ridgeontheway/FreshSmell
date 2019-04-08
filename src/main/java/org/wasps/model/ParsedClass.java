@@ -1,6 +1,7 @@
 package org.wasps.model;
 
 import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaConstructor;
 
 import java.util.List;
 
@@ -11,6 +12,9 @@ public class ParsedClass {
     private List<String> fields;
     private List<ParsedMethod> methods;
     private JavaClass parsedJavaClass;
+    private boolean isInterface;
+    private List<JavaConstructor> rawConstructors;
+    private String sourceCode;
 
     public ParsedClass() {
     }
@@ -62,6 +66,18 @@ public class ParsedClass {
     public JavaClass getParsedJavaClass() {
         return parsedJavaClass;
     }
+
+    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
+
+    public boolean isInterface(){ return this.isInterface; }
+
+    public void setRawConstructors(List<JavaConstructor> constructors){ this.rawConstructors = constructors; }
+
+    public List<JavaConstructor> getRawConstructors() { return this.rawConstructors;}
+
+    public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
+
+    public String getSourceCode() { return this.sourceCode; }
 
     @Override
     public String toString() {

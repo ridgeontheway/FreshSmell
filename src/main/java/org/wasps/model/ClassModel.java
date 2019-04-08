@@ -1,5 +1,7 @@
 package org.wasps.model;
 
+import com.thoughtworks.qdox.model.JavaConstructor;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,10 @@ public class ClassModel {
     private List<String> fields;
     private List<MethodModel> methods;
     private Map<String, SmellReportModel> smellReports;
+    private List<String> imports;
+    private boolean isInterface;
+    private List<JavaConstructor> rawConstructors;
+    private String sourceCode;
 
     public ClassModel() {
         smellReports = new HashMap<>();
@@ -60,6 +66,10 @@ public class ClassModel {
         return smellReports;
     }
 
+    public void setImports(List<String> imports) { this.imports = imports; }
+
+    public List<String> getImports() { return this.imports; }
+
     public void addSmellReport(SmellReportModel smellReport) {
         smellReports.put(smellReport.getSmellName(), smellReport);
     }
@@ -68,6 +78,18 @@ public class ClassModel {
         smellReports.forEach(smellReport ->
                 this.smellReports.put(smellReport.getSmellName(), smellReport));
     }
+
+    public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
+
+    public boolean isInterface(){ return this.isInterface; }
+
+    public void setRawConstructors(List<JavaConstructor> constructors) { this.rawConstructors = constructors; }
+
+    public List<JavaConstructor> getRawConstructors() { return this.rawConstructors; }
+
+    public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
+
+    public String getSourceCode() { return this.sourceCode; }
 
     @Override
     public String toString() {

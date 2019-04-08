@@ -12,12 +12,12 @@ import java.util.List;
 public class ParsingServiceTests {
     ParsedRepository repo;
     List<ParsedClass> files;
+
     @Before
     public void setup() {
         repo = new ParsedRepository();
         files = new ArrayList<>();
     }
-
 
     @Test
     public void ParsedServiceClassGetTest(){
@@ -30,10 +30,10 @@ public class ParsingServiceTests {
             Assert.fail(e.toString());
         }
 
-        Assert.assertEquals(repo.get("RandomClass")
+        Assert.assertEquals("RandomClass", repo.get("RandomClass")
                 .get(0)
                 .getParsedJavaClass()
-                .getName(), "RandomClass");
+                .getName());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ParsingServiceTests {
         catch (Exception e){
             singleUseCheckTriggered = true;
         }
-        Assert.assertEquals(singleUseCheckTriggered, true);
+        Assert.assertEquals(true, singleUseCheckTriggered);
     }
 
     @Test
@@ -65,22 +65,25 @@ public class ParsingServiceTests {
         }
         methodLineLength = repo.get("RandomClass").get(0)
                 .getMethods().get(0).getLineLength();
-        Assert.assertEquals(methodLineLength, 3);
+        Assert.assertEquals(3, methodLineLength);
     }
 
     @Test
     public void ParsedServiceMethodSubDirLookUp(){
         ParsingService tempParsingService = new ParsingService();
+        ParsedRepository local_repo = new ParsedRepository();
+        List<ParsedClass> local_files;
+
         try{
-            files = tempParsingService.parse("src/tests/test_data_sub");
-            repo.insert(files);
+            local_files = tempParsingService.parse("src/tests/test_data_sub");
+            local_repo.insert(local_files);
         }
         catch (Exception e){
             Assert.fail(e.getMessage());
         }
 
-        List<ParsedClass> returnList = repo.get("hello");
-        Assert.assertEquals(returnList.size(), 2);
+        List<ParsedClass> returnList = local_repo.get("hello");
+        Assert.assertEquals(2, returnList.size());
     }
 
 

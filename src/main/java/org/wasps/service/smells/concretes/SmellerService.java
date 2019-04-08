@@ -7,6 +7,7 @@ import org.wasps.service.smells.abstracts.ISmellerService;
 import org.wasps.service.smells.abstracts.ISmeller;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SmellerService implements ISmellerService {
     private Map<String, ISmeller> smellers;
@@ -19,14 +20,8 @@ public class SmellerService implements ISmellerService {
 
     @Override
     public List<SmellReportModel> performSmells(ClassModel file) {
-        List<SmellReportModel> smellReports = new ArrayList<>();
-        SmellReportModel smellReport;
-
-        for(Map.Entry<String, ISmeller> smell : smellers.entrySet()) {
-            smellReport = smell.getValue().smell(file);
-            smellReports.add(smellReport);
-            file.addSmellReport(smellReport);
-        }
+        List<ISmeller> smells = (List<ISmeller>) smellers.values();
+        List<SmellReportModel> smellReports = smells.parallelStream().map(value -> value.smell(file)).collect(Collectors.toList());
         return smellReports;
     }
 
@@ -40,7 +35,11 @@ public class SmellerService implements ISmellerService {
 
     // Instantiate all new smellers here directly to the map
     private void init() {
-        smellers.put("test".toLowerCase(), new TestSmeller());
+        smellers.put("test", new TestSmeller());
+        smellers.put("lazyClass", new LazyClassSmell());
+        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell());
+        smellers.put("godComplex", new GodComplexSmell());
+        smellers.put("featureEnvy", new FeatureEnvySmell());
         // add more...
     }
 }

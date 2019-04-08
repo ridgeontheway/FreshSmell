@@ -1,6 +1,8 @@
 package org.wasps.model;
 
+import com.thoughtworks.qdox.model.JavaConstructor;
 import com.thoughtworks.qdox.model.JavaParameter;
+import com.thoughtworks.qdox.model.JavaType;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ public class MethodModel {
     private String name;
     private int lineLength;
     private List<JavaParameter> parameters;
+    private List<String> sourceCode;
+    private JavaType returnType;
 
     public MethodModel() {
     }
@@ -39,4 +43,12 @@ public class MethodModel {
     public void setParameters(List<JavaParameter> parameters) {
         this.parameters = parameters;
     }
+
+    public void setSorceCode(List<String> sourceCode){ this.sourceCode = sourceCode;  }
+
+    public List<String> getSourceCode() { return this.sourceCode; }
+
+    public void setReturnType(JavaType returnType) { this.returnType = returnType; }
+
+    public JavaType getReturnType() { return this.returnType; }
 }

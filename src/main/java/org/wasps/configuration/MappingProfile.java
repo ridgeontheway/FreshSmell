@@ -24,7 +24,10 @@ public class MappingProfile {
         file.setConstructors(parsedClass.getConstructors());
         file.setFields(parsedClass.getFields());
         file.setMethods(mapMethods(parsedClass.getMethods()));
-
+        file.setImports(parsedClass.getParsedJavaClass().getSource().getImports());
+        file.setIsInterface(parsedClass.isInterface());
+        file.setRawConstructors(parsedClass.getRawConstructors());
+        file.setSourceCode(parsedClass.getSourceCode());
         return file;
     }
 
@@ -35,6 +38,9 @@ public class MappingProfile {
             method.setName(parsedMethod.getName());
             method.setLineLength(parsedMethod.getLineLength());
             method.setParameters(parsedMethod.getParameters());
+            method.setSorceCode(parsedMethod.getSourceCode());
+            method.setReturnType(parsedMethod.getReturnType());
+            methods.add(method);
         });
         return methods;
     }
