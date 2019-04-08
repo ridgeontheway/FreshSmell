@@ -15,7 +15,7 @@ public class ClassModel {
     private Map<String, SmellReportModel> smellReports;
     private List<String> imports;
     private boolean isInterface;
-    private List<JavaConstructor> rawConstructors;
+    private List<JavaConstructor> rawConstructors;          // Not serialized
     private String sourceCode;
 
     public ClassModel() {
@@ -62,13 +62,11 @@ public class ClassModel {
         this.methods = methods;
     }
 
-    public Map<String, SmellReportModel> getSmellReports() {
-        return smellReports;
-    }
-
     public void setImports(List<String> imports) { this.imports = imports; }
 
     public List<String> getImports() { return this.imports; }
+
+    public Map<String, SmellReportModel> getSmellReports() { return this.smellReports; }
 
     public void addSmellReport(SmellReportModel smellReport) {
         smellReports.put(smellReport.getSmellName(), smellReport);
@@ -79,13 +77,17 @@ public class ClassModel {
                 this.smellReports.put(smellReport.getSmellName(), smellReport));
     }
 
+    public void setSmellReports(Map<String, SmellReportModel> smellReports) {
+        this.smellReports = smellReports;
+    }
+
     public void setIsInterface(boolean isInterface) { this.isInterface = isInterface; }
 
     public boolean isInterface(){ return this.isInterface; }
 
-    public void setRawConstructors(List<JavaConstructor> constructors) { this.rawConstructors = constructors; }
-
     public List<JavaConstructor> getRawConstructors() { return this.rawConstructors; }
+
+    public void setRawConstructors(List<JavaConstructor> constructors) { this.rawConstructors = constructors; }
 
     public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
 

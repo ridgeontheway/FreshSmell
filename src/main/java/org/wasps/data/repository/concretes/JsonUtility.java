@@ -18,7 +18,8 @@ public class JsonUtility implements IJsonUtility {
     protected String _jsonFile;
 
     public JsonUtility() {
-        _json = SingletonUtility.getJsonSerializer();
+        _json = SingletonUtility.getJsonSerializer()
+                .exclude("rawConstructors", "isInterface");
         _files = new ArrayList<>();
         _directory = System.getProperty("user.dir");
         _path = String.format("%s/src/main/java/org/wasps/data", _directory);
@@ -40,9 +41,9 @@ public class JsonUtility implements IJsonUtility {
             if (!dir.exists())
                 //noinspection ResultOfMethodCallIgnored
                 dir.mkdirs();
-            System.out.println("\n\nWriting to: " + _jsonFile + "\n");
+            System.out.println("\nWriting to: " + _jsonFile + "\n");
             FileWriter writer = new FileWriter(_jsonFile, false);
-            _json.deepSerialize(_files, writer);
+                _json.deepSerialize(_files, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {

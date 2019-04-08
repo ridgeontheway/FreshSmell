@@ -38,7 +38,7 @@ public class FeatureEnvySmell implements ISmeller {
         return reportModel;
     }
 
-    //todo only works with classes that are outside the package its currently in, may need to change this for later
+    //todo only works with classes that are outside the package it's currently in, may need to change this for later
     private boolean checkMethod(MethodModel currentMethod, List<CharSequence> externalClassReferences){
         List<String> sourceCode = filterSourceCode(currentMethod.getSourceCode());
         HashMap<CharSequence, String> externalClassLoopUp = new HashMap<>();

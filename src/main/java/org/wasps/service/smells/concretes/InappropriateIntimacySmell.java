@@ -1,6 +1,5 @@
 package org.wasps.service.smells.concretes;
 
-import com.thoughtworks.qdox.model.JavaType;
 import org.wasps.model.ClassModel;
 import org.wasps.model.MethodModel;
 import org.wasps.model.SmellReportModel;
@@ -37,8 +36,8 @@ public class InappropriateIntimacySmell implements ISmeller {
 
     private boolean majorityPublicMethods(List<MethodModel> methodModelList){
         boolean majorityPublicMethods = false;
-        List<JavaType> filteredReturnTypeList = methodModelList.stream().map(value -> value.getReturnType()).collect(Collectors.toList());
-        int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.getValue().equals("public")).toArray().length;
+        List<String> filteredReturnTypeList = methodModelList.stream().map(MethodModel::getReturnType).collect(Collectors.toList());
+        int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.equalsIgnoreCase("public")).toArray().length;
 
         if (numPublicFields/methodModelList.size() > INTIMACY_THRESHOLD){
             majorityPublicMethods = true;

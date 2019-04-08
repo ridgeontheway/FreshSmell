@@ -1,5 +1,6 @@
 package org.wasps.configuration;
 
+import com.thoughtworks.qdox.model.JavaParameter;
 import org.wasps.model.ClassModel;
 import org.wasps.model.MethodModel;
 import org.wasps.model.ParsedClass;
@@ -27,8 +28,21 @@ public class MappingProfile {
         file.setImports(parsedClass.getParsedJavaClass().getSource().getImports());
         file.setIsInterface(parsedClass.isInterface());
         file.setRawConstructors(parsedClass.getRawConstructors());
-        file.setSourceCode(parsedClass.getSourceCode());
+        file.setSourceCode(trimSourceCode(parsedClass.getSourceCode()));
         return file;
+    }
+
+    private String trimSourceCode(String originalSourceCode) {
+//        return originalSourceCode.trim().replace("\n", "")
+//                                        .replace(" ", "")
+//                                        .replace("\t", "");
+        return originalSourceCode;
+    }
+
+    private List<String> trimSourceCode(List<String> originalSourceCode) {
+        List<String> newList = new ArrayList<>();
+        originalSourceCode.forEach(line -> newList.add(trimSourceCode(line)));
+        return newList;
     }
 
     private List<MethodModel> mapMethods(List<ParsedMethod> parsedMethods) {
@@ -37,11 +51,19 @@ public class MappingProfile {
             MethodModel method = new MethodModel();
             method.setName(parsedMethod.getName());
             method.setLineLength(parsedMethod.getLineLength());
-            method.setParameters(parsedMethod.getParameters());
-            method.setSorceCode(parsedMethod.getSourceCode());
-            method.setReturnType(parsedMethod.getReturnType());
+            method.setParameters(getParametersAsStrings(parsedMethod.getParameters()));
+            method.setSourceCode(trimSourceCode(parsedMethod.getSourceCode()));
+            method.setReturnType(parsedMethod.getReturnType().getValue());
             methods.add(method);
         });
         return methods;
+    }
+
+    private List<String> getParametersAsStrings(List<JavaParameter> parametersIn) {
+        List<String> parametersOut = new ArrayList<>();
+        parametersIn.forEach(parameter -> parametersOut.add(
+                String.format("%s %s", parameter.getType().getValue(),
+                                        parameter.getName())));
+        return parametersOut;
     }
 }

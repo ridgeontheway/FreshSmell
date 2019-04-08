@@ -32,7 +32,7 @@ public class LocalApplicationTest {
     public static void main(String[] args) {
         setup();
         runSmells();
-        print();
+//        print();
     }
 
     public static void setup() {
@@ -42,6 +42,7 @@ public class LocalApplicationTest {
         try {
             List<ParsedClass> _parsedClasses = _parser.parse(_path);
             _files.addAll(_profile.map(_parsedClasses));
+            _fileService.writeFilesToJson(_files);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -72,9 +72,9 @@ public class ParsingProfile {
     }
 
     private List<String> removeWhiteSpace(JavaMethod method){
-        List<String> methodBody = Arrays.asList(method.getSourceCode().split("\n"));
+        List<String> methodBody = Arrays.asList(method.getSourceCode().trim().split("\n"));
         //removing whitespace
-        return methodBody.parallelStream()
+        return  methodBody.parallelStream()
                 .filter(value ->
                         !StringUtils.isBlank(value) && value.length() > 0)
                 .collect(Collectors.toList());

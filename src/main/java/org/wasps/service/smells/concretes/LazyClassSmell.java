@@ -1,7 +1,6 @@
 package org.wasps.service.smells.concretes;
 
 import com.thoughtworks.qdox.model.JavaConstructor;
-import com.thoughtworks.qdox.model.JavaType;
 import org.apache.commons.lang3.StringUtils;
 import org.wasps.model.ClassModel;
 import org.wasps.model.MethodModel;
@@ -39,8 +38,8 @@ public class LazyClassSmell implements ISmeller {
 
     private boolean allPublicMethods(List<MethodModel> methodModelList){
         boolean allPublicMethods = false;
-        List<JavaType> filteredReturnTypeList = methodModelList.stream().map(value -> value.getReturnType()).collect(Collectors.toList());
-        int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.getValue().equals("public")).toArray().length;
+        List<String> filteredReturnTypeList = methodModelList.stream().map(MethodModel::getReturnType).collect(Collectors.toList());
+        int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.equalsIgnoreCase("public")).toArray().length;
 
         if (methodModelList.size() > 0 && numPublicFields/methodModelList.size()  == methodModelList.size()){
             allPublicMethods = true;
@@ -75,9 +74,9 @@ public class LazyClassSmell implements ISmeller {
             CharSequence[] finalFilter = {whiteSpaceRemoval[0], whiteSpaceRemoval[whiteSpaceRemoval.length-1]};
 
             for (MethodModel model: methodModelList) {
-                int numMatches = model.getParameters().stream().filter(javaParameter -> javaParameter.getName().contains(finalFilter[1])).toArray().length;
+                int numMatches = model.getParameters().stream().filter(javaParameter -> javaParameter.contains(finalFilter[1])).toArray().length;
 
-                if(!model.getName().contains(finalFilter[1]) && (numMatches == 0 || !model.getReturnType().getValue().contains(finalFilter[0]))){
+                if(!model.getName().contains(finalFilter[1]) && (numMatches == 0 || !model.getReturnType().contains(finalFilter[0]))){
                     allFieldsHaveGetterOrSetter = false;
                     break;
                 }

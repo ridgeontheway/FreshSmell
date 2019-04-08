@@ -20,9 +20,8 @@ public class SmellerService implements ISmellerService {
 
     @Override
     public List<SmellReportModel> performSmells(ClassModel file) {
-        List<ISmeller> smells = (List<ISmeller>) smellers.values();
-        List<SmellReportModel> smellReports = smells.parallelStream().map(value -> value.smell(file)).collect(Collectors.toList());
-        return smellReports;
+        List<ISmeller> smells = new ArrayList<>(smellers.values());
+        return smells.parallelStream().map(value -> value.smell(file)).collect(Collectors.toList());
     }
 
     @Override
@@ -39,7 +38,7 @@ public class SmellerService implements ISmellerService {
         smellers.put("lazyClass", new LazyClassSmell());
         smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell());
         smellers.put("godComplex", new GodComplexSmell());
-        smellers.put("featureEnvy", new FeatureEnvySmell());
+//        smellers.put("featureEnvy", new FeatureEnvySmell());
         // add more...
     }
 }
