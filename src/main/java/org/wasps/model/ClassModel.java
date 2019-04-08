@@ -17,6 +17,7 @@ public class ClassModel {
     private boolean isInterface;
     private List<JavaConstructor> rawConstructors;
     private String sourceCode;
+    private boolean isFinal;
 
     public ClassModel() {
         smellReports = new HashMap<>();
@@ -90,6 +91,10 @@ public class ClassModel {
     public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
 
     public String getSourceCode() { return this.sourceCode; }
+
+    public void setFinal(boolean isFinal) { this.isFinal = isFinal; }
+
+    public boolean isFinal() { return this.isFinal;}
 
     @Override
     public String toString() {

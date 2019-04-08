@@ -40,6 +40,7 @@ public class SmellerService implements ISmellerService {
         smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell());
         smellers.put("godComplex", new GodComplexSmell());
         smellers.put("featureEnvy", new FeatureEnvySmell());
+        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell());
         // add more...
     }
 }

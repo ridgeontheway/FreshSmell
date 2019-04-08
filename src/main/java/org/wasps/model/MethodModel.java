@@ -16,6 +16,7 @@ public class MethodModel {
     private List<JavaParameter> parameters;
     private List<String> sourceCode;
     private JavaType returnType;
+    private boolean isProtected;
 
     public MethodModel() {
     }
@@ -51,4 +52,8 @@ public class MethodModel {
     public void setReturnType(JavaType returnType) { this.returnType = returnType; }
 
     public JavaType getReturnType() { return this.returnType; }
+
+    public boolean isProtected() { return this.isProtected; }
+
+    public void setProtected(boolean isProtected) { this.isProtected = isProtected; }
 }

@@ -26,6 +26,7 @@ public class ParsingProfile {
         parsedClass.setIsInterface(file.isInterface());
         parsedClass.setRawConstructors(file.getConstructors());
         parsedClass.setSourceCode(file.getSource().toString());
+        parsedClass.setFinal(file.isFinal());
         return parsedClass;
     }
 
@@ -57,6 +58,7 @@ public class ParsingProfile {
             method.setParameters(file.getParameters());
             method.setSourceCode(removeWhiteSpace(file));
             method.setReturnType(file.getReturnType());
+            method.setProtected(file.isProtected());
             parsedMethods.add(method);
         });
         return parsedMethods;

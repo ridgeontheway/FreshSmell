@@ -15,6 +15,7 @@ public class ParsedClass {
     private boolean isInterface;
     private List<JavaConstructor> rawConstructors;
     private String sourceCode;
+    private Boolean isFinal;
 
     public ParsedClass() {
     }
@@ -78,6 +79,10 @@ public class ParsedClass {
     public void setSourceCode(String sourceCode){ this.sourceCode = sourceCode; }
 
     public String getSourceCode() { return this.sourceCode; }
+
+    public boolean isFinal() { return this.isFinal; }
+
+    public void setFinal(boolean isFinal) { this.isFinal = isFinal; }
 
     @Override
     public String toString() {

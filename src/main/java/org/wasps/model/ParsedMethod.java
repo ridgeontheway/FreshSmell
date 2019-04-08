@@ -13,6 +13,7 @@ public class ParsedMethod {
     private JavaMethod parsedMethod;
     private List<String> sourceCode;
     private JavaType returnType;
+    private boolean isProtected;
 
     public ParsedMethod() {}
 
@@ -53,6 +54,10 @@ public class ParsedMethod {
     public void setReturnType(JavaType returnType) { this.returnType = returnType; }
 
     public JavaType getReturnType() { return this.returnType; }
+
+    public boolean isProtected() { return this.isProtected; }
+
+    public void setProtected(boolean isProtected) { this.isProtected = isProtected; }
 
     @Override
     public String toString() {
