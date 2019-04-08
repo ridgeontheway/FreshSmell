@@ -29,6 +29,7 @@ public class MappingProfile {
         file.setRawConstructors(parsedClass.getRawConstructors());
         file.setSourceCode(parsedClass.getSourceCode());
         file.setFinal(parsedClass.isFinal());
+        file.setAbstract(parsedClass.isAbstract());
         return file;
     }
 
@@ -42,6 +43,7 @@ public class MappingProfile {
             method.setSourceCode(parsedMethod.getSourceCode());
             method.setReturnType(parsedMethod.getReturnType());
             method.setProtected(parsedMethod.isProtected());
+            method.setAbstract(parsedMethod.isAbstract());
             methods.add(method);
         });
         return methods;

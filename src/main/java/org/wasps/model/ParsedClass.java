@@ -16,6 +16,7 @@ public class ParsedClass {
     private List<JavaConstructor> rawConstructors;
     private String sourceCode;
     private Boolean isFinal;
+    private boolean isAbstract;
 
     public ParsedClass() {
     }
@@ -83,6 +84,10 @@ public class ParsedClass {
     public boolean isFinal() { return this.isFinal; }
 
     public void setFinal(boolean isFinal) { this.isFinal = isFinal; }
+
+    public boolean isAbstract() { return this.isAbstract; }
+
+    public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
 
     @Override
     public String toString() {

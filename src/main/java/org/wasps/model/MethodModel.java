@@ -17,6 +17,7 @@ public class MethodModel {
     private List<String> sourceCode;
     private JavaType returnType;
     private boolean isProtected;
+    private boolean isAbstract;
 
     public MethodModel() {
     }
@@ -56,4 +57,8 @@ public class MethodModel {
     public boolean isProtected() { return this.isProtected; }
 
     public void setProtected(boolean isProtected) { this.isProtected = isProtected; }
+
+    public boolean isAbstract() { return this.isAbstract; }
+
+    public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
 }

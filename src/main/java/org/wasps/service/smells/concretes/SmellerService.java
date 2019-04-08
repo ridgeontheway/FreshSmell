@@ -14,7 +14,6 @@ public class SmellerService implements ISmellerService {
 
     public SmellerService() {
         smellers = new HashMap<>();
-        // Add the actual smellers
         init();
     }
 
@@ -41,6 +40,7 @@ public class SmellerService implements ISmellerService {
         smellers.put("godComplex", new GodComplexSmell());
         smellers.put("featureEnvy", new FeatureEnvySmell());
         smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell());
+        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell());
         // add more...
     }
 }
