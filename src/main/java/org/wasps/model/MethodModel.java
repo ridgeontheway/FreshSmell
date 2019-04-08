@@ -45,7 +45,7 @@ public class MethodModel {
         this.parameters = parameters;
     }
 
-    public void setSorceCode(List<String> sourceCode){ this.sourceCode = sourceCode;  }
+    public void setSourceCode(List<String> sourceCode){ this.sourceCode = sourceCode;  }
 
     public List<String> getSourceCode() { return this.sourceCode; }
 

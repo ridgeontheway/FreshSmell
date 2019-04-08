@@ -39,7 +39,7 @@ public class MappingProfile {
             method.setName(parsedMethod.getName());
             method.setLineLength(parsedMethod.getLineLength());
             method.setParameters(parsedMethod.getParameters());
-            method.setSorceCode(parsedMethod.getSourceCode());
+            method.setSourceCode(parsedMethod.getSourceCode());
             method.setReturnType(parsedMethod.getReturnType());
             method.setProtected(parsedMethod.isProtected());
             methods.add(method);
