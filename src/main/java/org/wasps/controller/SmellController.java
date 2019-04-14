@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class SmellController extends BaseController {
     public SmellController() {
-        super(SingletonUtility.getWorker());
+        super(SingletonUtility.getWorker(), SingletonUtility.getClassService());
     }
 
     @RequestMapping(value = "/sourcefiles", method = RequestMethod.GET)

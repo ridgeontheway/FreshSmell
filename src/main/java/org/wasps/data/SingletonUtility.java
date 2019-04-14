@@ -9,14 +9,8 @@ import org.wasps.data.repository.concretes.FileUtility;
 import org.wasps.data.repository.concretes.JsonUtility;
 import org.wasps.data.repository.concretes.ModelRepository;
 import org.wasps.data.repository.concretes.ParsedRepository;
-import org.wasps.service.abstracts.IFileService;
-import org.wasps.service.abstracts.IMappingService;
-import org.wasps.service.abstracts.IParsingService;
-import org.wasps.service.abstracts.IWorker;
-import org.wasps.service.concretes.FileService;
-import org.wasps.service.concretes.MappingService;
-import org.wasps.service.concretes.ParsingService;
-import org.wasps.service.concretes.Worker;
+import org.wasps.service.abstracts.*;
+import org.wasps.service.concretes.*;
 import org.wasps.service.smells.abstracts.ISmellerService;
 import org.wasps.service.smells.concretes.SmellerService;
 
@@ -33,6 +27,7 @@ public abstract class SingletonUtility {
     private static IMappingService mappingService = null;
     private static IParsingService parser = null;
     private static IFileService fileService = null;
+    private static IClassService classService = null;
 
     // Smells
     private static ISmellerService smeller = null;
@@ -119,6 +114,13 @@ public abstract class SingletonUtility {
             fileService = new FileService();
         }
         return fileService;
+    }
+
+    public static synchronized IClassService getClassService() {
+        if (classService == null) {
+            classService = new ClassService();
+        }
+        return classService;
     }
 
     public static synchronized IWorker getWorker() {

@@ -21,9 +21,17 @@
                     <i class="fa fa-cloud-upload"></i> Select Files
                 </label>
                     <input id="file-upload" class="my-button" type="file" name="file" multiple="multiple"><br />
-                <input class="my-button" type="submit" value="Upload">
+                <input class="my-button" type="submit" value="Smell">
             </form>
         </div>
+        <%--<div class="uploaded-files-area">--%>
+            <%--Files to Smell:--%>
+            <%--<% for (int i=0; i<files.size(); i+=1) %>--%>
+            <%--<tr>--%>
+                <%--<td>${files.get(i).getName()}</td>--%>
+            <%--</tr>--%>
+            <%--<% } %>--%>
+        <%--</div>--%>
     </div>
 </body>
 </html>

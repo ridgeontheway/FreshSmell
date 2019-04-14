@@ -2,6 +2,7 @@ package org.wasps.model;
 
 import com.thoughtworks.qdox.model.JavaConstructor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,12 @@ public class ClassModel {
     private String sourceCode;
     private boolean isFinal;
     private boolean isAbstract;
+    private double overallScore;
+    private List<String> failureMessages;
 
     public ClassModel() {
         smellReports = new HashMap<>();
+        failureMessages = new ArrayList<>();
     }
 
     public String getName() {
@@ -102,6 +106,22 @@ public class ClassModel {
     public boolean isAbstract() { return this.isAbstract; }
 
     public void setAbstract(boolean isAbstract) { this.isAbstract = isAbstract; }
+
+    public double getOverallScore() {
+        return overallScore;
+    }
+
+    public void setOverallScore(double overallScore) {
+        this.overallScore = overallScore;
+    }
+
+    public List<String> getFailureMessages() {
+        return failureMessages;
+    }
+
+    public void setFailureMessages(List<String> failureMessages) {
+        this.failureMessages = failureMessages;
+    }
 
     @Override
     public String toString() {

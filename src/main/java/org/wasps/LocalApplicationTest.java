@@ -32,7 +32,7 @@ public class LocalApplicationTest {
     public static void main(String[] args) {
         setup();
         runSmells();
-//        print();
+        print();
     }
 
     public static void setup() {

@@ -31,6 +31,7 @@ public class MappingProfile {
         file.setSourceCode(trimSourceCode(parsedClass.getSourceCode()));
         file.setFinal(parsedClass.isFinal());
         file.setAbstract(parsedClass.isAbstract());
+        file.setOverallScore(-1.0);
         return file;
     }
 

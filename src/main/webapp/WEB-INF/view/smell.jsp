@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html data-ng-app>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page session="false" %>
+<html>
 <head>
-    <title>Hello Smells Angular</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="smells.js"></script>
+    <title>Upload Multiple File Request Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link href="<c:url value="/resources/static/css/mainStylesheet.css" />" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-<!-- 'Events' is bound to function in events.js -->
-<div data-ng-controller="Smell">
-    I have {{smells.length}} smells!
-
-    <ul class="smells-container">
-        <li data-ng-repeat="smell in smells">
-            {{smell.name}}
-        </li>
-    </ul>
+<div class="main-header">
+    Fresh Smell
+</div>
+<div class="container d-flex h-100">
 </div>
 </body>
 </html>
+
+
