@@ -15,4 +15,9 @@ public class ClassService extends ServiceBase implements IClassService {
     public List<ClassModel> get(String id) {
         return _dataStore.model().get(id);
     }
+
+    @Override
+    public void insert(List<ClassModel> classModels) {
+        _dataStore.model().insert(classModels);
+    }
 }

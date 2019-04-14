@@ -5,6 +5,7 @@ import org.wasps.configuration.MappingProfile;
 import org.wasps.data.SingletonUtility;
 import org.wasps.model.ClassModel;
 import org.wasps.model.ParsedClass;
+import org.wasps.service.abstracts.IClassService;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
@@ -17,6 +18,7 @@ public class MappingService implements IMappingService {
     private final MappingProfile _profile;
     private final IFileService _fileService;
     private final IParsingService _parser;
+    private final IClassService _classService;
     private List<ParsedClass> parsedClasses;
     private List<ClassModel> files;
 
@@ -24,6 +26,7 @@ public class MappingService implements IMappingService {
         _profile = SingletonUtility.getMappingProfile();
         _fileService = SingletonUtility.getFileService();
         _parser = SingletonUtility.getParser();
+        _classService = SingletonUtility.getClassService();
         files = new ArrayList<>();
         parsedClasses = new ArrayList<>();
     }
@@ -43,37 +46,29 @@ public class MappingService implements IMappingService {
             parsedClasses = _parser.parse(_fileService.getUploadDirectoryPath());
         } catch (Exception e) {
             e.printStackTrace();
-            message += "<br>Parsing operation failed";
+            message += "\nParsing operation failed";
         }
         // 3
         try {
             files.addAll(_profile.map(parsedClasses));
         } catch (Exception e) {
             e.printStackTrace();
-            message += "<br>Mapping operation failed";
+            message += "\nMapping operation failed";
         }
         // 4
         try {
             _fileService.writeFilesToJson(files);
         } catch (Exception e) {
             e.printStackTrace();
-            message += "<br>Json operation failed";
+            message += "\nJson operation failed";
         }
+        _classService.insert(files);
+
         return message;
     }
 
     @Override
     public List<ClassModel> mapFiles(List<ParsedClass> files) {
         return _profile.map(files);
-    }
-
-    @Override
-    public List<ParsedClass> getParsedClasses() {
-        return parsedClasses;
-    }
-
-    @Override
-    public List<ClassModel> getFiles() {
-        return files;
     }
 }

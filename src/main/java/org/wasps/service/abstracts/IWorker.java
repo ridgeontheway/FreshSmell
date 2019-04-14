@@ -1,5 +1,6 @@
 package org.wasps.service.abstracts;
 
+import org.wasps.service.smells.abstracts.IProjectSmellReportService;
 import org.wasps.service.smells.abstracts.ISmellerService;
 
 /*
@@ -10,4 +11,5 @@ public interface IWorker {
     IMappingService mapper();
     IFileService fileService();
     ISmellerService smellerService();
+    IProjectSmellReportService reportService();
 }

@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Upload Multiple File Request Page</title>
+    <title>Fresh Smell</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link href="<c:url value="/resources/static/css/mainStylesheet.css" />" rel="stylesheet">
@@ -24,14 +24,6 @@
                 <input class="my-button" type="submit" value="Smell">
             </form>
         </div>
-        <%--<div class="uploaded-files-area">--%>
-            <%--Files to Smell:--%>
-            <%--<% for (int i=0; i<files.size(); i+=1) %>--%>
-            <%--<tr>--%>
-                <%--<td>${files.get(i).getName()}</td>--%>
-            <%--</tr>--%>
-            <%--<% } %>--%>
-        <%--</div>--%>
     </div>
 </body>
 </html>

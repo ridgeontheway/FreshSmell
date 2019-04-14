@@ -10,6 +10,4 @@ import java.util.List;
 public interface IMappingService {
     String mapFiles(HttpServletRequest request, MultipartFile[] inputFiles);
     List<ClassModel> mapFiles(List<ParsedClass> files);
-    List<ParsedClass> getParsedClasses();
-    List<ClassModel> getFiles();
 }

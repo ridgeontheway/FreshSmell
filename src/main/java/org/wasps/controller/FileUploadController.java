@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.SingletonUtility;
-import org.wasps.model.ClassModel;
-import org.wasps.model.FileMappingResultModel;
+import org.wasps.model.ProjectSmellReport;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * Handles requests for the application file upload requests
@@ -36,19 +34,12 @@ public class FileUploadController extends BaseController {
 
     @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
     public String uploadFiles(@RequestParam("file") MultipartFile[] files, Model model) {
-        FileMappingResultModel uploadResult = new FileMappingResultModel();
+        String message = _worker.mapper().mapFiles(request, files);
+        System.out.println(message);
 
-        uploadResult.setResultMessage(_worker.mapper().mapFiles(request, files));
+        ProjectSmellReport report = _worker.reportService().generateProjectSmellReport();
+        model.addAttribute("report", report);
 
-        List<ClassModel> classes = _classes.get();
-        classes.stream().parallel().forEach(c ->
-                c.addSmellReports(_worker
-                                        .smellerService()
-                                        .performSmells(c)));
-
-        uploadResult.setUploads(classes);
-
-//        return result.getResultMessage();
         return "smell";
     }
 }

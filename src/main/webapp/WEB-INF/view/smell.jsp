@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Upload Multiple File Request Page</title>
+    <title>Fresh Smell</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link href="<c:url value="/resources/static/css/mainStylesheet.css" />" rel="stylesheet">
@@ -15,6 +15,7 @@
     Fresh Smell
 </div>
 <div class="container d-flex h-100">
+    <h1>${report.getFinalScore()}</h1>
 </div>
 </body>
 </html>

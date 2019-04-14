@@ -11,7 +11,9 @@ import org.wasps.data.repository.concretes.ModelRepository;
 import org.wasps.data.repository.concretes.ParsedRepository;
 import org.wasps.service.abstracts.*;
 import org.wasps.service.concretes.*;
+import org.wasps.service.smells.abstracts.IProjectSmellReportService;
 import org.wasps.service.smells.abstracts.ISmellerService;
+import org.wasps.service.smells.concretes.ProjectSmellReportService;
 import org.wasps.service.smells.concretes.SmellerService;
 
 public abstract class SingletonUtility {
@@ -31,6 +33,7 @@ public abstract class SingletonUtility {
 
     // Smells
     private static ISmellerService smeller = null;
+    private static IProjectSmellReportService reportService = null;
 
     // Utilities
     private static IFileUtility fileUtility = null;
@@ -79,6 +82,13 @@ public abstract class SingletonUtility {
             smeller = new SmellerService();
         }
         return smeller;
+    }
+
+    public static synchronized IProjectSmellReportService getReportService() {
+        if (reportService == null) {
+            reportService = new ProjectSmellReportService();
+        }
+        return reportService;
     }
 
     public static synchronized IParsingService getParser() {
