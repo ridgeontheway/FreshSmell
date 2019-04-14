@@ -7,6 +7,8 @@ public class ProjectSmellReport {
     private List<ClassModel> classes;
     List<String> reportMessages;
 
+    public ProjectSmellReport() {}
+
     public double getFinalScore() {
         return finalScore;
     }
@@ -29,5 +31,10 @@ public class ProjectSmellReport {
 
     public void setReportMessages(List<String> reportMessages) {
         this.reportMessages = reportMessages;
+    }
+
+    // Strings for view representation
+    public String getGetFinalScore() {
+        return String.valueOf(finalScore);
     }
 }

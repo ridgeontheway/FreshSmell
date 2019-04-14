@@ -10,10 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Class whose functionality is too "open" to other classes
-public class InappropriateIntimacySmell implements ISmeller {
+public class InappropriateIntimacySmell extends SmellerBase implements ISmeller {
 
     private final double INTIMACY_THRESHOLD = 0.5;
     private final double PUBLIC_FIELD_THRESHOLD = 0;
+
+    public InappropriateIntimacySmell(int id) {
+        super(id);
+    }
+
     @Override
     public SmellReportModel smell(ClassModel file) {
 

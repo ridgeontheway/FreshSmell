@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.SingletonUtility;
 import org.wasps.model.ProjectSmellReport;
+import org.wasps.viewmodel.ProjectSmellReportViewModel;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,7 +39,10 @@ public class FileUploadController extends BaseController {
         System.out.println(message);
 
         ProjectSmellReport report = _worker.reportService().generateProjectSmellReport();
-        model.addAttribute("report", report);
+        ProjectSmellReportViewModel viewModel = _worker.mapper().mapToViewModel(report);
+
+        model.addAttribute("report", viewModel);
+        model.addAttribute("classes", viewModel.getClasses());
 
         return "smell";
     }

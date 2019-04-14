@@ -5,4 +5,5 @@ import org.wasps.model.SmellReportModel;
 
 public interface ISmeller {
     SmellReportModel smell(ClassModel file);
+    int getId();
 }

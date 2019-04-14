@@ -23,9 +23,6 @@ public class SmellerService implements ISmellerService {
     @Override
     public List<SmellReportModel> performSmells(ClassModel file) {
         List<ISmeller> smells = new ArrayList<>(smellers.values());
-//        List<SmellReportModel> report = smells.parallelStream()
-//                .map(value -> value.smell(file)).collect(Collectors.toList());
-
         List<SmellReportModel> reports = new ArrayList<>();
 
         double numberOfPasses = 0;
@@ -54,12 +51,12 @@ public class SmellerService implements ISmellerService {
 
     // Instantiate all new smellers here directly to the map
     private void init() {
-        smellers.put("lazyClass", new LazyClassSmell());
-        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell());
-        smellers.put("godComplex", new GodComplexSmell());
-        smellers.put("featureEnvy", new FeatureEnvySmell());
-        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell());
-        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell());
+        smellers.put("lazyClass", new LazyClassSmell(1));
+        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell(2));
+        smellers.put("godComplex", new GodComplexSmell(3));
+        smellers.put("featureEnvy", new FeatureEnvySmell(4));
+        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell(5));
+        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell(6));
         // add more...
     }
 }

@@ -5,10 +5,12 @@ import org.wasps.configuration.MappingProfile;
 import org.wasps.data.SingletonUtility;
 import org.wasps.model.ClassModel;
 import org.wasps.model.ParsedClass;
+import org.wasps.model.ProjectSmellReport;
 import org.wasps.service.abstracts.IClassService;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IParsingService;
+import org.wasps.viewmodel.ProjectSmellReportViewModel;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class MappingService implements IMappingService {
     }
 
     @Override
-    public List<ClassModel> mapFiles(List<ParsedClass> files) {
-        return _profile.map(files);
+    public ProjectSmellReportViewModel mapToViewModel(ProjectSmellReport report) {
+        return _profile.map(report);
     }
 }
