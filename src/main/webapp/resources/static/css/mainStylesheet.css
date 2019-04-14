@@ -1,0 +1,35 @@
+.main-header {
+  color: #e5e5d0;
+  padding: 1rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+body {
+  background-color: #232323;
+}
+
+.main {
+  background-color: #232323;
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: 0 0 12pt 2pt #495057;
+}
+
+.upload-form {
+  color: #e5e5d0;
+  text-align: center;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=mainStylesheet.css.map */
