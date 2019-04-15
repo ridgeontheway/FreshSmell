@@ -15,16 +15,16 @@ import org.wasps.viewmodel.ProjectSmellReportViewModel;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Handles requests for the application file upload requests
+ * Handles requests for the applicMation file upload requests
  */
 @Controller
 @SessionAttributes("classmodel")
-public class FileUploadController extends BaseController {
+public class HomeController extends BaseController {
     private final HttpServletRequest request;
 
     @Autowired
-    public FileUploadController(HttpServletRequest request) {
-        super(SingletonUtility.getWorker(), SingletonUtility.getClassService());
+    public HomeController(HttpServletRequest request) {
+        super(SingletonUtility.getWorker());
         this.request = request;
     }
 

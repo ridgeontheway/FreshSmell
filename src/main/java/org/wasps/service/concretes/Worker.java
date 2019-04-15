@@ -1,6 +1,7 @@
 package org.wasps.service.concretes;
 
 import org.wasps.data.SingletonUtility;
+import org.wasps.service.abstracts.IClassService;
 import org.wasps.service.abstracts.IFileService;
 import org.wasps.service.abstracts.IMappingService;
 import org.wasps.service.abstracts.IWorker;
@@ -12,12 +13,15 @@ public class Worker implements IWorker {
     private IMappingService _mapper;
     private ISmellerService _smeller;
     private IProjectSmellReportService _reportService;
+    protected final IClassService _classService;
+
 
     public Worker() {
         _fileService = SingletonUtility.getFileService();
         _mapper = SingletonUtility.getMappingService();
         _smeller = SingletonUtility.getSmeller();
         _reportService = SingletonUtility.getReportService();
+        _classService = SingletonUtility.getClassService();
     }
 
     @Override
@@ -33,5 +37,10 @@ public class Worker implements IWorker {
 
     @Override
     public IProjectSmellReportService reportService() { return _reportService; }
+
+    @Override
+    public IClassService classService() {
+        return _classService;
+    }
 
 }

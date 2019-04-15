@@ -1,7 +1,7 @@
-package org.wasps.data.repository.concretes;
+package org.wasps.data.utility.concretes;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.wasps.data.repository.abstracts.IFileUtility;
+import org.wasps.data.utility.abstracts.IFileUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;

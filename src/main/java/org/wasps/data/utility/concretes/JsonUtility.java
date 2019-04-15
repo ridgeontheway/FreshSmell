@@ -1,9 +1,9 @@
-package org.wasps.data.repository.concretes;
+package org.wasps.data.utility.concretes;
 
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.wasps.data.SingletonUtility;
-import org.wasps.data.repository.abstracts.IJsonUtility;
+import org.wasps.data.utility.abstracts.IJsonUtility;
 import org.wasps.model.ClassModel;
 
 import java.io.*;

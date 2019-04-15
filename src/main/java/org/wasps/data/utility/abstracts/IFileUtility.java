@@ -1,4 +1,4 @@
-package org.wasps.data.repository.abstracts;
+package org.wasps.data.utility.abstracts;
 
 import org.springframework.web.multipart.MultipartFile;
 

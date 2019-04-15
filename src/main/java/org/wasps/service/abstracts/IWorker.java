@@ -12,4 +12,5 @@ public interface IWorker {
     IFileService fileService();
     ISmellerService smellerService();
     IProjectSmellReportService reportService();
+    IClassService classService();
 }
