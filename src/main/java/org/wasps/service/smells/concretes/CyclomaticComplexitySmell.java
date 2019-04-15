@@ -43,38 +43,36 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
     }
 
     private boolean CyclomaticComplexityCount(MethodModel currentMethod){
+        List<Integer> indexes = new ArrayList<>();
         List<String> sourceCode = currentMethod.getSourceCode();
         List<String> SearchingFor= Arrays.asList("if(","while(","for(","else",":","&&","||");//what we search the source code for
         boolean pass = true;
        String FilteredString=filterSourceCode(sourceCode);
         int complexitySize=1;//starts at one cause the method itself
         for(String line: SearchingFor){
-            complexitySize+= WordOccurence(FilteredString,line).size();
+
+            complexitySize+=  WordOccurence(FilteredString,line).size();
         }
 
 
         if(complexitySize>CyclomaticComplexityThreshold){
             pass =false;
         }
-
+System.out.println((currentMethod.getName() + FilteredString + complexitySize));
        return pass;
     }
 
     private String filterSourceCode(List<String> sourceCode){
         List<String> Filtering =new ArrayList();
-         //makes list<string> just one string
+
         for (String line: sourceCode) {
-            line=line.replaceAll("\\s", "");
+            line=line.replaceAll("\\s", ""); //removes all whitespace
             line = line.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");//filters single comments
             Filtering.add(line);
         }
-        String sourceLine =StringUtils.join(Filtering,"");
+        String sourceLine =StringUtils.join(Filtering,""); //makes list<string> just one string
         sourceLine = sourceLine.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");//filters multi line comments
-        //removes all white spaces
-        //sourceLine = sourceLine.replaceAll("(//[^\\n]*)","");//removes all comments
 
-
-       // sourceLine = sourceLine.replaceAll("//.*$","");
         //Filtering the list further, at this point we only have the assignments
         return sourceLine;
     }
@@ -107,24 +105,21 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
             index = textString.indexOf(word, index + wordLength);  // Slight improvement
             if (index != -1) {
 
-                if(word=="for("){ //this is to identify edge cases like for each loop
+                if(word.equals("for(")){ //this is to identify edge cases for each loop
                     int toIndex=textString.indexOf(')',index);
+                    String subStr = textString.substring(index, toIndex);
 
-                    String subStr= textString.substring(index,toIndex);
-                    if(subStr.indexOf(':')==-1){
+                    if (subStr.indexOf(':')==-1) {
                         indexes.add(index);
                     }
-
-                } else if(word=="else") {//this is to identify edge case like if else
+                } else if(word.equals("else")) {//this is to identify edge case if else
 
                     int toIndex=textString.indexOf('f',index);
                     if(toIndex!=-1){
                         String subStr = textString.substring(index, toIndex);
-                        if (subStr != "elseif") {
+                        if (!(subStr.equals("elsei"))) {
                             indexes.add(index);
                         }
-                    } else{
-                        indexes.add(index);
                     }
 
                 } else {

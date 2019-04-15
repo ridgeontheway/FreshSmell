@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletRequest;
  * Handles requests for the application file upload requests
  */
 @Controller
-public class FileUploadController extends BaseController {
+public class HomeController extends BaseController {
     private final HttpServletRequest request;
 
     @Autowired
-    public FileUploadController(HttpServletRequest request) {
+    public HomeController(HttpServletRequest request) {
         super(SingletonUtility.getWorker());
         this.request = request;
     }
