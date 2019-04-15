@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Class which does not actually do anything (ie functionality is too small to be a class)_
-public class LazyClassSmell implements ISmeller {
+public class LazyClassSmell extends SmellerBase implements ISmeller {
 
+    public  LazyClassSmell(int id){
+        super(id);
+    }
     private final int LINENUMBER_THRESHOLD = 15;
 
     @Override

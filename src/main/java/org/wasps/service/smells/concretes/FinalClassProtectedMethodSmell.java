@@ -8,8 +8,11 @@ import org.wasps.service.smells.abstracts.ISmeller;
 import java.util.List;
 
 //Final class should not contain protected methods
-public class FinalClassProtectedMethodSmell implements ISmeller {
+public class FinalClassProtectedMethodSmell extends SmellerBase implements ISmeller {
 
+    public  FinalClassProtectedMethodSmell(int id){
+        super(id);
+    }
     @Override
     public SmellReportModel smell(ClassModel file) {
         SmellReportModel reportModel;

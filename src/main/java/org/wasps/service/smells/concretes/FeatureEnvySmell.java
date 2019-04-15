@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Class which relies too much on functionality of another class (in this case it is checking for classes in another package)
-public class FeatureEnvySmell implements ISmeller {
+public class FeatureEnvySmell extends SmellerBase implements ISmeller {
 
+    public FeatureEnvySmell(int id){
+        super(id);
+    }
     private final double ENVYVALUE = 0.5;
 
     @Override

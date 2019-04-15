@@ -24,7 +24,7 @@ public class GodComplexSmellTests {
 
     @Test
     public void GodComplexSmellPass(){
-        GodComplexSmell tempSmell = new GodComplexSmell();
+        GodComplexSmell tempSmell = new GodComplexSmell(4);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class GodComplexSmellTests {
 
     @Test
     public void GodComplexSmellFail(){
-        GodComplexSmell tempSmell = new GodComplexSmell();
+        GodComplexSmell tempSmell = new GodComplexSmell(4);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

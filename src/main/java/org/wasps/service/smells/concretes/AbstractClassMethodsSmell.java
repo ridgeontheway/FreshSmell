@@ -8,7 +8,11 @@ import org.wasps.service.smells.abstracts.ISmeller;
 import java.util.List;
 
 //An abstract class should have both abstract and concrete methods
-public class AbstractClassMethodsSmell implements ISmeller {
+public class AbstractClassMethodsSmell extends SmellerBase implements ISmeller {
+
+    public AbstractClassMethodsSmell(int id){
+        super(id);
+    }
     @Override
     public SmellReportModel smell(ClassModel file) {
         if (!file.isAbstract()){

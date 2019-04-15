@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Class which has too much functionality, ie a class which does too much
-public class GodComplexSmell implements ISmeller {
+public class GodComplexSmell extends SmellerBase implements ISmeller {
+
+    public  GodComplexSmell(int id){
+        super(id);
+    }
     private final int NUMIMPORTS = 15;
 
     @Override

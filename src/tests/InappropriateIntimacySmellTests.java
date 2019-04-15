@@ -24,7 +24,7 @@ public class InappropriateIntimacySmellTests {
 
     @Test
     public void InappropriateIntimacySmellPass(){
-        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell();
+        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell(3);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class InappropriateIntimacySmellTests {
 
     @Test
     public void InappropriateIntimacySmellFail(){
-        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell();
+        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell(3);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -60,7 +60,7 @@ public class InappropriateIntimacySmellTests {
 
     @Test
     public void InappropriateIntimacySmellInterface(){
-        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell();
+        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell(3);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -78,7 +78,7 @@ public class InappropriateIntimacySmellTests {
 
     @Test
     public void InappropriateIntimacySmellUnitTest(){
-        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell();
+        InappropriateIntimacySmell tempSmell = new InappropriateIntimacySmell(3);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

@@ -7,6 +7,8 @@ import org.wasps.service.smells.abstracts.ISmeller;
 
 @Service("smellerService")
 public class TestSmeller implements ISmeller {
+
+
     @Override
     public SmellReportModel smell(ClassModel file) {
         return smellLogic(file);

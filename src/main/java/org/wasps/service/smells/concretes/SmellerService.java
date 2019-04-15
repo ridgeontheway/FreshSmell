@@ -34,12 +34,18 @@ public class SmellerService implements ISmellerService {
     // Instantiate all new smellers here directly to the map
     private void init() {
         smellers.put("test", new TestSmeller());
-        smellers.put("lazyClass", new LazyClassSmell());
-        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell());
-        smellers.put("godComplex", new GodComplexSmell());
-        smellers.put("featureEnvy", new FeatureEnvySmell());
-        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell());
-        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell());
+        smellers.put("lazyClass", new LazyClassSmell(2));
+        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell(3));
+        smellers.put("godComplex", new GodComplexSmell(4));
+        smellers.put("featureEnvy", new FeatureEnvySmell(5));
+        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell(6));
+        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell(7));
+        smellers.put("tooManyParams", new TooManyParamsSmell(8));
+        smellers.put("cyclomaticComplexity", new CyclomaticComplexitySmell(9));
+        smellers.put("dataClump", new DataClumpsSmell(10));
+        smellers.put("duplicateCode", new DuplicateCodeSmell(11));
+        smellers.put("longMethod", new LongMethodSmell(12));
+
         // add more...
     }
 }
