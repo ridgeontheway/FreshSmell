@@ -3,12 +3,14 @@ package org.wasps.data;
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.configuration.ParsingProfile;
+import org.wasps.data.repository.abstracts.IDataStore;
+import org.wasps.data.repository.concretes.DataStore;
+import org.wasps.data.repository.concretes.ModelRepository;
+import org.wasps.data.repository.concretes.ParsedRepository;
 import org.wasps.data.utility.abstracts.IFileUtility;
 import org.wasps.data.utility.abstracts.IJsonUtility;
 import org.wasps.data.utility.concretes.FileUtility;
 import org.wasps.data.utility.concretes.JsonUtility;
-import org.wasps.data.repository.concretes.ModelRepository;
-import org.wasps.data.repository.concretes.ParsedRepository;
 import org.wasps.service.abstracts.*;
 import org.wasps.service.concretes.*;
 import org.wasps.service.smells.abstracts.IProjectSmellReportService;
@@ -24,6 +26,7 @@ public abstract class SingletonUtility {
     // Repositories
     private static ParsedRepository parsedRepository = null;
     private static ModelRepository modelRepository = null;
+    private static IDataStore dataStore = null;
 
     // Services
     private static IMappingService mappingService = null;
@@ -54,6 +57,13 @@ public abstract class SingletonUtility {
             modelRepository = new ModelRepository();
         }
         return modelRepository;
+    }
+
+    public static synchronized IDataStore getDataStore() {
+        if (dataStore == null) {
+            dataStore = new DataStore();
+        }
+        return dataStore;
     }
 
     public static synchronized MappingProfile getMappingProfile() {
