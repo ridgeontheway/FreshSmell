@@ -1,5 +1,6 @@
 package org.wasps.data.utility.concretes;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.utility.abstracts.IFileUtility;
 
@@ -25,6 +26,12 @@ public class FileUtility implements IFileUtility {
             //noinspection ResultOfMethodCallIgnored
             _uploadDirectory.mkdirs();
         } else {
+            try {
+                // If directory exists, remove all files before uploading
+                FileUtils.cleanDirectory(_uploadDirectory);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println("DIR\t" + _uploadDirectory.getAbsolutePath());
         }
         return _uploadDirectory;
@@ -56,11 +63,11 @@ public class FileUtility implements IFileUtility {
                 File transferFile = createUploadFile(directory, file.getOriginalFilename());
                 file.transferTo(transferFile);
 
-//                System.out.println("Transfer File Location => " + transferFile.getAbsolutePath());
+                System.out.println("Transfer File Location => " + transferFile.getAbsolutePath());
 
                 message.append("You successfully uploaded file ");
                 message.append(file.getOriginalFilename());
-                message.append("<br />");
+//                message.append("<br />");
 
             } catch (Exception e) {
                 return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();

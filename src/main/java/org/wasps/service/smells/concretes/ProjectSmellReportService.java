@@ -28,7 +28,7 @@ public class ProjectSmellReportService extends ServiceBase implements IProjectSm
         ProjectSmellReport report = new ProjectSmellReport();
         report.setClasses(classes);
 
-        System.out.println("Classes");
+        System.out.println("\nClasses:");
         report.getClasses().forEach(System.out::println);
 
         List<String> messages = new ArrayList<>();
