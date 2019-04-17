@@ -3,21 +3,19 @@ package org.wasps.data;
 import flexjson.JSONSerializer;
 import org.wasps.configuration.MappingProfile;
 import org.wasps.configuration.ParsingProfile;
+import org.wasps.data.repository.abstracts.IDataStore;
+import org.wasps.data.repository.concretes.DataStore;
+import org.wasps.data.repository.concretes.ModelRepository;
+import org.wasps.data.repository.concretes.ParsedRepository;
 import org.wasps.data.utility.abstracts.IFileUtility;
 import org.wasps.data.utility.abstracts.IJsonUtility;
 import org.wasps.data.utility.concretes.FileUtility;
 import org.wasps.data.utility.concretes.JsonUtility;
-import org.wasps.data.repository.concretes.ModelRepository;
-import org.wasps.data.repository.concretes.ParsedRepository;
-import org.wasps.service.abstracts.IFileService;
-import org.wasps.service.abstracts.IMappingService;
-import org.wasps.service.abstracts.IParsingService;
-import org.wasps.service.abstracts.IWorker;
-import org.wasps.service.concretes.FileService;
-import org.wasps.service.concretes.MappingService;
-import org.wasps.service.concretes.ParsingService;
-import org.wasps.service.concretes.Worker;
+import org.wasps.service.abstracts.*;
+import org.wasps.service.concretes.*;
+import org.wasps.service.smells.abstracts.IProjectSmellReportService;
 import org.wasps.service.smells.abstracts.ISmellerService;
+import org.wasps.service.smells.concretes.ProjectSmellReportService;
 import org.wasps.service.smells.concretes.SmellerService;
 
 public abstract class SingletonUtility {
@@ -28,14 +26,17 @@ public abstract class SingletonUtility {
     // Repositories
     private static ParsedRepository parsedRepository = null;
     private static ModelRepository modelRepository = null;
+    private static IDataStore dataStore = null;
 
     // Services
     private static IMappingService mappingService = null;
     private static IParsingService parser = null;
     private static IFileService fileService = null;
+    private static IClassService classService = null;
 
     // Smells
     private static ISmellerService smeller = null;
+    private static IProjectSmellReportService reportService = null;
 
     // Utilities
     private static IFileUtility fileUtility = null;
@@ -56,6 +57,13 @@ public abstract class SingletonUtility {
             modelRepository = new ModelRepository();
         }
         return modelRepository;
+    }
+
+    public static synchronized IDataStore getDataStore() {
+        if (dataStore == null) {
+            dataStore = new DataStore();
+        }
+        return dataStore;
     }
 
     public static synchronized MappingProfile getMappingProfile() {
@@ -84,6 +92,13 @@ public abstract class SingletonUtility {
             smeller = new SmellerService();
         }
         return smeller;
+    }
+
+    public static synchronized IProjectSmellReportService getReportService() {
+        if (reportService == null) {
+            reportService = new ProjectSmellReportService();
+        }
+        return reportService;
     }
 
     public static synchronized IParsingService getParser() {
@@ -119,6 +134,13 @@ public abstract class SingletonUtility {
             fileService = new FileService();
         }
         return fileService;
+    }
+
+    public static synchronized IClassService getClassService() {
+        if (classService == null) {
+            classService = new ClassService();
+        }
+        return classService;
     }
 
     public static synchronized IWorker getWorker() {

@@ -58,7 +58,6 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
         if(complexitySize>CyclomaticComplexityThreshold){
             pass =false;
         }
-System.out.println((currentMethod.getName() + FilteredString + complexitySize));
        return pass;
     }
 

@@ -25,7 +25,7 @@ public class JsonUtility implements IJsonUtility {
         _path = String.format("%s/src/main/java/org/wasps/data", _directory);
     }
 
-
+    @Override
     public List<ClassModel> getFiles(String fileName) {
         if (_files.isEmpty())
             _files.addAll(getFilesFromJson(fileName));
@@ -43,7 +43,7 @@ public class JsonUtility implements IJsonUtility {
                 dir.mkdirs();
             System.out.println("\nWriting to: " + _jsonFile + "\n");
             FileWriter writer = new FileWriter(_jsonFile, false);
-                _json.deepSerialize(_files, writer);
+            _json.deepSerialize(_files, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {
@@ -70,21 +70,5 @@ public class JsonUtility implements IJsonUtility {
         }
         return files;
     }
-
-    @Override
-    public List<ClassModel> getFiles() {
-        return null;
-    }
-
-    @Override
-    public void writeFiles(List<ClassModel> files) {
-
-    }
-
-    @Override
-    public List<ClassModel> getFilesFromJson() {
-        return null;
-    }
-
 
 }
