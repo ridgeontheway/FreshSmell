@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Fresh Smell</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/mainStylesheet.css" th:href="@{/css/mainStylesheet.css}" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="main-header">
+    Fresh Smell
+</div>
+<div class="container d-flex h-100">
+    <div class="main container-fluid d-flex row justify-content-center align-self-center">
+        <form action="uploadFiles" enctype="multipart/form-data" method="post" class="upload-form">
+            <label for="file-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Select Files
+            </label>
+            <input id="file-upload" class="my-button" type="file" name="file" multiple="multiple"><br />
+            <input class="my-button" type="submit" value="Smell">
+        </form>
+    </div>
+</div>
+
+
+</body>
+
+</html>

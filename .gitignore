@@ -6,3 +6,5 @@
 .classpath
 target/
 data.json
+mvnw
+mvnw.cmd
