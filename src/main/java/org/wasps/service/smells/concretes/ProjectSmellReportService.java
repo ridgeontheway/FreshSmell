@@ -28,6 +28,9 @@ public class ProjectSmellReportService extends ServiceBase implements IProjectSm
         ProjectSmellReport report = new ProjectSmellReport();
         report.setClasses(classes);
 
+        System.out.println("Classes");
+        report.getClasses().forEach(System.out::println);
+
         List<String> messages = new ArrayList<>();
         classes.forEach(model -> messages.addAll(model.getFailureMessages()));
 
@@ -36,7 +39,7 @@ public class ProjectSmellReportService extends ServiceBase implements IProjectSm
             overallScore += model.getOverallScore();
         }
         // Final score is the average overall score of all classes rounded to two decimal places
-        overallScore = Math.round((overallScore / ((double) classes.size())) * 100) / 100;
+        overallScore = Math.round((overallScore / ((double) classes.size())) * 10000) / 100;
         report.setFinalScore(overallScore);
 
         return report;

@@ -24,10 +24,8 @@ public class FreshsmellApplication {
         SpringResourceTemplateResolver templateResolver =
                 new SpringResourceTemplateResolver();
         templateResolver.setTemplateMode("HTML");
-        // This will convert "home" to "/WEB-INF/templates/home.html"
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
-        // Template cache TTL=1h. If not set, entries would be cached until expelled by LRU
         templateResolver.setCacheTTLMs(3600000L);
 
         templateEngine = new TemplateEngine();

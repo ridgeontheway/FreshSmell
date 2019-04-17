@@ -6,7 +6,6 @@ import org.wasps.data.repository.concretes.ParsedRepository;
 import org.wasps.model.ParsedClass;
 import org.wasps.model.SmellReportModel;
 import org.wasps.service.concretes.ParsingService;
-import org.wasps.service.smells.concretes.FeatureEnvySmell;
 import org.wasps.service.smells.concretes.FinalClassProtectedMethodSmell;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class FinalClassProtectedMethodsTests {
 
     @Test
     public void FinalClassProtectedMethodTrue(){
-        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(6);
+        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -43,7 +42,7 @@ public class FinalClassProtectedMethodsTests {
 
     @Test
     public void FinalClassProtectedMethodFalse(){
-        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(6);
+        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

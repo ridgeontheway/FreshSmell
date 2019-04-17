@@ -8,10 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -144,7 +140,6 @@ public class AccuseMenu {
     }
 
 
-
     public boolean getGuessed() {
         return guessed[0] && guessed[1] && guessed[2];
     }
@@ -154,7 +149,8 @@ public class AccuseMenu {
                 {"Green", "Mustard", "Peacock", "Plum", "Scarlet", "White"};
         String[] wpns =
                 {"Candlestick", "Dagger", "Pipe", "Pistol", "Rope", "Wrench"};
-        String[] rms = {"ballroom", "billiardroom", "conservatory", "diningroom",
+        String[] rms =
+                {"ballroom", "billiardroom", "conservatory", "diningroom",
                         "hall", "kitchen", "library", "lounge", "study"};
 
         BufferedImage charTemp;
@@ -627,3 +623,4 @@ public class AccuseMenu {
 //        wpnsPanel.setOpaque(false);
 //        wpnsPanel.setSize(1000, 850);
 //    }
+

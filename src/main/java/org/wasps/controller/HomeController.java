@@ -6,16 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.SingletonUtility;
+import org.wasps.model.ProjectSmellReport;
+import org.wasps.viewmodel.ProjectSmellReportViewModel;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Handles requests for the application file upload requests
+ * Handles requests for the applicMation file upload requests
  */
 @Controller
+@SessionAttributes("classmodel")
 public class HomeController extends BaseController {
     private final HttpServletRequest request;
 
@@ -31,18 +34,16 @@ public class HomeController extends BaseController {
     }
 
     @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
-    public @ResponseBody
-    String uploadFiles(@RequestParam("file") MultipartFile[] files) {
-        return _worker.mapper().mapFiles(request, files);
-    }
+    public String uploadFiles(@RequestParam("file") MultipartFile[] files, Model model) {
+        String message = _worker.mapper().mapFiles(request, files);
+        System.out.println(message);
 
-    @RequestMapping(value = "/upload", method = RequestMethod.GET)
-    public String getUpload(Model model) {
-        return "upload";
-    }
+        ProjectSmellReport report = _worker.reportService().generateProjectSmellReport();
+        ProjectSmellReportViewModel viewModel = _worker.mapper().mapToViewModel(report);
 
-    @RequestMapping(value = "/uploadMultiple", method = RequestMethod.GET)
-    public String getUploadMultiple(Model model) {
-        return "uploadMultiple";
+        model.addAttribute("report", viewModel);
+        model.addAttribute("classes", viewModel.getClasses());
+
+        return "smell";
     }
 }

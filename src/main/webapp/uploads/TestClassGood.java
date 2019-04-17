@@ -1,4 +1,4 @@
-package org.wasps.data.testfiles;
+package org.wasps.freshsmell.data.testfiles;
 
 import java.util.List;
 

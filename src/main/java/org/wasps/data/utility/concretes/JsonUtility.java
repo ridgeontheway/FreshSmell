@@ -43,7 +43,7 @@ public class JsonUtility implements IJsonUtility {
                 dir.mkdirs();
             System.out.println("\nWriting to: " + _jsonFile + "\n");
             FileWriter writer = new FileWriter(_jsonFile, false);
-            _json.deepSerialize(_files, writer);
+                _json.deepSerialize(_files, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {

@@ -9,5 +9,4 @@ public abstract class SmellerBase {
     public int getId() {
         return id;
     }
-
 }

@@ -24,7 +24,7 @@ public class LazyClassSmellTests {
 
     @Test
     public void LazyClassSmellPass(){
-        LazyClassSmell tempSmell = new LazyClassSmell(2);
+        LazyClassSmell tempSmell = new LazyClassSmell(1);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class LazyClassSmellTests {
 
     @Test
     public void LazyClassSmellFail(){
-        LazyClassSmell tempSmell = new LazyClassSmell(2);
+        LazyClassSmell tempSmell = new LazyClassSmell(1);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -60,7 +60,7 @@ public class LazyClassSmellTests {
 
     @Test
     public void LazyClassSmellInterface(){
-        LazyClassSmell tempSmell = new LazyClassSmell(2);
+        LazyClassSmell tempSmell = new LazyClassSmell(1);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

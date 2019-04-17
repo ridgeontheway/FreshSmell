@@ -12,12 +12,13 @@ import java.util.stream.Collectors;
 //Class whose functionality is too "open" to other classes
 public class InappropriateIntimacySmell extends SmellerBase implements ISmeller {
 
-    public  InappropriateIntimacySmell(int id){
+    private final double INTIMACY_THRESHOLD = 0.5;
+    private final double PUBLIC_FIELD_THRESHOLD = 0;
+
+    public InappropriateIntimacySmell(int id) {
         super(id);
     }
 
-    private final double INTIMACY_THRESHOLD = 0.5;
-    private final double PUBLIC_FIELD_THRESHOLD = 0;
     @Override
     public SmellReportModel smell(ClassModel file) {
 
@@ -29,7 +30,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         boolean tooManyPublicFields = majorityPublicFields(file.getFields());
         boolean majorityPublicMethods = majorityPublicMethods(file.getMethods());
 
-        if (tooManyPublicFields){
+        if ((tooManyPublicFields && majorityPublicMethods) || tooManyPublicFields){
             reportModel = setReportModel(false, file);
         }
         else{

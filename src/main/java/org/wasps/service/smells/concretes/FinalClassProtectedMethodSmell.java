@@ -10,9 +10,10 @@ import java.util.List;
 //Final class should not contain protected methods
 public class FinalClassProtectedMethodSmell extends SmellerBase implements ISmeller {
 
-    public  FinalClassProtectedMethodSmell(int id){
+    public FinalClassProtectedMethodSmell(int id) {
         super(id);
     }
+
     @Override
     public SmellReportModel smell(ClassModel file) {
         SmellReportModel reportModel;
