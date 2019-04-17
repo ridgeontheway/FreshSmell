@@ -14,6 +14,7 @@ import java.util.List;
 public class FileService implements IFileService {
     private IFileUtility _fileUtility;
     private IJsonUtility _jsonUtility;
+    private final String UPLOAD_JSON_FILE = "data.json";
 
     public FileService() {
         _fileUtility = SingletonUtility.getFileUtility();
@@ -37,12 +38,12 @@ public class FileService implements IFileService {
 
     @Override
     public List<ClassModel> getFilesFromJson() {
-        return _jsonUtility.getFiles();
+        return _jsonUtility.getFiles(UPLOAD_JSON_FILE);
     }
 
     @Override
     public void writeFilesToJson(List<ClassModel> files) {
-        _jsonUtility.writeFiles(files);
+        _jsonUtility.writeFiles(files, UPLOAD_JSON_FILE);
     }
 
     @Override

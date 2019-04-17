@@ -16,6 +16,7 @@ public class SmellController extends BaseController {
 
     @RequestMapping(value = "/sourcefiles", method = RequestMethod.GET)
     public List<ParsedClass> getSourceFiles() {
-        return _worker.mapper().getParsedClasses();
+        return null;
+//        return _worker.mapper().getParsedClasses();
     }
 }

@@ -6,12 +6,19 @@ import org.wasps.model.SmellReportModel;
 import org.wasps.service.smells.abstracts.ISmeller;
 
 @Service("smellerService")
-public class TestSmeller implements ISmeller {
-
+public class TestSmeller /*extends SmellerBase*/ implements ISmeller {
+   /* public  TestSmeller(int id){
+        super(id);
+    }*/
 
     @Override
     public SmellReportModel smell(ClassModel file) {
         return smellLogic(file);
+    }
+
+    @Override
+    public int getId() {
+        return 0;
     }
 
     private SmellReportModel smellLogic(ClassModel file) {

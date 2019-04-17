@@ -23,18 +23,18 @@ public class JsonUtility implements IJsonUtility {
         _files = new ArrayList<>();
         _directory = System.getProperty("user.dir");
         _path = String.format("%s/src/main/java/org/wasps/data", _directory);
-        _jsonFile = String.format("%s/%s", _path, "data.json");
     }
 
-    @Override
-    public List<ClassModel> getFiles() {
+
+    public List<ClassModel> getFiles(String fileName) {
         if (_files.isEmpty())
-            _files.addAll(getFilesFromJson());
+            _files.addAll(getFilesFromJson(fileName));
         return _files;
     }
 
     @Override
-    public void writeFiles(List<ClassModel> files) {
+    public void writeFiles(List<ClassModel> files, String fileName) {
+        _jsonFile = String.format("%s/%s", _path, fileName);
         _files.addAll(files);
         try {
             File dir = new File(_path);
@@ -52,12 +52,12 @@ public class JsonUtility implements IJsonUtility {
     }
 
     @Override
-    public List<ClassModel> getFilesFromJson() {
+    public List<ClassModel> getFilesFromJson(String fileName) {
         List<ClassModel> files = new ArrayList<>();
         File input = new File(_path);
 
         if (!input.exists() && !_files.isEmpty()) {
-            writeFiles(_files);
+            writeFiles(_files, fileName);
         }
 
         try {
@@ -70,5 +70,21 @@ public class JsonUtility implements IJsonUtility {
         }
         return files;
     }
+
+    @Override
+    public List<ClassModel> getFiles() {
+        return null;
+    }
+
+    @Override
+    public void writeFiles(List<ClassModel> files) {
+
+    }
+
+    @Override
+    public List<ClassModel> getFilesFromJson() {
+        return null;
+    }
+
 
 }

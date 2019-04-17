@@ -19,6 +19,7 @@ public class FeatureEnvySmell extends SmellerBase implements ISmeller {
     }
     private final double ENVYVALUE = 0.5;
 
+
     @Override
     public SmellReportModel smell(ClassModel file) {
         List<MethodModel> methodModels = file.getMethods();
