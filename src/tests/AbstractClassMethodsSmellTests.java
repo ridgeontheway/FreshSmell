@@ -24,7 +24,7 @@ public class AbstractClassMethodsSmellTests {
 
     @Test
     public void AbstractClassMethodSmellTestTrue(){
-        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(1);
+        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(7);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class AbstractClassMethodsSmellTests {
 
     @Test
     public void AbstractClassMethodSmellTestFalse(){
-        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(1);
+        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(7);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -60,7 +60,7 @@ public class AbstractClassMethodsSmellTests {
 
     @Test
     public void AbstractClassMethodSmellTestFalseNonAbstract(){
-        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(1);
+        AbstractClassMethodsSmell tempSmell = new AbstractClassMethodsSmell(7);
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
