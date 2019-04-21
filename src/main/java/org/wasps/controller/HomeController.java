@@ -33,7 +33,7 @@ public class HomeController extends BaseController {
         return "home";
     }
 
-    @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST, consumes = ("multipart/*"))
+    @RequestMapping(value = "/smell", method = RequestMethod.POST, consumes = ("multipart/*"))
     public String uploadFiles(@RequestParam("file") MultipartFile[] files, Model model) {
         String message = _worker.mapper().mapFiles(request, files);
         System.out.println(message);
