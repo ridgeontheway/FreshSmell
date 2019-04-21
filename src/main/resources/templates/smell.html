@@ -33,8 +33,8 @@
             <br>
             <div class="issues">
                 <h5>Issues:</h5>
-                <th:block>
-                    <p th:text="${report.reportMessages}"></p>
+                <th:block th:each="message: ${messages}">
+                    <p th:text="${message}"></p>
                 </th:block>
             </div>
         </div>

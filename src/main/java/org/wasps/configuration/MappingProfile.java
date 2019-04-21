@@ -71,7 +71,7 @@ public class MappingProfile {
 
         viewModel.setClasses(mapClassViewModel(report.getClasses()));
         viewModel.setFinalScore(String.valueOf(report.getFinalScore()));
-        viewModel.setReportMessages(buildReportMessageString(report.getReportMessages()));
+        viewModel.setReportMessages(report.getReportMessages());
 
         return viewModel;
     }

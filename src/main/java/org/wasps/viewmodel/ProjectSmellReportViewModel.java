@@ -5,7 +5,7 @@ import java.util.List;
 public class ProjectSmellReportViewModel {
     public String finalScore;
     public List<ClassViewModel> classes;
-    public String reportMessages;
+    public List<String> reportMessages;
 
     public ProjectSmellReportViewModel() {}
 
@@ -23,9 +23,9 @@ public class ProjectSmellReportViewModel {
         this.classes = classes;
     }
 
-    public String getReportMessages() { return reportMessages; }
+    public List<String> getReportMessages() { return reportMessages; }
 
-    public void setReportMessages(String reportMessages) {
+    public void setReportMessages(List<String> reportMessages) {
         this.reportMessages = reportMessages;
     }
 

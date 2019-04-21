@@ -43,6 +43,7 @@ public class HomeController extends BaseController {
 
         model.addAttribute("report", viewModel);
         model.addAttribute("classes", viewModel.getClasses());
+        model.addAttribute("messages", viewModel.getReportMessages());
 
         return "smell";
     }
