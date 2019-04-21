@@ -24,7 +24,7 @@ public class DuplicateCodeSmellTests {
 
     @Test
     public void DuplicateCodeSmellTestTrue(){
-        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11);
+        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class DuplicateCodeSmellTests {
 
     @Test
     public void DuplicateCodeSmellTestFalse(){
-        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11);
+        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -59,7 +59,7 @@ public class DuplicateCodeSmellTests {
     }
     @Test
     public void PartialDuplicateCodeSmellTestTrue(){
-        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11);
+        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

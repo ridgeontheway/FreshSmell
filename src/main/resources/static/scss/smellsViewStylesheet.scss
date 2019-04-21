@@ -1,2 +1,11 @@
 @import "globals";
 
+.issues {
+  color: $primary-color;
+}
+
+.card {
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: 5px, solid, $primary-color;
+}

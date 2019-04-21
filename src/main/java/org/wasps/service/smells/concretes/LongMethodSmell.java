@@ -10,8 +10,8 @@ import java.util.List;
 
 public class LongMethodSmell extends SmellerBase implements ISmeller {
 
-    public  LongMethodSmell(int id){
-        super(id);
+    public  LongMethodSmell(int id, String name){
+        super(id, name);
     }
     private final int MaxMethodLength = 30;
     @Override
@@ -37,9 +37,9 @@ public class LongMethodSmell extends SmellerBase implements ISmeller {
 
     private boolean getMethodLength(MethodModel currentMethod){
         boolean pass =true;
-        List<String> sourceCode = new ArrayList();
+        List<String> sourceCode = new ArrayList<>();
         for(String line: currentMethod.getSourceCode()){
-            sourceCode.add(line.replaceAll("[\\\r\\\n]+",""));//removes empty lines
+            sourceCode.add(line.replaceAll("[\\r\\n]+",""));//removes empty lines
 
         }
         if(sourceCode.size()>=MaxMethodLength){
@@ -50,18 +50,18 @@ public class LongMethodSmell extends SmellerBase implements ISmeller {
         return pass;
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Long Method");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Long Method Smell Test");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Long Method Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Long Method");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Long Method Smell Test");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Long Method Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 }

@@ -1,5 +1,6 @@
 package org.wasps.service.concretes;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.wasps.data.SingletonUtility;
 import org.wasps.data.utility.abstracts.IFileUtility;
@@ -14,6 +15,7 @@ import java.util.List;
 public class FileService implements IFileService {
     private IFileUtility _fileUtility;
     private IJsonUtility _jsonUtility;
+    private File _directory;
     private final String UPLOAD_JSON_FILE = "data.json";
 
     public FileService() {
@@ -23,8 +25,9 @@ public class FileService implements IFileService {
 
     @Override
     public String uploadAllFiles(HttpServletRequest request, MultipartFile[] files) {
-        File directory = _fileUtility.getUploadDirectory(request);
-        return _fileUtility.uploadAllFiles(directory, files);
+        _directory = _fileUtility.getUploadDirectory(request);
+        clearUploadDirectory();
+        return _fileUtility.uploadAllFiles(_directory, files);
     }
 
     @Override
@@ -49,5 +52,14 @@ public class FileService implements IFileService {
     @Override
     public String getUploadDirectoryPath() {
         return _fileUtility.getUploadDirectoryPath();
+    }
+
+    @Override
+    public void clearUploadDirectory() {
+        try {
+            FileUtils.cleanDirectory(_directory);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

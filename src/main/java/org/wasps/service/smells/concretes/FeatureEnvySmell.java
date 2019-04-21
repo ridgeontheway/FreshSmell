@@ -16,8 +16,8 @@ public class FeatureEnvySmell extends SmellerBase implements ISmeller {
 
     private final double ENVYVALUE = 0.5;
 
-    public FeatureEnvySmell(int id) {
-        super(id);
+    public FeatureEnvySmell(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -137,18 +137,18 @@ public class FeatureEnvySmell extends SmellerBase implements ISmeller {
                 .collect(Collectors.toList());
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Feature Envy");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Feature Envy Smell Test");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Feature Envy Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Feature Envy");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Feature Envy Smell Test");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Feature Envy Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 }

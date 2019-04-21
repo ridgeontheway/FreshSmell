@@ -10,8 +10,8 @@ import java.util.List;
 //Final class should not contain protected methods
 public class FinalClassProtectedMethodSmell extends SmellerBase implements ISmeller {
 
-    public FinalClassProtectedMethodSmell(int id) {
-        super(id);
+    public FinalClassProtectedMethodSmell(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -37,18 +37,18 @@ public class FinalClassProtectedMethodSmell extends SmellerBase implements ISmel
         return containsProtectedMethods;
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("FinalClassProtectedMethod");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the FinalClassProtectedMethod smell");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the FinalClassProtectedMethod smell");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("FinalClassProtectedMethod");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the FinalClassProtectedMethod smell");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the FinalClassProtectedMethod smell");
+//        }
+//        return tempReportModel;
+//    }
 }

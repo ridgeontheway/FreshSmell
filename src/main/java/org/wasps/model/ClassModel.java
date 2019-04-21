@@ -123,6 +123,8 @@ public class ClassModel {
         this.failureMessages = failureMessages;
     }
 
+    public void addFailureMessage(String failureMessage) { this.failureMessages.add(failureMessage); }
+
     @Override
     public String toString() {
         return name;

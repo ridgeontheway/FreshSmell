@@ -10,8 +10,8 @@ import java.util.List;
 
 public class TooManyParamsSmell extends SmellerBase implements ISmeller {
 
-    public  TooManyParamsSmell(int id){
-        super(id);
+    public  TooManyParamsSmell(int id, String name){
+        super(id, name);
     }
 
 
@@ -50,18 +50,18 @@ public class TooManyParamsSmell extends SmellerBase implements ISmeller {
     }
 
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Too Many Parameters");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Too Many Parameters Smell Test");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Too Many Parameters Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Too Many Parameters");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Too Many Parameters Smell Test");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Too Many Parameters Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 }

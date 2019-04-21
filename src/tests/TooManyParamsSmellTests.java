@@ -24,7 +24,7 @@ public class TooManyParamsSmellTests {
 
     @Test
     public void TooManyParamsSmellTestTrue(){
-        TooManyParamsSmell tempSmell = new TooManyParamsSmell(8);
+        TooManyParamsSmell tempSmell = new TooManyParamsSmell(8, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class TooManyParamsSmellTests {
 
     @Test
     public void TooManyParamsSmellTestFalse(){
-        TooManyParamsSmell tempSmell = new TooManyParamsSmell(8);
+        TooManyParamsSmell tempSmell = new TooManyParamsSmell(8, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

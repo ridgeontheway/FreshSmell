@@ -14,10 +14,9 @@ import java.util.List;
 
 public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
 
-    public CyclomaticComplexitySmell(int id){
-        super(id);
+    public CyclomaticComplexitySmell(int id, String name){
+        super(id, name);
     }
-
 
     private final int CyclomaticComplexityThreshold = 20;
     @Override
@@ -62,7 +61,7 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
     }
 
     private String filterSourceCode(List<String> sourceCode){
-        List<String> Filtering =new ArrayList();
+        List<String> Filtering = new ArrayList<>();
 
         for (String line: sourceCode) {
             line=line.replaceAll("\\s", ""); //removes all whitespace
@@ -77,20 +76,20 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
     }
 
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Cyclomatic Complexity");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Cyclomatic Complexity Smell Test");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Cyclomatic Complexity Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Cyclomatic Complexity");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Cyclomatic Complexity Smell Test");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Cyclomatic Complexity Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 
 
     //duplicate code to be added to a helper class

@@ -28,15 +28,15 @@ public class SmellerService implements ISmellerService {
         double numberOfPasses = 0;
         for (ISmeller smell : smells) {
             SmellReportModel report = smell.smell(file);
-            if (report.getScore() >= PASS_THRESHOLD) {
+            if (report.getScore() == 100) {
                 numberOfPasses++;
             }
             else {
-                file.getFailureMessages().add(report.getDetails());
+                file.addFailureMessage(file.getName() + ": " + report.getScore() + " - " + report.getSmellName());
             }
             reports.add(report);
         }
-        file.setOverallScore(numberOfPasses / ((double) smells.size()));
+        file.setOverallScore(Math.round(numberOfPasses / ((double) smells.size()) * 100));
         
         return reports;
     }
@@ -51,17 +51,16 @@ public class SmellerService implements ISmellerService {
 
     // Instantiate all new smellers here directly to the map
     private void init() {
-        smellers.put("lazyClass", new LazyClassSmell(1));
-        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell(2));
-        smellers.put("godComplex", new GodComplexSmell(3));
-        smellers.put("featureEnvy", new FeatureEnvySmell(4));
-        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell(5));
-        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell(6));
-        smellers.put("tooManyParams", new TooManyParamsSmell(7));
-        smellers.put("cyclomaticComplexity", new CyclomaticComplexitySmell(8));
-        smellers.put("dataClump", new DataClumpsSmell(9));
-        smellers.put("duplicateCode", new DuplicateCodeSmell(10));
-        smellers.put("longMethod", new LongMethodSmell(11));
-        // add more...
+        smellers.put("lazyClass", new LazyClassSmell(1, "Lazy Class"));
+        smellers.put("inappropriateIntimacy", new InappropriateIntimacySmell(2, "Inappropriate Intimacy"));
+        smellers.put("godComplex", new GodComplexSmell(3, "God Complex"));
+        smellers.put("featureEnvy", new FeatureEnvySmell(4, "Feature Envy"));
+        smellers.put("finalClassProtectedMethod", new FinalClassProtectedMethodSmell(5, "Final Class Protected Method"));
+        smellers.put("abstractClassMethods", new AbstractClassMethodsSmell(6, "Abstract Class Methods"));
+        smellers.put("tooManyParams", new TooManyParamsSmell(7, "Too Many Parameters"));
+        smellers.put("cyclomaticComplexity", new CyclomaticComplexitySmell(8, "Cyclomatic Complexity"));
+        smellers.put("dataClump", new DataClumpsSmell(9, "Data Clump"));
+        smellers.put("duplicateCode", new DuplicateCodeSmell(10, "Duplicate Code"));
+        smellers.put("longMethod", new LongMethodSmell(11, "Long Method"));
     }
 }

@@ -16,22 +16,29 @@
     Fresh Smell
 </div>
 <div class="container d-flex h-100">
-<div class="row container-fluid d-flex justify-content-center align-self-center">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${report.finalScore}" />
-                    <!--<c:forEach items="${report.classes}" var="classModel">-->
-                        <!--<c:out value="${classModel.name}<br>"/>-->
-                    <!--</c:forEach>-->
-                    <th:block th:each="classModel: ${classes}">
-                        <tr th:text="${classModel.name}"/><br>
-                    </th:block>
-                <a href="#" class="btn btn-primary">View Details</a>
+    <div class="row container-fluid d-flex justify-content-center align-self-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Final Score Report:</h3>
+                    <h3 class="card-title" th:text="${report.finalScore}" />
+                    <h5 class="card-body">Classes Smelled:</h5>
+                        <th:block th:each="classModel: ${classes}">
+                            <tr th:text="${classModel.name}"/>
+                            <tr th:text="${classModel.overallScore}"></tr><br>
+                        </th:block>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="issues">
+                <h5>Issues:</h5>
+                <th:block>
+                    <p th:text="${report.reportMessages}"></p>
+                </th:block>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

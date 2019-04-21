@@ -24,7 +24,7 @@ public class LongMethodSmellTests {
 
     @Test
     public void LongMethodSmellTestTrue(){
-        LongMethodSmell tempSmell = new LongMethodSmell(12);
+        LongMethodSmell tempSmell = new LongMethodSmell(12, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class LongMethodSmellTests {
 
     @Test
     public void LongMethodSmellFalse(){
-        LongMethodSmell tempSmell = new LongMethodSmell(12);
+        LongMethodSmell tempSmell = new LongMethodSmell(12, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

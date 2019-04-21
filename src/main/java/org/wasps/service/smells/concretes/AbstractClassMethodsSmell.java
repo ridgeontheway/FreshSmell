@@ -9,8 +9,8 @@ import java.util.List;
 
 //An abstract class should have both abstract and concrete methods
 public class AbstractClassMethodsSmell extends SmellerBase implements ISmeller {
-    public AbstractClassMethodsSmell(int id) {
-        super(id);
+    public AbstractClassMethodsSmell(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class AbstractClassMethodsSmell extends SmellerBase implements ISmeller {
 
     private boolean containsAbstractMethods(List<MethodModel> methodModelList){
         boolean containsAbstractMethods = false;
-        int numAbstractMethods = methodModelList.stream().filter(methodModel -> methodModel.isAbstract()).toArray().length;
+        int numAbstractMethods = methodModelList.stream().filter(MethodModel::isAbstract).toArray().length;
 
         if (numAbstractMethods > 0){
             containsAbstractMethods = true;
@@ -50,18 +50,19 @@ public class AbstractClassMethodsSmell extends SmellerBase implements ISmeller {
         return containsConcreteMethods;
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("AbstractClassMethod");
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("AbstractClassMethod");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the AbstractClassMethod smell");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the AbstractClassMethod smell");
+//        }
+//        return tempReportModel;
+//    }
 
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the AbstractClassMethod smell");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the AbstractClassMethod smell");
-        }
-        return tempReportModel;
-    }
 }

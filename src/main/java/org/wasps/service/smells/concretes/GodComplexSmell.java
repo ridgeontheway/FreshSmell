@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class GodComplexSmell extends SmellerBase implements ISmeller {
     private final int NUMIMPORTS = 15;
 
-    public GodComplexSmell(int id) {
-        super(id);
+    public GodComplexSmell(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -30,22 +30,21 @@ public class GodComplexSmell extends SmellerBase implements ISmeller {
         return reportModel;
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("God Complex");
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("God Complex");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the God Complex Smell Test");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the God Complex Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the God Complex Smell Test");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the God Complex Smell Test");
-        }
-        return tempReportModel;
-    }
-
-    //todo filter out the standard imports, we need to see if it is using too many java imports
     private List<String> filterFileImports(List<String> fileImports){
         CharSequence javaLangImports = "java.";
         CharSequence jUnitImports = "junit";

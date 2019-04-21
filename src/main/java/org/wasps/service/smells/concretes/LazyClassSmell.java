@@ -16,8 +16,8 @@ public class LazyClassSmell extends SmellerBase implements ISmeller {
 
     private final int LINENUMBER_THRESHOLD = 15;
 
-    public LazyClassSmell(int id) {
-        super(id);
+    public LazyClassSmell(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -100,18 +100,18 @@ public class LazyClassSmell extends SmellerBase implements ISmeller {
         return isSmallClass;
     }
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Lazy Class");
-
-        if (pass){
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed Lazy Class");
-        }
-        else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed Lazy Class");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Lazy Class");
+//
+//        if (pass){
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed Lazy Class");
+//        }
+//        else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed Lazy Class");
+//        }
+//        return tempReportModel;
+//    }
 }

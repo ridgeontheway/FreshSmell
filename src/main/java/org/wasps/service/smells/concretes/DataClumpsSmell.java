@@ -13,8 +13,8 @@ import java.util.List;
 
 public class DataClumpsSmell extends SmellerBase implements ISmeller {
 
-    public DataClumpsSmell(int id){
-        super(id);
+    public DataClumpsSmell(int id, String name){
+        super(id, name);
     }
     private final int variableThreshold = 10;
 
@@ -70,7 +70,7 @@ public class DataClumpsSmell extends SmellerBase implements ISmeller {
 
     private String filterSourceCode(List<String> sourceCode) {
 
-        List<String> Filtering =new ArrayList();
+        List<String> Filtering = new ArrayList<>();
 
         for (String line: sourceCode) {
             line = line.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");//filters single comments
@@ -85,19 +85,19 @@ public class DataClumpsSmell extends SmellerBase implements ISmeller {
     }
 
 
-    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Data Clump");
-
-        if (pass) {
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Data Clump Smell Test");
-        } else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Data Clump Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Data Clump");
+//
+//        if (pass) {
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Data Clump Smell Test");
+//        } else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Data Clump Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 
     //duplicate code to be added to a helper class
     public List<Integer> VariableOccurence(String textString, String word) {

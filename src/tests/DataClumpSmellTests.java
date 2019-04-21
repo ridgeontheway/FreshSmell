@@ -24,7 +24,7 @@ public class DataClumpSmellTests {
 
     @Test
     public void DataClumpSmellTestTrue(){
-        DataClumpsSmell tempSmell = new DataClumpsSmell(10);
+        DataClumpsSmell tempSmell = new DataClumpsSmell(10, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class DataClumpSmellTests {
 
     @Test
     public void DataClumpSmellTestFalse(){
-        DataClumpsSmell tempSmell = new DataClumpsSmell(10);
+        DataClumpsSmell tempSmell = new DataClumpsSmell(10, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

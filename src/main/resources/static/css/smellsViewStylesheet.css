@@ -16,4 +16,14 @@ body {
   box-shadow: 0 0 12pt 2pt #495057;
 }
 
+.issues {
+  color: #e5e5d0;
+}
+
+.card {
+  background-color: #232323;
+  color: #e5e5d0;
+  border: 5px, solid, #e5e5d0;
+}
+
 /*# sourceMappingURL=smellsViewStylesheet.css.map */

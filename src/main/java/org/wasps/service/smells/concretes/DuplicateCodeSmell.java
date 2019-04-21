@@ -11,8 +11,8 @@ import java.util.List;
 
 public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
 
-    public DuplicateCodeSmell(int id){
-        super(id);
+    public DuplicateCodeSmell(int id, String name){
+        super(id, name);
     }
     @Override
     public SmellReportModel smell(ClassModel file) {
@@ -74,19 +74,19 @@ public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
         //Filtering the list further, at this point we only have the assignments
         return sourceLine;
     }
-    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
-        SmellReportModel tempReportModel = new SmellReportModel();
-        tempReportModel.setSmellName("Duplicate Code");
-
-        if (pass) {
-            tempReportModel.setScore(100);
-            tempReportModel.setDetails("Class: " + file.getName() + " passed the Duplicate Code Smell Test");
-        } else {
-            tempReportModel.setScore(0);
-            tempReportModel.setDetails("Class: " + file.getName() + " failed the Duplicate Code Smell Test");
-        }
-        return tempReportModel;
-    }
+//    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
+//        SmellReportModel tempReportModel = new SmellReportModel();
+//        tempReportModel.setSmellName("Duplicate Code");
+//
+//        if (pass) {
+//            tempReportModel.setScore(100);
+//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Duplicate Code Smell Test");
+//        } else {
+//            tempReportModel.setScore(0);
+//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Duplicate Code Smell Test");
+//        }
+//        return tempReportModel;
+//    }
 
 
 }

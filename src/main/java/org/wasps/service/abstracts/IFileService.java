@@ -14,4 +14,5 @@ public interface IFileService {
     List<ClassModel> getFilesFromJson();
     void writeFilesToJson(List<ClassModel> files);
     String getUploadDirectoryPath();
+    void clearUploadDirectory();
 }

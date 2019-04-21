@@ -24,7 +24,7 @@ public class FeatureEnvySmellTests {
 
     @Test
     public void FeatureEnvyTrue(){
-        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1);
+        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class FeatureEnvySmellTests {
 
     @Test
     public void FeatureEnvyFalse(){
-        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1);
+        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -60,7 +60,7 @@ public class FeatureEnvySmellTests {
 
     @Test
     public void FeatureEnvyStaticTrue(){
-        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1);
+        FeatureEnvySmell tempSmell = new FeatureEnvySmell(1, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

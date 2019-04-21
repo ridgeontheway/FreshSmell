@@ -24,7 +24,7 @@ public class FinalClassProtectedMethodsTests {
 
     @Test
     public void FinalClassProtectedMethodTrue(){
-        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1);
+        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class FinalClassProtectedMethodsTests {
 
     @Test
     public void FinalClassProtectedMethodFalse(){
-        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1);
+        FinalClassProtectedMethodSmell tempSmell = new FinalClassProtectedMethodSmell(1, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

@@ -36,7 +36,7 @@ public class MappingProfile {
         file.setAbstract(parsedClass.isAbstract());
         file.setOverallScore(-1.0);
 
-        System.out.println("Mapped file: " + parsedClass.getName());
+//        System.out.println("Mapped file: " + parsedClass.getName());
 
         return file;
     }
@@ -71,7 +71,7 @@ public class MappingProfile {
 
         viewModel.setClasses(mapClassViewModel(report.getClasses()));
         viewModel.setFinalScore(String.valueOf(report.getFinalScore()));
-        viewModel.setReportMessages(report.getReportMessages());
+        viewModel.setReportMessages(buildReportMessageString(report.getReportMessages()));
 
         return viewModel;
     }
@@ -137,5 +137,17 @@ public class MappingProfile {
             viewModels.add(mapMethodViewModel(model));
         }
         return viewModels;
+    }
+
+    public String buildReportMessageString(List<String> messages) {
+        StringBuilder sb = new StringBuilder();
+//        messages.forEach(sb::append);
+
+        for (String message : messages) {
+            sb.append(message);
+            sb.append("<br>");
+        }
+
+        return sb.toString();
     }
 }

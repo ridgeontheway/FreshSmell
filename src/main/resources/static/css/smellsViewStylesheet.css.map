@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../scss/globals.scss"],"names":[],"mappings":"AAGA;EACE,OAJc;EAKd;EACA;EACA;;;AAGF;EACE,kBAVgB;;;AAalB;EACE,kBAdgB;EAehB;EACA;EACA","file":"smellsViewStylesheet.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/globals.scss","../scss/smellsViewStylesheet.scss"],"names":[],"mappings":"AAGA;EACE,OAJc;EAKd;EACA;EACA;;;AAGF;EACE,kBAVgB;;;AAalB;EACE,kBAdgB;EAehB;EACA;EACA;;;AChBF;EACE,ODHc;;;ACMhB;EACE,kBDNgB;ECOhB,ODRc;ECSd","file":"smellsViewStylesheet.css"}

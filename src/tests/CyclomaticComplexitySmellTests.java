@@ -24,7 +24,7 @@ public class CyclomaticComplexitySmellTests {
 
     @Test
     public void ComplexClassMethodSmellTestTrue(){
-        CyclomaticComplexitySmell tempSmell = new CyclomaticComplexitySmell(9);
+        CyclomaticComplexitySmell tempSmell = new CyclomaticComplexitySmell(9, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 
@@ -42,7 +42,7 @@ public class CyclomaticComplexitySmellTests {
 
     @Test
     public void ComplexClassMethodSmellTestFalse(){
-        CyclomaticComplexitySmell tempSmell = new  CyclomaticComplexitySmell(9);
+        CyclomaticComplexitySmell tempSmell = new  CyclomaticComplexitySmell(9, "");
         ParsingService tempService = new ParsingService();
         MappingProfile tempMappingProfile = new MappingProfile();
 

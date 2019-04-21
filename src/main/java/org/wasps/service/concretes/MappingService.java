@@ -57,6 +57,10 @@ public class MappingService implements IMappingService {
             e.printStackTrace();
             message += "\nMapping operation failed";
         }
+
+        // Now that we have the files in the program, clear uploads
+        _fileService.clearUploadDirectory();
+
         // 4
         try {
             _fileService.writeFilesToJson(files);
