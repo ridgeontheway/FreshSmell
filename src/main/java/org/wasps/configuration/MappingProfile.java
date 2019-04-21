@@ -138,16 +138,4 @@ public class MappingProfile {
         }
         return viewModels;
     }
-
-    public String buildReportMessageString(List<String> messages) {
-        StringBuilder sb = new StringBuilder();
-//        messages.forEach(sb::append);
-
-        for (String message : messages) {
-            sb.append(message);
-            sb.append("<br>");
-        }
-
-        return sb.toString();
-    }
 }

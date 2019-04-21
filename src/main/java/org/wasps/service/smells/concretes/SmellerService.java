@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SmellerService implements ISmellerService {
-    private final int PASS_THRESHOLD = 50;
     private final Map<String, ISmeller> smellers;
 
     public SmellerService() {
