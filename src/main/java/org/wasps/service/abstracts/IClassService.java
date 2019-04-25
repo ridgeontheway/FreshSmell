@@ -8,4 +8,5 @@ public interface IClassService {
     List<ClassModel> get();
     List<ClassModel> get(String id);
     void insert(List<ClassModel> classModels);
+    void delete();
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface IParsingService {
     List<ParsedClass> get();
     List<ParsedClass> parse(String pathName) throws Exception;
+    void delete();
 }

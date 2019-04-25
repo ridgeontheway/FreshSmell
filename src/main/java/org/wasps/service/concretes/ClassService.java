@@ -20,4 +20,7 @@ public class ClassService extends ServiceBase implements IClassService {
     public void insert(List<ClassModel> classModels) {
         _dataStore.model().insert(classModels);
     }
+
+    @Override
+    public void delete() { _dataStore.model().delete(); }
 }

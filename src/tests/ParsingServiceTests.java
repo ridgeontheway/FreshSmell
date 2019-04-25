@@ -37,21 +37,6 @@ public class ParsingServiceTests {
     }
 
     @Test
-    public void ParsedServiceSingleUseCheck(){
-        ParsingService tempService = new ParsingService();
-        Boolean singleUseCheckTriggered = false;
-
-        try{
-            files = tempService.parse("src/tests/test_data");
-            tempService.parse("src/tests/test_data");
-        }
-        catch (Exception e){
-            singleUseCheckTriggered = true;
-        }
-        Assert.assertEquals(true, singleUseCheckTriggered);
-    }
-
-    @Test
     public void ParsedServiceMethodLineCheck(){
         ParsingService tempParsingService = new ParsingService();
         int methodLineLength = 0;

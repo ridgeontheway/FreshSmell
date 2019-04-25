@@ -27,6 +27,8 @@ public abstract class Repository<T> implements IRepository<T> {
         map.get(file.toString()).remove(file);
     }
 
+    public void delete() { map.clear(); }
+
     public List<T> get() {
         List<T> files = new ArrayList<>();
         map.values().forEach(files::addAll);
