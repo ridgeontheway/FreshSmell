@@ -1,14 +1,15 @@
 # FreshSmell
 freshsmell.netsoc.com
+
 A web-based code-smell analyzer for java files
 
 Getting Started (user):
 1. Access at freshsmell.netsoc.com
 	- Only upload of files is supported, though you can upload multiple at a time
 2. If local access needed:
-	i. Ensure Tomcat and Maven are installed
-	ii. Mark data/testfiles/ as excluded from compilation
-	iii. Run as Spring Boot configuration from FreshsmellApplication.java
+	- Ensure Tomcat and Maven are installed
+	- Mark data/testfiles/ as excluded from compilation
+	- Run as Spring Boot configuration from FreshsmellApplication.java
 3. Non-web testing also available through LocalApplicationTest.java
 
 
