@@ -79,7 +79,7 @@ public class FileUtility implements IFileUtility {
 
     @Override
     public File getUploadedFileByNameAndType(String queryName) {
-        File files[] = _uploadDirectory.listFiles((dir, name) -> name.equalsIgnoreCase(queryName));
+        File[] files = _uploadDirectory.listFiles((dir, name) -> name.equalsIgnoreCase(queryName));
 
         if (files == null)
             return null;
@@ -89,7 +89,7 @@ public class FileUtility implements IFileUtility {
 
     @Override
     public List<File> getUploadedFilesByType(String queryType) {
-        File files[] = _uploadDirectory.listFiles((dir, name) -> name.endsWith(queryType));
+        File[] files = _uploadDirectory.listFiles((dir, name) -> name.endsWith(queryType));
 
         if (files == null)
             return null;
@@ -99,7 +99,7 @@ public class FileUtility implements IFileUtility {
 
     @Override
     public List<File> getUploadedFiles() {
-        File files[] = _uploadDirectory.listFiles();
+        File[] files = _uploadDirectory.listFiles();
 
         if (files == null)
             return null;

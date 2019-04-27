@@ -30,7 +30,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         boolean tooManyPublicFields = majorityPublicFields(file.getFields());
         boolean majorityPublicMethods = majorityPublicMethods(file.getMethods());
 
-        if ((tooManyPublicFields && majorityPublicMethods) || tooManyPublicFields){
+        if (tooManyPublicFields){
             reportModel = setReportModel(false, file);
         }
         else{

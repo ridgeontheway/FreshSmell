@@ -51,7 +51,26 @@ public class RandomDuplicateCode1 {
         while(index != -1){
             index = textString.indexOf(word, index + wordLength);  // Slight improvement
             if (index != -1) {
-                indexes.add(index);
+
+                if(word=="for("){
+                    int toIndex=textString.indexOf(')',index);
+                    String subStr= textString.substring(index,toIndex);
+                    if(subStr.indexOf(':',index)==-1){
+                        indexes.add(index);
+                    }else{
+
+                    }
+                }
+                if(word=="else"){
+                    int toIndex=textString.indexOf('f',index);
+                    String subStr= textString.substring(index,toIndex);
+                    if(subStr=="elseif"){
+
+                    }else{indexes.add(index);}
+
+                }else{
+                    indexes.add(index);
+                }
             }
             wordLength = word.length();
         }
