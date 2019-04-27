@@ -1,5 +1,7 @@
 # FreshSmell
-freshsmell.netsoc.com
+http://freshsmell.netsoc.com
+
+Alternate: http://alt.freshsmell.netsoc.com/
 
 A web-based code-smell analyzer for java files
 
