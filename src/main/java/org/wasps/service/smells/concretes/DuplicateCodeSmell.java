@@ -42,19 +42,18 @@ public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
     private List<Integer> DuplicateCheck(int index,List<MethodModel> methodModels){
         MethodModel currentMethod = methodModels.get(index);
         List<String> sourceCode = currentMethod.getSourceCode();
-        String sourceLine = filterSourceCode(sourceCode);
+        String sourceLine = filter(sourceCode);
         List<Integer> indexes = new ArrayList<>();
 
         for (int i=0;i<methodModels.size();i++){
 
 
-            if(filterSourceCode(methodModels.get(i).getSourceCode())=="" || sourceLine==""){
+            if(filter(methodModels.get(i).getSourceCode())=="" || sourceLine==""){
                 //any empty methods
             }
             else if(i!=index) {
 
-              if(sourceLine.compareTo(filterSourceCode(methodModels.get(i).getSourceCode()))==0 ||
-                      filterSourceCode(methodModels.get(i).getSourceCode()).indexOf(sourceLine)>=0){
+              if(sourceLine.compareTo(filter(methodModels.get(i).getSourceCode()))==0){
                   indexes.add(i);
               }
             }
@@ -65,14 +64,25 @@ public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
         return indexes;
     }
 
-    private String filterSourceCode(List<String> sourceCode){
+    private String filter(List<String> sourceCode){
 
-        String sourceLine = StringUtils.join(sourceCode,""); //makes list<string> just one string
-        sourceLine= sourceLine.replaceAll("\\s", "");//removes all white spaces
-        sourceLine = sourceLine.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/", "");//removes all comments
+        List<String> Filter = new ArrayList<>();
 
+        for (String sourceLine: sourceCode) {
+            sourceLine=sourceLine.replaceAll("\\s", "");
+            sourceLine = sourceLine.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");
+            Filter.add(sourceLine);
+        }
+        String Line =StringUtils.join(Filter,""); //makes list<string> just one string
+        Line = Line.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");//filters multi line comments
+        int indexOfLast =Line.lastIndexOf("return");
+        if(indexOfLast!=-1){
+        Line = Line.substring(0, indexOfLast);
+        }
         //Filtering the list further, at this point we only have the assignments
-        return sourceLine;
+        return Line;
+
+
     }
 //    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
 //        SmellReportModel tempReportModel = new SmellReportModel();

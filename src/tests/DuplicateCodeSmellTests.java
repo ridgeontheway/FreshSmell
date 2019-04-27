@@ -57,21 +57,5 @@ public class DuplicateCodeSmellTests {
         tempModel = tempSmell.smell(tempMappingProfile.map(repo.get("RandomDuplicateCode1")).get(0));
         Assert.assertEquals(0, (int) tempModel.getScore());
     }
-    @Test
-    public void PartialDuplicateCodeSmellTestTrue(){
-        DuplicateCodeSmell tempSmell = new  DuplicateCodeSmell(11, "");
-        ParsingService tempService = new ParsingService();
-        MappingProfile tempMappingProfile = new MappingProfile();
 
-        try{
-            files = tempService.parse("src/tests/test_data");
-            repo.insert(files);
-        }
-        catch (Exception e){
-            Assert.fail(e.toString());
-        }
-
-        tempModel = tempSmell.smell(tempMappingProfile.map(repo.get("RandomDuplicateCode2")).get(0));
-        Assert.assertEquals(0, (int) tempModel.getScore());
-    }
 }

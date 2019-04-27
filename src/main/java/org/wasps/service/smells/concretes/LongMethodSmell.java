@@ -40,7 +40,6 @@ public class LongMethodSmell extends SmellerBase implements ISmeller {
         List<String> sourceCode = new ArrayList<>();
         for(String line: currentMethod.getSourceCode()){
             sourceCode.add(line.replaceAll("[\\r\\n]+",""));//removes empty lines
-
         }
         if(sourceCode.size()>=MaxMethodLength){
             pass =false;
