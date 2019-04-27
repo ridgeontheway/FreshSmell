@@ -32,7 +32,7 @@ public class FileUtility implements IFileUtility {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("DIR\t" + _uploadDirectory.getAbsolutePath());
+            System.out.println("Directory:\t" + _uploadDirectory.getAbsolutePath());
         }
         return _uploadDirectory;
     }
@@ -67,7 +67,6 @@ public class FileUtility implements IFileUtility {
 
                 message.append("You successfully uploaded file ");
                 message.append(file.getOriginalFilename());
-//                message.append("<br />");
 
             } catch (Exception e) {
                 return "You failed to upload " + file.getOriginalFilename() + " => " + e.getMessage();
