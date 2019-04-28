@@ -30,7 +30,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         boolean tooManyPublicFields = majorityPublicFields(file.getFields());
         boolean majorityPublicMethods = majorityPublicMethods(file.getMethods());
 
-        if (tooManyPublicFields){
+        if (tooManyPublicFields || majorityPublicMethods){
             reportModel = setReportModel(false, file);
         }
         else{
@@ -44,7 +44,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         List<String> filteredReturnTypeList = methodModelList.stream().map(MethodModel::getReturnType).collect(Collectors.toList());
         int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.equalsIgnoreCase("public")).toArray().length;
 
-        if (methodModelList.size() == 0 || numPublicFields/methodModelList.size() > INTIMACY_THRESHOLD){
+        if (methodModelList.size() > 0 && numPublicFields/methodModelList.size() > INTIMACY_THRESHOLD){
             majorityPublicMethods = true;
         }
         return majorityPublicMethods;
