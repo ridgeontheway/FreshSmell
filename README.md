@@ -10,8 +10,11 @@ Getting Started (user):
 	- Only upload of files is supported, though you can upload multiple at a time
 2. If local access needed:
 	- Ensure Tomcat and Maven are installed
-	- Mark data/testfiles/ as excluded from compilation
-	- Run as Spring Boot configuration from FreshsmellApplication.java
+	- If using intelliJ please acess the edit configurations screen, which is shown below:
+	<img align="center" width="250" height="250" src="/README_Images/editConfiguration.png">
+	- At this point create a new tomcat server, with the following settings applied:
+	<img align="center" src="/README_Images/deploymentEditScreen.png">
+	<img align="center" src="/README_Images/serverEditScreen.png">
 3. Non-web testing also available through LocalApplicationTest.java
 
 
