@@ -48,19 +48,4 @@ public class LongMethodSmell extends SmellerBase implements ISmeller {
 
         return pass;
     }
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Long Method");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Long Method Smell Test");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Long Method Smell Test");
-//        }
-//        return tempReportModel;
-//    }
 }

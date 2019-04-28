@@ -76,22 +76,6 @@ public class CyclomaticComplexitySmell extends SmellerBase implements ISmeller {
     }
 
 
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Cyclomatic Complexity");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Cyclomatic Complexity Smell Test");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Cyclomatic Complexity Smell Test");
-//        }
-//        return tempReportModel;
-//    }
-
-
     //duplicate code to be added to a helper class
     public List<Integer> WordOccurence(String textString, String word) {
         List<Integer> indexes = new ArrayList<>();

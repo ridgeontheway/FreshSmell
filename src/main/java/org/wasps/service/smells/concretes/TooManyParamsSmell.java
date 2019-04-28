@@ -48,20 +48,4 @@ public class TooManyParamsSmell extends SmellerBase implements ISmeller {
 
         return notBloat;
     }
-
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Too Many Parameters");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Too Many Parameters Smell Test");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Too Many Parameters Smell Test");
-//        }
-//        return tempReportModel;
-//    }
 }

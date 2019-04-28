@@ -30,21 +30,6 @@ public class GodComplexSmell extends SmellerBase implements ISmeller {
         return reportModel;
     }
 
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("God Complex");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the God Complex Smell Test");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the God Complex Smell Test");
-//        }
-//        return tempReportModel;
-//    }
-
     private List<String> filterFileImports(List<String> fileImports){
         CharSequence javaLangImports = "java.";
         CharSequence jUnitImports = "junit";

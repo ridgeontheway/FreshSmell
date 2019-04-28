@@ -49,20 +49,4 @@ public class AbstractClassMethodsSmell extends SmellerBase implements ISmeller {
         }
         return containsConcreteMethods;
     }
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("AbstractClassMethod");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the AbstractClassMethod smell");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the AbstractClassMethod smell");
-//        }
-//        return tempReportModel;
-//    }
-
 }

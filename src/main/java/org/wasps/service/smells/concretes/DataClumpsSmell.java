@@ -84,21 +84,6 @@ public class DataClumpsSmell extends SmellerBase implements ISmeller {
         return sourceLine;
     }
 
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Data Clump");
-//
-//        if (pass) {
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Data Clump Smell Test");
-//        } else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Data Clump Smell Test");
-//        }
-//        return tempReportModel;
-//    }
-
     //duplicate code to be added to a helper class
     public List<Integer> VariableOccurence(String textString, String word) {
         List<Integer> indexes = new ArrayList<>();

@@ -136,19 +136,4 @@ public class FeatureEnvySmell extends SmellerBase implements ISmeller {
                 .filter(value -> !value.contains(openCurly) && !value.contains(closeCurly))
                 .collect(Collectors.toList());
     }
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Feature Envy");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Feature Envy Smell Test");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Feature Envy Smell Test");
-//        }
-//        return tempReportModel;
-//    }
 }

@@ -84,19 +84,4 @@ public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
 
 
     }
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file) {
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Duplicate Code");
-//
-//        if (pass) {
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Duplicate Code Smell Test");
-//        } else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Duplicate Code Smell Test");
-//        }
-//        return tempReportModel;
-//    }
-
-
 }

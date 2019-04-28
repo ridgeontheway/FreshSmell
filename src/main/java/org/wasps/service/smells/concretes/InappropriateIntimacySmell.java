@@ -71,21 +71,6 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         return filteredList;
     }
 
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Inappropriate Intimacy");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Inappropriate Intimacy");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Inappropriate Intimacy");
-//        }
-//        return tempReportModel;
-//    }
-
     private boolean isUnitTestClass(ClassModel file){
         boolean isUnitTestClass = false;
         CharSequence jUnitImports = "junit";

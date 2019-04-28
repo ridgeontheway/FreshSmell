@@ -36,19 +36,4 @@ public class FinalClassProtectedMethodSmell extends SmellerBase implements ISmel
         }
         return containsProtectedMethods;
     }
-
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("FinalClassProtectedMethod");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the FinalClassProtectedMethod smell");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the FinalClassProtectedMethod smell");
-//        }
-//        return tempReportModel;
-//    }
 }
