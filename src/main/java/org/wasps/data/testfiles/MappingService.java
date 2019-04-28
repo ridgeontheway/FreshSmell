@@ -41,10 +41,6 @@ public class MappingService implements IMappingService {
     4. Write the completed ClassModel objects to a local json file
      */
     public String mapFiles(HttpServletRequest request, MultipartFile[] inputFiles) {
-        // Initialize before uploading and writing
-        files.clear();
-        _classService.delete();
-        _parser.delete();
         // 1
         String message = _fileService.uploadAllFiles(request, inputFiles);
         // 2
@@ -61,10 +57,6 @@ public class MappingService implements IMappingService {
             e.printStackTrace();
             message += "\nMapping operation failed";
         }
-
-        // Now that we have the files in the program, clear uploads
-        _fileService.clearUploadDirectory();
-
         // 4
         try {
             _fileService.writeFilesToJson(files);

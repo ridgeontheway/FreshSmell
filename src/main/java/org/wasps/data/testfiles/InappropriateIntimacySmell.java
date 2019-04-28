@@ -15,8 +15,8 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
     private final double INTIMACY_THRESHOLD = 0.5;
     private final double PUBLIC_FIELD_THRESHOLD = 0;
 
-    public InappropriateIntimacySmell(int id, String name) {
-        super(id, name);
+    public InappropriateIntimacySmell(int id) {
+        super(id);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         boolean tooManyPublicFields = majorityPublicFields(file.getFields());
         boolean majorityPublicMethods = majorityPublicMethods(file.getMethods());
 
-        if (tooManyPublicFields){
+        if ((tooManyPublicFields && majorityPublicMethods) || tooManyPublicFields){
             reportModel = setReportModel(false, file);
         }
         else{
@@ -44,7 +44,7 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         List<String> filteredReturnTypeList = methodModelList.stream().map(MethodModel::getReturnType).collect(Collectors.toList());
         int numPublicFields = filteredReturnTypeList.stream().filter(v -> v.equalsIgnoreCase("public")).toArray().length;
 
-        if (methodModelList.size() == 0 || numPublicFields/methodModelList.size() > INTIMACY_THRESHOLD){
+        if (numPublicFields/methodModelList.size() > INTIMACY_THRESHOLD){
             majorityPublicMethods = true;
         }
         return majorityPublicMethods;
@@ -71,20 +71,20 @@ public class InappropriateIntimacySmell extends SmellerBase implements ISmeller 
         return filteredList;
     }
 
-//    private SmellReportModel setReportModel(boolean pass, ClassModel file){
-//        SmellReportModel tempReportModel = new SmellReportModel();
-//        tempReportModel.setSmellName("Inappropriate Intimacy");
-//
-//        if (pass){
-//            tempReportModel.setScore(100);
-//            tempReportModel.setDetails("Class: " + file.getName() + " passed the Inappropriate Intimacy");
-//        }
-//        else {
-//            tempReportModel.setScore(0);
-//            tempReportModel.setDetails("Class: " + file.getName() + " failed the Inappropriate Intimacy");
-//        }
-//        return tempReportModel;
-//    }
+    private SmellReportModel setReportModel(boolean pass, ClassModel file){
+        SmellReportModel tempReportModel = new SmellReportModel();
+        tempReportModel.setSmellName("Inappropriate Intimacy");
+
+        if (pass){
+            tempReportModel.setScore(100);
+            tempReportModel.setDetails("Class: " + file.getName() + " passed the Inappropriate Intimacy");
+        }
+        else {
+            tempReportModel.setScore(0);
+            tempReportModel.setDetails("Class: " + file.getName() + " failed the Inappropriate Intimacy");
+        }
+        return tempReportModel;
+    }
 
     private boolean isUnitTestClass(ClassModel file){
         boolean isUnitTestClass = false;
