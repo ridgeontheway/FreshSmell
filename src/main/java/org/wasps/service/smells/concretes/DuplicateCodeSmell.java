@@ -75,10 +75,7 @@ public class DuplicateCodeSmell extends SmellerBase implements ISmeller {
         }
         String Line =StringUtils.join(Filter,""); //makes list<string> just one string
         Line = Line.replaceAll("//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/","");//filters multi line comments
-        int indexOfLast =Line.lastIndexOf("return");
-        if(indexOfLast!=-1){
-        Line = Line.substring(0, indexOfLast);
-        }
+
         //Filtering the list further, at this point we only have the assignments
         return Line;
 
