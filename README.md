@@ -1,12 +1,9 @@
 # FreshSmell
-http://freshsmell.netsoc.com
-
-Alternate: http://alt.freshsmell.netsoc.com/
-
 A web-based code-smell analyzer for java files
 
 Getting Started (user):
-1. Access at freshsmell.netsoc.com
+1. Run on local machine:
+	- Using JDK 11, type "mvn spring-boot:run" into the project directory
 	- Only upload of files is supported, though you can upload multiple at a time
 2. If local access needed:
 	- Ensure Tomcat and Maven are installed
